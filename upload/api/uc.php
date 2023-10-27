@@ -57,7 +57,7 @@ if(!defined('IN_UC')) {
 	$phpinput = file_get_contents('php://input');
 	$post = xml_unserialize($phpinput);
 
-	// 考虑到第三方应用接入独立模式的成本问题, 此处将 uc.php 里的业务相关代码剥离出去, 放进专门的 extend_client.php 里解决
+	// 考慮到協力廠商應用接入獨立模式的成本問題，此處將 uc.php 裡的業務相關代碼剝離出去，放進專門的 extend_client.php 裡解決
 	require DISCUZ_ROOT.'./uc_client/extend_client.php';
 
 	if(in_array($get['action'], array('test', 'deleteuser', 'renameuser', 'gettag', 'synlogin', 'synlogout', 'updatepw', 'updatebadwords', 'updatehosts', 'updateapps', 'updateclient', 'updatecredit', 'getcredit', 'getcreditsettings', 'updatecreditsettings', 'addfeed'))) {
