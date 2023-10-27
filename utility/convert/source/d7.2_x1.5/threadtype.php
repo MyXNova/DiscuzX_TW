@@ -55,7 +55,7 @@ if($typetids) {
 }
 
 if($nextid) {
-	showmessage("继续转换主题分类数据表，fid=$nextid", "index.php?a=$action&source=$source&prg=$curprg&start=".($start+$limit));
+	showmessage("繼續轉換主題分類資料表，fid=$nextid", "index.php?a=$action&source=$source&prg=$curprg&start=".($start+$limit));
 }
 
 ?>

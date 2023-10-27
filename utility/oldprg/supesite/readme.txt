@@ -1,17 +1,17 @@
 ===============================
-SS7 转换到 Discuz！ X1 注意事项
+SS7 轉換到 Discuz！ X1 注意事項
 ===============================
 
-问题：转换后的图片及附件地址不对？
-方案： 步骤如下：
-1. 在原 SS7 源码下找到图标 images/base/attachment.gif，放在 Disucuz！ X1 的目录 static/image/filetype/ 下；
-2. 找到 source/module/portal/portal_view.php 文件，在代码“$content['content'] = blog_bbcode($content['content']);”后换行添加以下代码：
+問題：轉換後的圖片及附件網址不對？
+方案： 步驟如下：
+1. 在原 SS7 原始碼下找到圖示 images/base/attachment.gif，放在 Disucuz！ X1 的目錄 static/image/filetype/ 下；
+2. 找到 source/module/portal/portal_view.php 檔案，在程式「$content['content'] = blog_bbcode($content['content']);」後換行增加以下程式碼：
 
-$ss_url = 'http://your_ss_site_url/'; // 请将此链接地址改为您的 SS 站点地址！！！
+$ss_url = 'http://your_ss_site_url/'; // 請將此連結網址改為您的 SS 網站網址！！！
 $findarr = array(
-	$ss_url.'batch.download.php?aid=', // 附件下载地址
-	$ss_url.'attachments/',  // 附件图片目录
-	$ss_url.'images/base/attachment.gif'  // 附件下载图标
+	$ss_url.'batch.download.php?aid=', // 附件下載網址
+	$ss_url.'attachments/',  // 附件圖片目錄
+	$ss_url.'images/base/attachment.gif'  // 附件下載圖示
 );
 $replacearr = array(
 	'porta.php?mod=attachment&id=',

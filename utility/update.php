@@ -47,7 +47,7 @@ if($_GET['from']) {
 		$version = $dbreturnurlparamarr['version'];
 		$release = $dbreturnurlparamarr['release'];
 		if(!$operation || !$version || !$release) {
-			show_msg('请求的参数不正确');
+			show_msg('要求的參數不正確');
 		}
 		$time = $_G['timestamp'];
 		dheader('Location: '.$_G['siteurl'].basename($refererarr['path']).'?action=upgrade&operation='.$operation.'&version='.$version.'&release='.$release.'&ungetfrom='.$time.'&ungetfrommd5='.md5($time.$_G['config']['security']['authkey']));
@@ -58,17 +58,17 @@ $lockfile = DISCUZ_ROOT.'./data/update.lock';
 if($_GET['lock']){
     @touch($lockfile);
     @unlink(DISCUZ_ROOT.'./install/update.php');
-    show_msg('<span id="finalmsg">恭喜，数据库结构升级完成！</span>');
+    show_msg('<span id="finalmsg">恭喜，資料庫結構升級完成！</span>');
 }
 if(file_exists($lockfile) && !$_GET['from']) {
-	show_msg('请您先登录服务器ftp，手工删除 ./data/update.lock 文件，再次运行本文件进行升级。');
+	show_msg('請您先登入伺服器 ftp，手動刪除 ./data/update.lock 檔案，再次執行本檔案進行升級。');
 }
 
 $devmode = file_exists(DISCUZ_ROOT.'./install/data/install_dev.sql');
 $sqlfile = DISCUZ_ROOT.($devmode ? './install/data/install_dev.sql' : './install/data/install.sql');
 
 if(!file_exists($sqlfile)) {
-	show_msg('SQL文件 '.$sqlfile.' 不存在');
+	show_msg('SQL 檔案 '.$sqlfile.' 不存在');
 }
 $first_to_2_5 = !C::t('common_setting')->skey_exists('strongpw');
 $first_to_3_0 = !C::t('common_setting')->skey_exists('antitheft');
@@ -94,7 +94,7 @@ if($_POST['delsubmit']) {
 		}
 	}
 
-	show_msg('删除表和字段操作完成了', $theurl.'?step=style');
+	show_msg('刪除資料表和欄位操作完成了', $theurl.'?step=style');
 }
 
 function waitingdb($curstep, $sqlarray) {
@@ -103,7 +103,7 @@ function waitingdb($curstep, $sqlarray) {
 		$sqlurl .= '&sql[]='.md5($sql);
 		$sendsql .= '<img width="1" height="1" src="'.$theurl.'?step='.$curstep.'&waitingdb=1&sqlid='.$key.'">';
 	}
-	show_msg("优化数据表", $theurl.'?step=waitingdb&nextstep='.$curstep.$sqlurl.'&sendsql='.base64_encode($sendsql), 5000, 1);
+	show_msg("優化資料表", $theurl.'?step=waitingdb&nextstep='.$curstep.$sqlurl.'&sendsql='.base64_encode($sendsql), 5000, 1);
 }
 if(empty($_GET['step'])) $_GET['step'] = 'start';
 
@@ -116,31 +116,31 @@ if($_GET['step'] == 'start') {
 		C::t('common_setting')->update('bbclosed', 1);
 		require_once libfile('function/cache');
 		updatecache('setting');
-		show_msg('您的站点未关闭，正在关闭，请稍后...', $theurl.'?step=start', 5000);
+		show_msg('您的網站未關閉，正在關閉，請稍後...', $theurl.'?step=start', 5000);
 	}
 	if(version_compare($version, '1.5.2') <= 0) {
-		show_msg('请先升级 UCenter 到 1.6.0 以上版本。<br>如果使用为Discuz! X自带UCenter，请先下载 UCenter 1.6.0, 在 utilities 目录下找到对应的升级程序，复制或上传到 Discuz! X 的 uc_server 目录下，运行该程序进行升级');
+		show_msg('請先升級 UCenter 到 1.6.0 以上版本。<br>如果使用為 Discuz! X 自帶 UCenter，請先下載 UCenter 1.6.0，在 utilities 目錄下找到對應的升級程式，複製或上傳到 Discuz! X 的 uc_server 目錄下，執行該程式進行升級');
 	} else {
-		show_msg('说明：<br>本升级程序会参照最新的SQL文件，对数据库进行同步升级。<br>
-			请确保当前目录下 ./data/install.sql 文件为最新版本。<br><br>
-			升级完成后会关闭所有插件以确保正常运行，请站长逐个开启每一个插件检测是否兼容新版本。<br><br>
-			<a href="'.$theurl.'?step=prepare'.($_GET['from'] ? '&from='.rawurlencode($_GET['from']).'&frommd5='.rawurlencode($_GET['frommd5']) : '').'">准备完毕，升级开始</a>');
+		show_msg('說明：<br>本升級程式會參照最新的 SQL 檔案，對資料庫進行同步升級。<br>
+			請確保目前目錄下 ./data/install.sql 檔案為最新版本。<br><br>
+			升級完成後會關閉所有插件以確保正常執行，請站長逐個開啟每一個插件偵測是否相容新版本。<br><br>
+			<a href="'.$theurl.'?step=prepare'.($_GET['from'] ? '&from='.rawurlencode($_GET['from']).'&frommd5='.rawurlencode($_GET['frommd5']) : '').'">準備完畢，升級開始</a>');
 	}
 } elseif ($_GET['step'] == 'waitingdb') {
 	$query = DB::fetch_all("SHOW FULL PROCESSLIST");
 	foreach($query as $row) {
 		if(in_array(md5($row['Info']), $_GET['sql'])) {
-			$list .= '[时长]:'.$row['Time'].'秒 [状态]:<b>'.$row['State'].'</b>[信息]:'.$row['Info'].'<br><br>';
+			$list .= '[時長]：'.$row['Time'].'秒 [狀態]：<b>'.$row['State'].'</b>[訊息]：'.$row['Info'].'<br><br>';
 		}
 	}
 	if(empty($list) && empty($_GET['sendsql'])) {
-		$msg = '准备进入下一步操作，请稍后...';
+		$msg = '準備進入下一步操作，請稍後...';
 		$notice = '';
 		$url = "?step=$_GET[nextstep]";
 		$time = 5;
 	} else {
-		$msg = '正在升级数据，请稍后...';
-		$notice = '<br><br><b>以下是正在执行的数据库升级语句:</b><br>'.$list.base64_decode($_GET['sendsql']);
+		$msg = '正在升級資料，請稍後...';
+		$notice = '<br><br><b>以下是正在執行的資料庫升級語句：</b><br>'.$list.base64_decode($_GET['sendsql']);
 		$sqlurl = implode('&sql[]=', $_GET['sql']);
 		$url = "?step=waitingdb&nextstep=$_GET[nextstep]&sql[]=".$sqlurl;
 		$time = 20;
@@ -151,7 +151,7 @@ if($_GET['step'] == 'start') {
 		C::t('forum_groupinvite')->truncate();
 	}
 	if(DB::fetch_first("SHOW COLUMNS FROM ".DB::table('forum_activityapply')." LIKE 'contact'")) {
-		$query = DB::query("UPDATE ".DB::table('forum_activityapply')." SET message=CONCAT_WS(' 联系方式:', message, contact) WHERE contact<>''");
+		$query = DB::query("UPDATE ".DB::table('forum_activityapply')." SET message=CONCAT_WS(' 聯繫方式：', message, contact) WHERE contact<>''");
 		DB::query("ALTER TABLE ".DB::table('forum_activityapply')." DROP contact");
 	}
 	if($row = DB::fetch_first("SHOW COLUMNS FROM ".DB::table('forum_postcomment')." LIKE 'authorid'")) {
@@ -167,7 +167,7 @@ if($_GET['step'] == 'start') {
 		DB::query("ALTER TABLE ".DB::table('common_failedlogin')." ADD PRIMARY KEY ipusername (ip,username)");
 	}
 	if(!$row = DB::fetch_first("SHOW COLUMNS FROM ".DB::table('forum_forumfield')." LIKE 'seodescription'")) {
-		DB::query("ALTER TABLE ".DB::table('forum_forumfield')." ADD seodescription text NOT NULL default '' COMMENT '版块seo描述' AFTER keywords");
+		DB::query("ALTER TABLE ".DB::table('forum_forumfield')." ADD seodescription text NOT NULL default '' COMMENT '版區 seo 描述' AFTER keywords");
 		DB::query("UPDATE ".DB::table('forum_forumfield')." SET seodescription=description WHERE membernum='0'");
 	}
 	if(DB::fetch_first("SHOW TABLES LIKE '".DB::table('common_tagitem')."'")) {
@@ -229,7 +229,7 @@ if($_GET['step'] == 'start') {
 		DB::query('ALTER TABLE '.DB::table('common_template_block').' DROP PRIMARY KEY');
 	}
 
-	show_msg('准备完毕，进入下一步数据库结构升级', $theurl.'?step=sql');
+	show_msg('準備完畢，進入下一步資料庫結構升級', $theurl.'?step=sql');
 } elseif ($_GET['step'] == 'sql') {
 
 	$sql = implode('', file($sqlfile));
@@ -237,13 +237,13 @@ if($_GET['step'] == 'start') {
 	$newtables = empty($matches[1])?array():$matches[1];
 	$newsqls = empty($matches[0])?array():$matches[0];
 	if(empty($newtables) || empty($newsqls)) {
-		show_msg('SQL文件内容为空，请确认');
+		show_msg('SQL 檔案內容為空，請確認');
 	}
 
 	$i = empty($_GET['i'])?0:intval($_GET['i']);
 	$count_i = count($newtables);
 	if($i>=$count_i) {
-		show_msg('数据库结构升级完毕，进入下一步数据升级操作', $theurl.'?step=data');
+		show_msg('資料庫結構升級完畢，進入下一步資料升級操作', $theurl.'?step=data');
 	}
 	$newtable = $newtables[$i];
 
@@ -270,9 +270,9 @@ if($_GET['step'] == 'start') {
 		$usql = str_replace("CREATE TABLE pre_", 'CREATE TABLE '.$config['tablepre'], $usql);
 
 		if(!DB::query($usql, 'SILENT')) {
-			show_msg('添加表 '.DB::table($newtable).' 出错,请手工执行以下SQL语句后,再重新运行本升级程序:<br><br>'.dhtmlspecialchars($usql));
+			show_msg('增加資料表 '.DB::table($newtable).' 出錯，請手動執行以下 SQL 語句後，再重新執行本升級程式：<br><br>'.dhtmlspecialchars($usql));
 		} else {
-			$msg = '添加表 '.DB::table($newtable).' 完成';
+			$msg = '增加資料表 '.DB::table($newtable).' 完成';
 		}
 	} else {
 		$value = DB::fetch($query);
@@ -286,9 +286,9 @@ if($_GET['step'] == 'start') {
 					if(!empty($oldcols[$key])) {
 						$usql = "RENAME TABLE ".DB::table($newtable)." TO ".DB::table($newtable.'_bak');
 						if(!DB::query($usql, 'SILENT')) {
-							show_msg('升级表 '.DB::table($newtable).' 出错,请手工执行以下升级语句后,再重新运行本升级程序:<br><br><b>升级SQL语句</b>:<div style=\"position:absolute;font-size:11px;font-family:verdana,arial;background:#EBEBEB;padding:0.5em;\">'.dhtmlspecialchars($usql)."</div><br><b>Error</b>: ".DB::error()."<br><b>Errno.</b>: ".DB::errno());
+							show_msg('升級資料表 '.DB::table($newtable).' 出錯，請手動執行以下升級語句後，再重新執行本升級程式：<br><br><b>升級 SQL 語句</b>：<div style=\"position:absolute;font-size:11px;font-family:verdana,arial;background:#EBEBEB;padding:0.5em;\">'.dhtmlspecialchars($usql)."</div><br><b>Error</b>: ".DB::error()."<br><b>Errno.</b>: ".DB::errno());
 						} else {
-							$msg = '表改名 '.DB::table($newtable).' 完成！';
+							$msg = '資料表改名 '.DB::table($newtable).' 完成！';
 							show_msg($msg, $theurl.'?step=sql&i='.$_GET['i']);
 						}
 					}
@@ -334,12 +334,12 @@ if($_GET['step'] == 'start') {
 		if(!empty($updates)) {
 			$usql = "ALTER TABLE ".DB::table($newtable)." ".implode(', ', $updates);
 			if(!DB::query($usql, 'SILENT')) {
-				show_msg('升级表 '.DB::table($newtable).' 出错,请手工执行以下升级语句后,再重新运行本升级程序:<br><br><b>升级SQL语句</b>:<div style=\"position:absolute;font-size:11px;font-family:verdana,arial;background:#EBEBEB;padding:0.5em;\">'.dhtmlspecialchars($usql)."</div><br><b>Error</b>: ".DB::error()."<br><b>Errno.</b>: ".DB::errno());
+				show_msg('升級資料表 '.DB::table($newtable).' 出錯，請手動執行以下升級語句後，再重新執行本升級程式：<br><br><b>升級 SQL 語句</b>：<div style=\"position:absolute;font-size:11px;font-family:verdana,arial;background:#EBEBEB;padding:0.5em;\">'.dhtmlspecialchars($usql)."</div><br><b>Error</b>: ".DB::error()."<br><b>Errno.</b>: ".DB::errno());
 			} else {
-				$msg = '升级表 '.DB::table($newtable).' 完成！';
+				$msg = '升級資料表 '.DB::table($newtable).' 完成！';
 			}
 		} else {
-			$msg = '检查表 '.DB::table($newtable).' 完成，不需升级，跳过';
+			$msg = '檢查資料表 '.DB::table($newtable).' 完成，不需升級，跳過';
 		}
 	}
 
@@ -365,9 +365,9 @@ if($_GET['step'] == 'start') {
 		if($i==0) {
 			$value = DB::fetch_first('SELECT * FROM '.DB::table('common_member_profile_setting')." WHERE fieldid = 'realname'");
 			if(!empty($value)) {
-				show_msg("实名功能升级完毕", "$theurl?step=data&op=$nextop");
+				show_msg("實名功能升級完畢", "$theurl?step=data&op=$nextop");
 			}
-			DB::query("INSERT INTO ".DB::table('common_member_profile_setting')." VALUES ('realname', '1', '0', '1', '真实姓名', '', '0', '0', '0', '0', '1', 'text', '0', '', '', '0', '0')");
+			DB::query("INSERT INTO ".DB::table('common_member_profile_setting')." VALUES ('realname', '1', '0', '1', '真實姓名', '', '0', '0', '0', '0', '1', 'text', '0', '', '', '0', '0')");
 		}
 		$t = DB::result_first('SELECT uid FROM '.DB::table('common_member')." ORDER BY uid DESC LIMIT 1");
 		$names = $uids = array();
@@ -382,17 +382,17 @@ if($_GET['step'] == 'start') {
 		}
 
 		if($n>0) {
-			show_msg("实名功能升级中[$n/$t]", "$theurl?step=data&op=realname&i=$n");
+			show_msg("實名功能升級中[$n/$t]", "$theurl?step=data&op=realname&i=$n");
 		} else {
-			show_msg("实名功能升级完毕", "$theurl?step=data&op=$nextop");
+			show_msg("實名功能升級完畢", "$theurl?step=data&op=$nextop");
 		}
 
 	} elseif($_GET['op'] == 'profile') {
 		$nextop = 'setting';
 		$value = DB::result_first('SELECT count(*) FROM '.DB::table('common_member_profile_setting')." WHERE fieldid = 'birthdist'");
 		if(!$value) {
-			DB::query("INSERT INTO ".DB::table('common_member_profile_setting')." VALUES ('birthdist', 1, 0, 0, '出生县', '出生行政区/县', 0, 0, 0, 0, 0, 0, 0, 'select', 0, '', '')");
-			DB::query("INSERT INTO ".DB::table('common_member_profile_setting')." VALUES ('birthcommunity', 1, 0, 0, '出生小区', '', 0, 0, 0, 0, 0, 0, 0, 'select', 0, '', '')");
+			DB::query("INSERT INTO ".DB::table('common_member_profile_setting')." VALUES ('birthdist', 1, 0, 0, '出生縣', '出生行政區/縣', 0, 0, 0, 0, 0, 0, 0, 'select', 0, '', '')");
+			DB::query("INSERT INTO ".DB::table('common_member_profile_setting')." VALUES ('birthcommunity', 1, 0, 0, '出生社區', '', 0, 0, 0, 0, 0, 0, 0, 'select', 0, '', '')");
 			DB::query("UPDATE ".DB::table('common_member_profile_setting')." SET title='出生地' WHERE fieldid = 'birthcity'");
 			DB::query("UPDATE ".DB::table('common_member_profile_setting')." SET title='居住地' WHERE fieldid = 'residecity'");
 		}
@@ -403,14 +403,14 @@ if($_GET['step'] == 'start') {
 		$profile = DB::fetch_first('SELECT * FROM '.DB::table('common_member_profile_setting')." WHERE fieldid = 'birthday'");
 		if($profile['title'] == '出生日期') {
 			DB::query("UPDATE ".DB::table('common_member_profile_setting')." SET title='生日' WHERE fieldid = 'birthday'");
-			DB::query("UPDATE ".DB::table('common_member_profile_setting')." SET title='证件类型' WHERE fieldid = 'idcardtype'");
-			DB::query("UPDATE ".DB::table('common_member_profile_setting')." SET title='支付宝' WHERE fieldid = 'alipay'");
+			DB::query("UPDATE ".DB::table('common_member_profile_setting')." SET title='證件類型' WHERE fieldid = 'idcardtype'");
+			DB::query("UPDATE ".DB::table('common_member_profile_setting')." SET title='支付寶' WHERE fieldid = 'alipay'");
 			DB::query("UPDATE ".DB::table('common_member_profile_setting')." SET title='ICQ' WHERE fieldid = 'icq'");
 			DB::query("UPDATE ".DB::table('common_member_profile_setting')." SET title='QQ' WHERE fieldid = 'qq'");
 			DB::query("UPDATE ".DB::table('common_member_profile_setting')." SET title='MSN' WHERE fieldid = 'msn'");
 			DB::query("UPDATE ".DB::table('common_member_profile_setting')." SET title='阿里旺旺' WHERE fieldid = 'taobao'");
 		}
-		show_msg("用户栏目升级完毕", "$theurl?step=data&op=$nextop");
+		show_msg("會員欄目升級完畢", "$theurl?step=data&op=$nextop");
 	} elseif($_GET['op'] == 'setting') {
 		$nextop = 'admingroup';
 		$settings = $newsettings = array();
@@ -551,7 +551,7 @@ if($_GET['step'] == 'start') {
 				array (
 				  'available' => 1,
 				  'displayorder' => 0,
-				  'title' => '基本资料',
+				  'title' => '基本資料',
 				  'field' =>
 				  array (
 					'realname' => 'realname',
@@ -575,7 +575,7 @@ if($_GET['step'] == 'start') {
 				),
 				'contact' =>
 				array (
-				  'title' => '联系方式',
+				  'title' => '聯繫方式',
 				  'available' => '1',
 				  'displayorder' => '1',
 				  'field' =>
@@ -593,7 +593,7 @@ if($_GET['step'] == 'start') {
 				array (
 				  'available' => 1,
 				  'displayorder' => 2,
-				  'title' => '教育情况',
+				  'title' => '教育情況',
 				  'field' =>
 				  array (
 					'graduateschool' => 'graduateschool',
@@ -604,7 +604,7 @@ if($_GET['step'] == 'start') {
 				array (
 				  'available' => 1,
 				  'displayorder' => 3,
-				  'title' => '工作情况',
+				  'title' => '工作情況',
 				  'field' =>
 				  array (
 					'occupation' => 'occupation',
@@ -615,7 +615,7 @@ if($_GET['step'] == 'start') {
 				),
 				'info' =>
 				array (
-				  'title' => '个人信息',
+				  'title' => '個人資料',
 				  'available' => '1',
 				  'displayorder' => '4',
 				  'field' =>
@@ -656,7 +656,7 @@ if($_GET['step'] == 'start') {
 		DB::query("REPLACE INTO ".DB::table('common_setting')." VALUES ('regname', 'register')");
 		$newsettings['regname'] = 'register';
 		if(empty($settings['reglinkname'])) {
-			$newsettings['reglinkname'] = '注册';
+			$newsettings['reglinkname'] = '註冊';
 		}
 
 		if(empty($settings['domain'])) {
@@ -706,7 +706,7 @@ if($_GET['step'] == 'start') {
 			$newsettings['allowviewuserthread'] = $allowviewuserthread;
 		}
 		if(!isset($settings['focus'])) {
-			$focusnew = array('title' => '站长推荐', 'cookie' => 1);
+			$focusnew = array('title' => '站長推薦', 'cookie' => 1);
 			$newsettings['focus'] = $focusnew;
 		} else {
 			$focus = dunserialize($settings['focus']);
@@ -736,17 +736,17 @@ if($_GET['step'] == 'start') {
 			$newsettings['targetblank'] = $targetblanknew;
 		}
 		if(!isset($settings['article_tags'])) {
-			$article_tagsnew = array(1 => '原创', 2 => '热点', 3 => '组图', 4 => '爆料', 5 => '头条', 6 => '幻灯', 7 => '滚动', 8 => '推荐');
+			$article_tagsnew = array(1 => '原創', 2 => '熱門', 3 => '組圖', 4 => '爆料', 5 => '頭條', 6 => '幻燈', 7 => '滾動', 8 => '推薦');
 			$newsettings['article_tags'] = $article_tagsnew;
 		}
 		if(empty($settings['anonymoustext'])) {
 			$newsettings['anonymoustext'] = '匿名';
 		}
 		if(!$word_type_count = DB::result_first("SELECT count(*) FROM ".DB::table('common_word_type')."")) {
-			DB::query("INSERT INTO ".DB::table('common_word_type')." VALUES('1', '政治'),('2', '广告')");
+			DB::query("INSERT INTO ".DB::table('common_word_type')." VALUES('1', '政治'),('2', '廣告')");
 		}
 		if(!isset($settings['userreasons'])) {
-			$newsettings['userreasons'] = '很给力!\r\n神马都是浮云\r\n赞一个!\r\n山寨\r\n淡定';
+			$newsettings['userreasons'] = '很給力!\r\n神馬都是浮雲\r\n贊一個!\r\n山寨\r\n淡定';
 		}
 		if(!$forum_typevar_search = C::t('forum_typevar')->count_by_search(2)) {
 			C::t('forum_typevar')->update_by_search(1, array('search' => 3));
@@ -861,7 +861,7 @@ if($_GET['step'] == 'start') {
 		if(!DB::result_first("SELECT allowreplycredit FROM ".DB::table('common_usergroup_field')." WHERE groupid = 1")) {
 			DB::query("UPDATE ".DB::table('common_usergroup_field')." SET allowreplycredit = '1' WHERE groupid = 1");
 		}
-		show_msg("配置项升级完成", "$theurl?step=data&op=$nextop");
+		show_msg("配置項升級完成", "$theurl?step=data&op=$nextop");
 	} elseif($_GET['op'] == 'admingroup') {
 		$nextop = 'updatethreadtype';
 		if(!DB::result_first("SELECT allowclearrecycle FROM ".DB::table('common_admingroup')." WHERE allowclearrecycle='1'")) {
@@ -892,7 +892,7 @@ if($_GET['step'] == 'start') {
 			DB::query('UPDATE '.DB::table('common_admingroup')." SET allowmanagecollection='1' WHERE admingid='1' OR admingid='2'");
 		}
 		DB::query('UPDATE '.DB::table('common_admingroup')." SET allowmakehtml='1' WHERE admingid=1");
-		show_msg("管理组设置升级完成", "$theurl?step=data&op=$nextop");
+		show_msg("管理組設定升級完成", "$theurl?step=data&op=$nextop");
 	} elseif($_GET['op'] == 'updatethreadtype') {
 		$nextop = 'updatecron';
 		$selectoption = array();
@@ -920,52 +920,52 @@ if($_GET['step'] == 'start') {
 				DB::query("ALTER TABLE ".DB::table('forum_optionvalue')."$threadtypearr[typeid] ".implode(',', $varnames));
 			}
 		}
-		show_msg("分类信息升级完成", "$theurl?step=data&op=$nextop");
+		show_msg("分類訊息升級完成", "$theurl?step=data&op=$nextop");
 	} elseif($_GET['op'] == 'updatecron') {
 		$nextop = 'updatemagic';
 		if(!DB::result_first("SELECT filename FROM ".DB::table('common_cron')." WHERE filename='cron_cleanfeed.php'")) {
-			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('', '1','system','清理过期动态','cron_cleanfeed.php','1269746634','1269792000','-1','-1','0','0')");
+			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('', '1','system','清理過期動態','cron_cleanfeed.php','1269746634','1269792000','-1','-1','0','0')");
 		}
 
 		if(!DB::result_first("SELECT filename FROM ".DB::table('common_cron')." WHERE filename='cron_checkpatch_daily.php'")) {
-			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('', '1','system','每日获取安全补丁','cron_checkpatch_daily.php','1269746639','1269792000','-1','-1','2','22')");
+			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('', '1','system','每日取得安全修正','cron_checkpatch_daily.php','1269746639','1269792000','-1','-1','2','22')");
 		}
 
 		if(!DB::result_first("SELECT filename FROM ".DB::table('common_cron')." WHERE filename='cron_publish_halfhourly.php'")) {
-			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('', '1','system','定时发布主题','cron_publish_halfhourly.php','1269746639','1269792000','-1','-1','-1','0	30')");
+			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('', '1','system','定時發佈主題','cron_publish_halfhourly.php','1269746639','1269792000','-1','-1','-1','0	30')");
 		}
 
 		if(!DB::result_first("SELECT filename FROM ".DB::table('common_cron')." WHERE filename='cron_follow_daily.php'")) {
-			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('','1','system','每周广播归档','cron_follow_daily.php','1269746639','1269792000','-1','-1','02','0')");
+			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('','1','system','每週廣播歸檔','cron_follow_daily.php','1269746639','1269792000','-1','-1','02','0')");
 		}
 		if(!DB::result_first("SELECT filename FROM ".DB::table('common_cron')." WHERE filename='cron_todayviews_daily.php'")) {
-			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('','1','system','更新每日查看数','cron_todayviews_daily.php','1321500558','1321556400','-1','-1','3','0	5	10	15	20	25	30	35	40	45	50	55')");
+			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('','1','system','更新每日點閱','cron_todayviews_daily.php','1321500558','1321556400','-1','-1','3','0	5	10	15	20	25	30	35	40	45	50	55')");
 		}
 		if(!DB::result_first("SELECT filename FROM ".DB::table('common_cron')." WHERE filename='cron_member_optimize_daily.php'")) {
-			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('','0','system','每日用户表优化','cron_member_optimize_daily.php','1321500558','1321556400','-1','-1','2','0	5	10	15	20	25	30	35	40	45	50	55')");
+			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('','0','system','每日會員表優化','cron_member_optimize_daily.php','1321500558','1321556400','-1','-1','2','0	5	10	15	20	25	30	35	40	45	50	55')");
 		}
 		if(DB::result_first("SELECT COUNT(*) FROM ".DB::table('common_cron')." WHERE filename='cron_birthday_daily.php'")) {
 			DB::query("DELETE FROM ".DB::table('common_cron')." WHERE filename='cron_birthday_daily.php'");
 		}
 
 		if(!DB::result_first("SELECT filename FROM ".DB::table('common_cron')." WHERE filename='cron_todayheats_daily.php'")) {
-			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('','1','system','统计今日热帖','cron_todayheats_daily.php','1269746623','1269792000','-1','-1','0','0')");
+			DB::query("INSERT INTO ".DB::table('common_cron')." VALUES ('','1','system','統計今日熱門','cron_todayheats_daily.php','1269746623','1269792000','-1','-1','0','0')");
 		}
 
-		show_msg("计划任务升级完成", "$theurl?step=data&op=$nextop");
+		show_msg("計劃任務升級完成", "$theurl?step=data&op=$nextop");
 	} elseif($_GET['op'] == 'updatemagic') {
 		$nextop = 'updatereport';
 		if(DB::result_first("SELECT name FROM ".DB::table('common_magic')." WHERE identifier='highlight'")) {
-			DB::query("UPDATE ".DB::table('common_magic')." SET name='变色卡', description='可以将帖子或日志的标题高亮，变更颜色' WHERE identifier='highlight'");
+			DB::query("UPDATE ".DB::table('common_magic')." SET name='變色卡', description='可以將文章或網誌的標題醒目提示，變更顏色' WHERE identifier='highlight'");
 		}
 		if(DB::result_first("SELECT name FROM ".DB::table('common_magic')." WHERE identifier='namepost'")) {
-			DB::query("UPDATE ".DB::table('common_magic')." SET name='显身卡', description='可以查看一次匿名用户的真实身份。' WHERE identifier='namepost'");
+			DB::query("UPDATE ".DB::table('common_magic')." SET name='顯身卡', description='可以檢視一次匿名會員的真實身份。' WHERE identifier='namepost'");
 		}
 		if(DB::result_first("SELECT name FROM ".DB::table('common_magic')." WHERE identifier='anonymouspost'")) {
-			DB::query("UPDATE ".DB::table('common_magic')." SET name='匿名卡', description='在指定的地方，让自己的名字显示为匿名。' WHERE identifier='anonymouspost'");
+			DB::query("UPDATE ".DB::table('common_magic')." SET name='匿名卡', description='在指定的地方，讓自己的名字顯示為匿名。' WHERE identifier='anonymouspost'");
 		}
 
-		show_msg("道具升级完成", "$theurl?step=data&op=$nextop");
+		show_msg("道具升級完成", "$theurl?step=data&op=$nextop");
 	} elseif($_GET['op'] == 'updatereport') {
 		$nextop = 'myappcount';
 		if(!C::t('common_setting')->skey_exists('report_reward')) {
@@ -1002,7 +1002,7 @@ if($_GET['step'] == 'start') {
 			C::t('common_setting')->update('report_reward', $report_receive);
 		}
 
-		show_msg("举报升级完成", "$theurl?step=data&op=$nextop");
+		show_msg("回報升級完成", "$theurl?step=data&op=$nextop");
 	} elseif($_GET['op'] == 'myappcount') {
 
 		$nextop = 'nav';
@@ -1011,7 +1011,7 @@ if($_GET['step'] == 'start') {
 			DB::query("DROP TABLE `".DB::table('common_myapp_count')."`");
 			DB::query("DROP TABLE `".DB::table('home_userapp_stat')."`");
 		}
-		show_msg("漫游应用统计升级完成", "$theurl?step=data&op=$nextop");
+		show_msg("漫遊應用統計升級完成", "$theurl?step=data&op=$nextop");
 
 	} elseif($_GET['op'] == 'nav') {
 
@@ -1068,7 +1068,7 @@ if($_GET['step'] == 'start') {
 			}
 		}
 
-		show_msg("导航数据升级完成", "$theurl?step=data&op=$nextop");
+		show_msg("導覽資料升級完成", "$theurl?step=data&op=$nextop");
 
 	} elseif($_GET['op'] == 'forumstatus') {
 
@@ -1081,7 +1081,7 @@ if($_GET['step'] == 'start') {
 			DB::update('forum_forum', array('status' => 1), "status='2'");
 		}
 
-		show_msg("版块状态升级完毕", "$theurl?step=data&op=$nextop");
+		show_msg("版區狀態升級完畢", "$theurl?step=data&op=$nextop");
 
 	} elseif($_GET['op'] == 'usergroup') {
 		$nextop = 'creditrule';
@@ -1091,7 +1091,7 @@ if($_GET['step'] == 'start') {
 			!DB::result_first("SELECT COUNT(*) FROM ".DB::table('common_usergroup_field')." WHERE allowmediacode>'0'")) {
 			DB::update('common_usergroup_field', array('allowmediacode' => 1), "groupid<'4' OR groupid>'9'");
 		}
-		show_msg("用户升级完毕", "$theurl?step=data&op=$nextop");
+		show_msg("會員升級完畢", "$theurl?step=data&op=$nextop");
 	} elseif($_GET['op'] == 'creditrule') {
 		$nextop = 'bbcode';
 		$delrule = array('register', 'realname', 'invitefriend', 'report', 'uploadimage', 'editrealname', 'editrealemail', 'delavatar');
@@ -1099,17 +1099,17 @@ if($_GET['step'] == 'start') {
 		if($count) {
 			DB::query("DELETE FROM ".DB::table('common_credit_rule')." WHERE action IN(".dimplode($delrule).")");
 		}
-		DB::update('common_credit_rule', array('rulename' => '每天登录'), "rulename='每天登陆'");
+		DB::update('common_credit_rule', array('rulename' => '每天登入'), "rulename='每天登入'");
 		$count = DB::result_first("SELECT COUNT(*) FROM ".DB::table('common_credit_rule')." WHERE action='portalcomment'");
 		if(!$count) {
-			DB::query("INSERT INTO ".DB::table('common_credit_rule')." (`rulename`, `action`, `cycletype`, `cycletime`, `rewardnum`, `norepeat`, `extcredits1`, `extcredits2`, `extcredits3`, `extcredits4`, `extcredits5`, `extcredits6`, `extcredits7`, `extcredits8`, `fids`) VALUES ('文章评论','portalcomment','1','0','40','1','0','1','0','0','0','0','0','0','')");
+			DB::query("INSERT INTO ".DB::table('common_credit_rule')." (`rulename`, `action`, `cycletype`, `cycletime`, `rewardnum`, `norepeat`, `extcredits1`, `extcredits2`, `extcredits3`, `extcredits4`, `extcredits5`, `extcredits6`, `extcredits7`, `extcredits8`, `fids`) VALUES ('文章評論','portalcomment','1','0','40','1','0','1','0','0','0','0','0','0','')");
 		}
 		$count = DB::result_first("SELECT COUNT(*) FROM ".DB::table('common_credit_rule')." WHERE action='followedcollection'");
 		if(!$count) {
-			DB::query("INSERT INTO ".DB::table('common_credit_rule')." (`rulename`, `action`, `cycletype`, `cycletime`, `rewardnum`, `norepeat`, `extcredits1`, `extcredits2`, `extcredits3`, `extcredits4`, `extcredits5`, `extcredits6`, `extcredits7`, `extcredits8`, `fids`) VALUES ('淘专辑被订阅','followedcollection','1','0','3','0','0','1','0','0','0','0','0','0','')");
+			DB::query("INSERT INTO ".DB::table('common_credit_rule')." (`rulename`, `action`, `cycletype`, `cycletime`, `rewardnum`, `norepeat`, `extcredits1`, `extcredits2`, `extcredits3`, `extcredits4`, `extcredits5`, `extcredits6`, `extcredits7`, `extcredits8`, `fids`) VALUES ('淘專輯被訂閱','followedcollection','1','0','3','0','0','1','0','0','0','0','0','0','')");
 		}
 
-		show_msg("积分规则升级完毕", "$theurl?step=data&op=$nextop");
+		show_msg("積分規則升級完畢", "$theurl?step=data&op=$nextop");
 	} elseif($_GET['op'] == 'bbcode') {
 		$nextop = 'stamp';
 		$allowcusbbcodes = array();
@@ -1122,7 +1122,7 @@ if($_GET['step'] == 'start') {
 		if($allowcusbbcodes) {
 			DB::query("UPDATE ".DB::table('forum_bbcode')." SET perm='".implode("\t", $allowcusbbcodes)."' WHERE perm=''");
 		}
-		show_msg("自定义代码权限升级完毕", "$theurl?step=data&op=$nextop");
+		show_msg("自訂程式權限升級完畢", "$theurl?step=data&op=$nextop");
 	} elseif($_GET['op'] == 'stamp') {
 		$nextop = 'block_item';
 		$stampnew = DB::result_first("SELECT COUNT(*) FROM ".DB::table('forum_thread')." WHERE stamp>'0'");
@@ -1135,13 +1135,13 @@ if($_GET['step'] == 'start') {
 			}
 		}
 		if(!DB::result_first("SELECT COUNT(*) FROM ".DB::table('common_smiley')." WHERE url='010.gif'")) {
-			DB::query("REPLACE INTO ".DB::table('common_smiley')." (typeid, displayorder, type, code, url) VALUES ('4','19','stamp','编辑采用','010.gif')");
+			DB::query("REPLACE INTO ".DB::table('common_smiley')." (typeid, displayorder, type, code, url) VALUES ('4','19','stamp','編輯採用','010.gif')");
 		}
 		if(!DB::result_first("SELECT COUNT(*) FROM ".DB::table('common_smiley')." WHERE url='010.small.gif'")) {
-			DB::query("REPLACE INTO ".DB::table('common_smiley')." (typeid, displayorder, type, code, url) VALUES ('0','18','stamplist','编辑采用','010.small.gif')");
+			DB::query("REPLACE INTO ".DB::table('common_smiley')." (typeid, displayorder, type, code, url) VALUES ('0','18','stamplist','編輯採用','010.small.gif')");
 		}
 		if(!DB::result_first("SELECT COUNT(*) FROM ".DB::table('common_smiley')." WHERE url='011.small.gif'")) {
-			DB::query("REPLACE INTO ".DB::table('common_smiley')." (typeid, displayorder, type, code, url) VALUES ('0','20','stamplist','新人帖','011.small.gif')");
+			DB::query("REPLACE INTO ".DB::table('common_smiley')." (typeid, displayorder, type, code, url) VALUES ('0','20','stamplist','新手文章','011.small.gif')");
 			$setnewbie = true;
 		}
 		require_once libfile('function/cache');
@@ -1151,7 +1151,7 @@ if($_GET['step'] == 'start') {
 			$id = DB::result_first("SELECT displayorder FROM ".DB::table('common_smiley')." WHERE url='011.small.gif'");
 			DB::query("REPLACE INTO ".DB::table('common_setting')." VALUES ('newbie', '$id')");
 		}
-		show_msg("鉴定图章升级完毕", "$theurl?step=data&op=$nextop");
+		show_msg("鑒定圖章升級完畢", "$theurl?step=data&op=$nextop");
 	} elseif($_GET['op'] == 'block_item') {
 		$nextop = 'block_permission';
 		$bids = $items = $blocks = array();
@@ -1174,7 +1174,7 @@ if($_GET['step'] == 'start') {
 				DB::update('common_block_item', array('thumbpath' => $thumbpath), "itemid='$item[itemid]'");
 			}
 		}
-		show_msg("模块缩略图权限升级完毕", "$theurl?step=data&op=$nextop");
+		show_msg("模組縮圖權限升級完畢", "$theurl?step=data&op=$nextop");
 
 	} elseif($_GET['op'] == 'block_permission') {
 		$nextop = 'portalcategory_permission';
@@ -1195,7 +1195,7 @@ if($_GET['step'] == 'start') {
 				}
 			}
 		}
-		show_msg("模块权限升级完毕", "$theurl?step=data&op=$nextop");
+		show_msg("模組權限升級完畢", "$theurl?step=data&op=$nextop");
 	} elseif($_GET['op'] == 'portalcategory_permission') {
 		$nextop = 'portal_comment';
 		if(!DB::result_first('SELECT inheritedcatid FROM '.DB::table('portal_category_permission')." WHERE inheritedcatid > '0' LIMIT 1")) {
@@ -1212,14 +1212,14 @@ if($_GET['step'] == 'start') {
 				}
 			}
 		}
-		show_msg("门户频道权限升级完毕", "$theurl?step=data&op=$nextop");
+		show_msg("門戶頻道權限升級完畢", "$theurl?step=data&op=$nextop");
 	} elseif($_GET['op'] == 'portal_comment') {
 		$nextop = 'portal_article_cover_img';
 		$one = DB::fetch_first('SELECT * FROM '.DB::table('portal_comment')." WHERE id=0 AND idtype='' LIMIT 1");
 		if($one && isset($one['aid'])) {
 			DB::query("UPDATE ".DB::table('portal_comment')." SET id=aid,idtype='aid' WHERE aid>0");
 		}
-		show_msg("文章评论升级完毕", "$theurl?step=data&op=$nextop");
+		show_msg("文章評論升級完畢", "$theurl?step=data&op=$nextop");
 
 	} elseif($_GET['op'] == 'portal_article_cover_img') {
 		$nextop = 'block_style';
@@ -1227,7 +1227,7 @@ if($_GET['step'] == 'start') {
 		if($pic && is_numeric(substr($pic, 0, strpos($pic,'/')))) {
 			DB::query("UPDATE ".DB::table('portal_article_title')." SET pic=CONCAT('portal/',pic) WHERE LENGTH(pic)>6");
 		}
-		show_msg("文章封面图升级完毕", "$theurl?step=data&op=$nextop");
+		show_msg("文章封面圖升級完畢", "$theurl?step=data&op=$nextop");
 
 	} elseif($_GET['op'] == 'block_style') {
 		$nextop = 'block_script';
@@ -1249,10 +1249,10 @@ if($_GET['step'] == 'start') {
 				$sql = implode("\r\n", $data);
 				runquery($sql);
 			}
-			DB::query("UPDATE ".DB::table('common_block_style')." SET name = replace(`name`, 'X1.5', '内置')");
-			DB::query("UPDATE ".DB::table('common_block_style')." SET name = replace(`name`, 'X2.0', '内置')");
+			DB::query("UPDATE ".DB::table('common_block_style')." SET name = replace(`name`, 'X1.5', '內置')");
+			DB::query("UPDATE ".DB::table('common_block_style')." SET name = replace(`name`, 'X2.0', '內置')");
 		}
-		show_msg("模块模板升级完毕", "$theurl?step=data&op=$nextop");
+		show_msg("模組模板升級完畢", "$theurl?step=data&op=$nextop");
 	} elseif($_GET['op'] == 'block_script') {
 		$nextop = 'common_usergroup_field';
 		include_once libfile('function/block');
@@ -1287,7 +1287,7 @@ if($_GET['step'] == 'start') {
 			block_updatecache($bid, true);
 		}
 
-		show_msg("模块脚本升级完毕", "$theurl?step=data&op=$nextop");
+		show_msg("模組腳本升級完畢", "$theurl?step=data&op=$nextop");
 	} elseif($_GET['op'] == 'common_usergroup_field') {
 		$nextop = 'group_index';
 		if(!C::t('common_setting')->skey_exists('group_recommend')) {
@@ -1315,7 +1315,7 @@ if($_GET['step'] == 'start') {
 			DB::query('UPDATE '.DB::table('common_usergroup_field')." SET allowcreatecollection='5',allowcommentcollection='1',allowfollowcollection='30' WHERE groupid<'4' OR groupid>'9'");
 		}
 
-		show_msg("用户组权限升级完毕", "$theurl?step=data&op=$nextop");
+		show_msg("用戶組權限升級完畢", "$theurl?step=data&op=$nextop");
 
 	} elseif($_GET['op'] == 'group_index') {
 		$nextop = 'domain';
@@ -1327,7 +1327,7 @@ if($_GET['step'] == 'start') {
 				import_diy($v['importfile'], $v['primaltplname'], $v['targettplname']);
 			}
 		}
-		show_msg("群组首页升级完毕", "$theurl?step=data&op=$nextop");
+		show_msg("群組首頁升級完畢", "$theurl?step=data&op=$nextop");
 
 	} elseif($_GET['op'] == 'domain') {
 		$nextop = 'pm';
@@ -1365,12 +1365,12 @@ if($_GET['step'] == 'start') {
 		if(!empty($newsettings)) {
 			C::t('common_setting')->update_batch($newsettings);
 		}
-		show_msg("域名设置升级完毕", "$theurl?step=data&op=$nextop");
+		show_msg("網域名稱設定升級完畢", "$theurl?step=data&op=$nextop");
 
 	} elseif($_GET['op'] == 'pm') {
 		$nextop = 'allowgetimage';
 			DB::query("UPDATE ".DB::table('common_member')." SET newpm='0', newprompt='0'");
-		show_msg("新短消息状态重置完毕", "$theurl?step=data&op=$nextop");
+		show_msg("新短訊狀態重設完畢", "$theurl?step=data&op=$nextop");
 	} elseif($_GET['op'] == 'allowgetimage') {
 		$nextop = 'verify';
 		if(!DB::result_first("SELECT COUNT(*) FROM ".DB::table('common_usergroup_field')." WHERE allowgetimage='1'")) {
@@ -1383,7 +1383,7 @@ if($_GET['step'] == 'start') {
 				DB::query('UPDATE '.DB::table('forum_access')." SET allowgetimage='".intval($row['allowgetattach'])."' WHERE uid='$row[uid]'");
 			}
 		}
-		show_msg("查看图片权限升级完毕", "$theurl?step=data&op=$nextop");
+		show_msg("檢視圖片權限升級完畢", "$theurl?step=data&op=$nextop");
 
 	} elseif($_GET['op'] == 'verify') {
 		$nextop = 'threadimage';
@@ -1394,7 +1394,7 @@ if($_GET['step'] == 'start') {
 		$updateverify = $_GET['updateverify'] ? true : false;
 		if(!isset($verifys[6])) {
 			$verifys[6] = array(
-					'title' => '实名认证',
+					'title' => '實名認證',
 					'available' => $settings['realname'],
 					'showicon' => 0,
 					'viewrealname' => 0,
@@ -1402,7 +1402,7 @@ if($_GET['step'] == 'start') {
 					'icon' => ''
 				);
 			$verifys[7] = array(
-					'title' => '视频认证',
+					'title' => '視訊認證',
 					'available' => $settings['videophoto'],
 					'showicon' => 0,
 					'viewvideophoto' => $settings['video_allowviewspace'],
@@ -1437,11 +1437,11 @@ if($_GET['step'] == 'start') {
 
 				}
 				if($n) {
-					show_msg("实名认证升级中[$n/$t]", "$theurl?step=data&op=verify&i=$n&updateverify=true");
+					show_msg("實名認證升級中[$n/$t]", "$theurl?step=data&op=verify&i=$n&updateverify=true");
 				}
 			}
 		}
-		show_msg("认证数据升级完毕", "$theurl?step=data&op=$nextop");
+		show_msg("認證資料升級完畢", "$theurl?step=data&op=$nextop");
 	} elseif($_GET['op'] == 'forumattach') {
 		$nextop = 'forumstatlog';
 		$limit = 10000;
@@ -1482,7 +1482,7 @@ if($_GET['step'] == 'start') {
 					));
 				}
 				$start += $limit;
-				show_msg("论坛附件表升级中 ... $start/$count", "$theurl?step=data&op=forumattach&start=$start");
+				show_msg("論壇附件資料表升級中 ... $start/$count", "$theurl?step=data&op=forumattach&start=$start");
 			}
 			DB::query("DROP TABLE `".DB::table('forum_attachmentfield')."`");
 			$dropsql = array();
@@ -1497,11 +1497,11 @@ if($_GET['step'] == 'start') {
 				DB::query("ALTER TABLE ".DB::table('forum_attachment').' '.implode(', ', $dropsql));
 			}
 		}
-		show_msg("论坛附件表升级完毕", "$theurl?step=data&op=$nextop");
+		show_msg("論壇附件資料表升級完畢", "$theurl?step=data&op=$nextop");
 	} elseif($_GET['op'] == 'forumstatlog') {
 		$nextop = 'moderate';
 		DB::query('DELETE FROM '.DB::table('forum_statlog')." WHERE logdate='0000-00-00'");
-		show_msg("论坛版块统计数据升级完毕", "$theurl?step=data&op=$nextop");
+		show_msg("論壇版區統計資料升級完畢", "$theurl?step=data&op=$nextop");
 	} elseif($_GET['op'] == 'threadimage') {
 		$nextop = 'forumattach';
 		$defaultmonth = 10;
@@ -1521,22 +1521,22 @@ if($_GET['step'] == 'start') {
 					if(!($fp && flock($fp, LOCK_EX) && ftruncate($fp, 0) && fwrite($fp, implode('|', $data)) && fflush($fp) && flock($fp, LOCK_UN) && fclose($fp))) {
 						flock($fp, LOCK_UN);
 						fclose($fp);
-						show_msg("主题图片表无法处理，跳过", "$theurl?step=data&op=$nextop");
+						show_msg("主題圖片資料表無法處理，跳過", "$theurl?step=data&op=$nextop");
 					}
 				} else {
-					show_msg("主题图片表无法处理，跳过", "$theurl?step=data&op=$nextop");
+					show_msg("主題圖片資料表無法處理，跳過", "$theurl?step=data&op=$nextop");
 				}
 			} else {
 				$data = @file($cachefile);
 				if(!$data) {
-					show_msg("主题图片表无法处理，跳过", "$theurl?step=data&op=$nextop");
+					show_msg("主題圖片資料表無法處理，跳過", "$theurl?step=data&op=$nextop");
 				}
 				$data = explode('|', $data[0]);
 			}
 			$tids = array_slice($data, $start, $limit);
 			if(!$tids) {
 				@unlink($cachefile);
-				show_msg("主题图片表处理完毕", "$theurl?step=data&op=$nextop");
+				show_msg("主題圖片資料表處理完畢", "$theurl?step=data&op=$nextop");
 			}
 			$insertsql = array();
 			foreach(C::t('forum_post')->fetch_all_by_tid(0, $tids, false, '', 0, 0, 1) as $row) {
@@ -1550,9 +1550,9 @@ if($_GET['step'] == 'start') {
 				DB::query("INSERT INTO ".DB::table('forum_threadimage')." (`tid`, `attachment`, `remote`) VALUES ".implode(',', $insertsql));
 			}
 			$start += $limit;
-			show_msg("主题图片表处理中 ... $start ", "$theurl?step=data&op=threadimage&start=$start");
+			show_msg("主題圖片資料表處理中 ... $start ", "$theurl?step=data&op=threadimage&start=$start");
 		} else {
-			show_msg("主题图片表无法处理，跳过", "$theurl?step=data&op=$nextop");
+			show_msg("主題圖片資料表無法處理，跳過", "$theurl?step=data&op=$nextop");
 		}
 	} elseif($_GET['op'] == 'moderate') {
 
@@ -1616,7 +1616,7 @@ if($_GET['step'] == 'start') {
 				updatemoderate('topicid_cid', $row['cid']);
 			}
 		}
-		show_msg("审核数据升级完毕", "$theurl?step=data&op=$nextop");
+		show_msg("審核資料升級完畢", "$theurl?step=data&op=$nextop");
 
 	} elseif($_GET['op'] == 'moderate_update') {
 		$nextop = 'founder';
@@ -1650,7 +1650,7 @@ if($_GET['step'] == 'start') {
 				}
 			}
 		}
-		show_msg("审核数据转换完毕", "$theurl?step=data&op=$nextop");
+		show_msg("審核資料轉換完畢", "$theurl?step=data&op=$nextop");
 
 	} elseif($_GET['op'] == 'founder') {
 
@@ -1674,18 +1674,18 @@ if($_GET['step'] == 'start') {
 			}
 		}
 
-		show_msg("创始人数据升级完毕", "$theurl?step=data&op=$nextop");
+		show_msg("創始人資料升級完畢", "$theurl?step=data&op=$nextop");
 
 	} elseif($_GET['op'] == 'threadprofile') {
 
 		$nextop = 'plugin';
 		if(!DB::result_first("SELECT COUNT(*) FROM ".DB::table("forum_threadprofile")." WHERE global=1")) {
 			DB::query("INSERT INTO ".DB::table("forum_threadprofile")." (`id`, `name`, `template`, `global`) VALUES
-				  (1, '默认方案', 'a:2:{s:4:\"left\";s:399:\"{numbercard}\r\n{groupicon}<p>{*}</p>{/groupicon}\r\n{authortitle}<p><em>{*}</em></p>{/authortitle}\r\n{customstatus}<p class=\"xg1\">{*}</p>{/customstatus}\r\n{star}<p>{*}</p>{/star}\r\n{upgradeprogress}<p>{*}</p>{/upgradeprogress}\r\n<dl class=\"pil cl\">\r\n\t<dt>{baseinfo=credits,1}</dt><dd>{baseinfo=credits,0}</dd>\r\n</dl>\r\n{medal}<p class=\"md_ctrl\">{*}</p>{/medal}\r\n<dl class=\"pil cl\">{baseinfo=field_qq,0}</dl>\";s:3:\"top\";s:82:\"<dl class=\"cl\">\r\n<dt>{baseinfo=credits,1}</dt><dd>{baseinfo=credits,0}</dd>\r\n</dl>\";}', 1);");
-			DB::query("REPLACE INTO ".DB::table("forum_bbcode")." VALUES ('2','2','qq','bb_qq.gif','<a href=\"http://wpa.qq.com/msgrd?v=3&uin={1}&amp;site=[Discuz!]&amp;from=discuz&amp;menu=yes\" target=\"_blank\"><img src=\"static/image/common/qq_big.gif\" border=\"0\"></a>','[qq]688888[/qq]','显示 QQ 在线状态，点这个图标可以和他（她）聊天','1','请输入 QQ 号码:<a href=\"\" class=\"xi2\" onclick=\"this.href=\'http://wp.qq.com/set.html?from=discuz&uin=\'+$(\'e_cst1_qq_param_1\').value\" target=\"_blank\" style=\"float:right;\">设置QQ在线状态&nbsp;&nbsp;</a>','1','21','1	2	3	10	11	12	13	14	15	16	17	18	19');");
+				  (1, '預設方案', 'a:2:{s:4:\"left\";s:399:\"{numbercard}\r\n{groupicon}<p>{*}</p>{/groupicon}\r\n{authortitle}<p><em>{*}</em></p>{/authortitle}\r\n{customstatus}<p class=\"xg1\">{*}</p>{/customstatus}\r\n{star}<p>{*}</p>{/star}\r\n{upgradeprogress}<p>{*}</p>{/upgradeprogress}\r\n<dl class=\"pil cl\">\r\n\t<dt>{baseinfo=credits,1}</dt><dd>{baseinfo=credits,0}</dd>\r\n</dl>\r\n{medal}<p class=\"md_ctrl\">{*}</p>{/medal}\r\n<dl class=\"pil cl\">{baseinfo=field_qq,0}</dl>\";s:3:\"top\";s:82:\"<dl class=\"cl\">\r\n<dt>{baseinfo=credits,1}</dt><dd>{baseinfo=credits,0}</dd>\r\n</dl>\";}', 1);");
+			DB::query("REPLACE INTO ".DB::table("forum_bbcode")." VALUES ('2','2','qq','bb_qq.gif','<a href=\"http://wpa.qq.com/msgrd?v=3&uin={1}&amp;site=[Discuz!]&amp;from=discuz&amp;menu=yes\" target=\"_blank\"><img src=\"static/image/common/qq_big.gif\" border=\"0\"></a>','[qq]688888[/qq]','顯示 QQ 線上狀態，點這個圖示可以和他（她）聊天','1','請輸入 QQ 號碼：<a href=\"\" class=\"xi2\" onclick=\"this.href=\'http://wp.qq.com/set.html?from=discuz&uin=\'+$(\'e_cst1_qq_param_1\').value\" target=\"_blank\" style=\"float:right;\">設定 QQ 線上狀態&nbsp;&nbsp;</a>','1','21','1	2	3	10	11	12	13	14	15	16	17	18	19');");
 		}
 
-		show_msg("布局方案设置升级完毕", "$theurl?step=data&op=$nextop");
+		show_msg("佈局方案設定升級完畢", "$theurl?step=data&op=$nextop");
 
 	} elseif($_GET['op'] == 'plugin') {
 
@@ -1716,7 +1716,7 @@ if($_GET['step'] == 'start') {
 			savecache('pluginlanguage_install', $_G['cache']['pluginlanguage_install']);
 		}
 
-		show_msg("插件语言包数据升级完毕", "$theurl?step=data&op=$nextop");
+		show_msg("插件語言包資料升級完畢", "$theurl?step=data&op=$nextop");
 	} elseif($_GET['op'] == 'notification') {
 		$nextop = 'medal';
 		if(!DB::result_first("SELECT id FROM ".DB::table('home_notification')." WHERE category>0")) {
@@ -1739,7 +1739,7 @@ if($_GET['step'] == 'start') {
 			DB::query("UPDATE ".DB::table('home_notification')." SET category=2,type='comment' WHERE type IN('piccomment','blogcomment','sharecomment','doing')");
 			DB::query("UPDATE ".DB::table('home_notification')." SET category=3,type='click' WHERE type IN('clickblog','clickarticle','clickpic')");
 		}
-		show_msg("提醒数据升级完毕", "$theurl?step=data&op=$nextop");
+		show_msg("提醒資料升級完畢", "$theurl?step=data&op=$nextop");
 	} elseif($_GET['op'] == 'medal') {
 
 		$nextop = 'closeswitch';
@@ -1758,7 +1758,7 @@ if($_GET['step'] == 'start') {
 				}
 			}
 		}
-		show_msg("用户勋章数据升级完毕", "$theurl?step=data&op=$nextop");
+		show_msg("會員勳章資料升級完畢", "$theurl?step=data&op=$nextop");
 	} elseif($_GET['op'] == 'closeswitch') {
 		$nextop = 'end';
 		if($first_to_2_5) {
@@ -1767,10 +1767,10 @@ if($_GET['step'] == 'start') {
 			$newsettings['pwlength'] = 0;
 			C::t('common_setting')->update_batch($newsettings);
 		}
-		show_msg("数据升级结束", "$theurl?step=data&op=$nextop");
+		show_msg("資料升級結束", "$theurl?step=data&op=$nextop");
 	} else {
 
-		$deletevar = array('app', 'home');//config中需要删除的项目
+		$deletevar = array('app', 'home');//config 中需要刪除的項目
 		$default_config = $_config = array();
 		$default_configfile = DISCUZ_ROOT.'./config/config_global_default.php';
 		if(!file_exists($default_configfile)) {
@@ -1783,16 +1783,16 @@ if($_GET['step'] == 'start') {
 		include $configfile;
 		DB::query("UPDATE ".DB::table('common_plugin')." SET available='0' WHERE modules NOT LIKE '%s:6:\"system\";i:2;%'");
 		if(save_config_file($configfile, $_config, $default_config, $deletevar)) {
-			show_msg("数据处理完成", "$theurl?step=delete");
+			show_msg("資料處理完成", "$theurl?step=delete");
 		} else {
-			show_msg('"config/config_global.php" 文件已更新，由于 "config/" 目录不可写入，我们已将更新的文件保存到 "data/" 目录下，请通过 FTP 软件将其转移到 "config/" 目录下覆盖源文件。<br /><br /><a href="'.$theurl.'?step=delete">当您完成上述操作后点击这里继续</a>');
+			show_msg('"config/config_global.php" 檔案已更新，由於 "config/" 目錄不可寫入，我們已將更新的檔案儲存到 "data/" 目錄下，請透過 FTP 軟體將其轉移到 "config/" 目錄下覆蓋源檔案。<br /><br /><a href="'.$theurl.'?step=delete">當您完成上述操作後點選這裡繼續</a>');
 		}
 	}
 
 }elseif ($_GET['step'] == 'delete') {
 
 	if(!$devmode) {
-		show_msg("数据删除不处理，进入下一步", "$theurl?step=style");
+		show_msg("資料刪除不處理，進入下一步", "$theurl?step=style");
 	}
 
 	$oldtables = array();
@@ -1853,7 +1853,7 @@ if($_GET['step'] == 'start') {
 			$deltablehtml .= "<tr><td><input type=\"checkbox\" name=\"deltables[$tablename]\" value=\"1\"></td><td>{$config['tablepre']}$tablename</td></tr>";
 		}
 		$deltablehtml .= '</table>';
-		echo "<p>以下 <strong>数据表</strong> 与标准数据库相比是多余的:<br>您可以根据需要自行决定是否删除</p>$deltablehtml";
+		echo "<p>以下 <strong>資料表</strong> 與標準資料庫相比是多餘的：<br>您可以根據需要自行決定是否刪除</p>$deltablehtml";
 	}
 
 	$delcolumnhtml = '';
@@ -1866,19 +1866,19 @@ if($_GET['step'] == 'start') {
 						$delcolumnhtml .= "<tr><td><input type=\"checkbox\" name=\"delcols[$tablename][$coltype][$index]\" value=\"1\"></td><td>{$config['tablepre']}$tablename</td><td>索引($coltype) $index $indexvalue</td></tr>";
 					}
 				} else {
-					$delcolumnhtml .= "<tr><td><input type=\"checkbox\" name=\"delcols[$tablename][$col]\" value=\"1\"></td><td>{$config['tablepre']}$tablename</td><td>字段 $col</td></tr>";
+					$delcolumnhtml .= "<tr><td><input type=\"checkbox\" name=\"delcols[$tablename][$col]\" value=\"1\"></td><td>{$config['tablepre']}$tablename</td><td>欄位 $col</td></tr>";
 				}
 			}
 		}
 		$delcolumnhtml .= '</table>';
 
-		echo "<p>以下 <strong>字段</strong> 与标准数据库相比是多余的:<br>您可以根据需要自行决定是否删除</p>$delcolumnhtml";
+		echo "<p>以下 <strong>欄位</strong> 與標準資料庫相比是多餘的：<br>您可以根據需要自行決定是否刪除</p>$delcolumnhtml";
 	}
 
 	if(empty($deltables) && empty($delcolumns)) {
-		echo "<p>与标准数据库相比，没有需要删除的数据表和字段</p><a href=\"$theurl?step=style".($_GET['from'] ? '&from='.rawurlencode($_GET['from']).'&frommd5='.rawurlencode($_GET['frommd5']) : '')."\">请点击进入下一步</a></p>";
+		echo "<p>與標準資料庫相比，沒有需要刪除的資料表和欄位</p><a href=\"$theurl?step=style".($_GET['from'] ? '&from='.rawurlencode($_GET['from']).'&frommd5='.rawurlencode($_GET['frommd5']) : '')."\">請點選進入下一步</a></p>";
 	} else {
-		echo "<p><input type=\"submit\" name=\"delsubmit\" value=\"提交删除\"></p><p>您也可以忽略多余的表和字段<br><a href=\"$theurl?step=style".($_GET['from'] ? '&from='.rawurlencode($_GET['from']).'&frommd5='.rawurlencode($_GET['frommd5']) : '')."\">直接进入下一步</a></p>";
+		echo "<p><input type=\"submit\" name=\"delsubmit\" value=\"送出刪除\"></p><p>您也可以忽略多餘的表和欄位<br><a href=\"$theurl?step=style".($_GET['from'] ? '&from='.rawurlencode($_GET['from']).'&frommd5='.rawurlencode($_GET['frommd5']) : '')."\">直接進入下一步</a></p>";
 	}
 	echo '</form>';
 
@@ -1887,7 +1887,7 @@ if($_GET['step'] == 'start') {
 
 } elseif ($_GET['step'] == 'style') {
 	if(empty($_GET['confirm'])) {
-		show_msg("请确认是否要恢复默认风格？<br /><br /><a href=\"$theurl?step=style&confirm=yes".($_GET['from'] ? '&from='.rawurlencode($_GET['from']).'&frommd5='.rawurlencode($_GET['frommd5']) : '')."\">[ 是 ]</a>&nbsp;&nbsp;<a href=\"$theurl?step=cache".($_GET['from'] ? '&from='.rawurlencode($_GET['from']).'&frommd5='.rawurlencode($_GET['frommd5']) : '')."\">[ 否 ]</a>", '');
+		show_msg("請確認是否要恢復預設風格？<br /><br /><a href=\"$theurl?step=style&confirm=yes".($_GET['from'] ? '&from='.rawurlencode($_GET['from']).'&frommd5='.rawurlencode($_GET['frommd5']) : '')."\">[ 是 ]</a>&nbsp;&nbsp;<a href=\"$theurl?step=cache".($_GET['from'] ? '&from='.rawurlencode($_GET['from']).'&frommd5='.rawurlencode($_GET['frommd5']) : '')."\">[ 否 ]</a>", '');
 	}
 
 	define('IN_ADMINCP', true);
@@ -1897,7 +1897,7 @@ if($_GET['step'] == 'start') {
 	import_styles(1, $dir, 1, 0, 0);
 	C::t('common_setting')->update('styleid', 1);
 
-	show_msg("默认风格已恢复，进入下一步", "$theurl?step=cache");
+	show_msg("預設風格已恢復，進入下一步", "$theurl?step=cache");
 
 } elseif ($_GET['step'] == 'cache') {
 
@@ -1908,7 +1908,7 @@ if($_GET['step'] == 'start') {
 	dir_clear(ROOT_PATH.'./uc_client/data/cache');
 	savecache('setting', '');
 
-	show_msg('<span id="finalmsg">缓存更新中，请稍候 ...</span><iframe src="../misc.php?mod=initsys" style="display:none;" onload="window.location.href=\''.$theurl.'?lock=true\'"></iframe>');
+	show_msg('<span id="finalmsg">快取更新中，請稍候 ...</span><iframe src="../misc.php?mod=initsys" style="display:none;" onload="window.location.href=\''.$theurl.'?lock=true\'"></iframe>');
 
 }
 
@@ -1997,7 +1997,7 @@ function show_msg($message, $url_forward='', $time = 1, $noexit = 0, $notice = '
 
 	if($url_forward) {
 		$url_forward = $_GET['from'] ? $url_forward.'&from='.rawurlencode($_GET['from']).'&frommd5='.rawurlencode($_GET['frommd5']) : $url_forward;
-		$message = "<a href=\"$url_forward\">$message (跳转中...)</a><br>$notice<script>setTimeout(\"window.location.href ='$url_forward';\", $time);</script>";
+		$message = "<a href=\"$url_forward\">$message (跳轉中...)</a><br>$notice<script>setTimeout(\"window.location.href ='$url_forward';\", $time);</script>";
 	}
 
 	show_header();
@@ -2023,7 +2023,7 @@ function show_header() {
 	<html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=$config[charset]" />
-	<title> 数据库升级程序 </title>
+	<title> 資料庫升級程式 </title>
 	<style type="text/css">
 	* {font-size:12px; font-family: Verdana, Arial, Helvetica, sans-serif; line-height: 1.5em; word-break: break-all; }
 	body { text-align:center; margin: 0; padding: 0; background: #F5FBFF; }
@@ -2038,15 +2038,15 @@ function show_header() {
 	</head>
 	<body>
 	<div class="bodydiv">
-	<h1>数据库升级工具</h1>
+	<h1>資料庫升級工具</h1>
 	<div style="width:90%;margin:0 auto;">
 	<table id="menu">
 	<tr>
-	<td{$nowarr[start]}>升级开始</td>
-	<td{$nowarr[sql]}>数据库结构添加与更新</td>
-	<td{$nowarr[data]}>数据更新</td>
-	<td{$nowarr[delete]}>数据库结构删除</td>
-	<td{$nowarr[cache]}>升级完成</td>
+	<td{$nowarr[start]}>升級開始</td>
+	<td{$nowarr[sql]}>資料庫結構增加與更新</td>
+	<td{$nowarr[data]}>資料更新</td>
+	<td{$nowarr[delete]}>資料庫結構刪除</td>
+	<td{$nowarr[cache]}>升級完成</td>
 	</tr>
 	</table>
 	<br>
