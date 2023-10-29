@@ -13,7 +13,7 @@ if(!defined('IN_COMSENZ')) {
 
 define('SOFT_NAME', 'Discuz!');
 
-define('INSTALL_LANG', 'SC_UTF8');
+define('INSTALL_LANG', 'TC_UTF8');
 
 define('CONFIG', './config/config_global.php');
 define('CONFIG_UC', './config/config_ucenter.php');
@@ -168,7 +168,7 @@ $serialize_sql_setting = array (
     2 =>
     array (
       'img' => '',
-      'title' => '金钱',
+      'title' => '金錢',
       'unit' => '',
       'ratio' => 0,
       'available' => '1',
@@ -179,7 +179,7 @@ $serialize_sql_setting = array (
     3 =>
     array (
       'img' => '',
-      'title' => '贡献',
+      'title' => '貢獻',
       'unit' => '',
       'ratio' => 0,
       'available' => '1',
@@ -245,8 +245,8 @@ $serialize_sql_setting = array (
   ),
   'postnocustom' =>
   array (
-    0 => '楼主',
-    1 => '沙发',
+    0 => '樓主',
+    1 => '沙發',
     2 => '板凳',
     3 => '地板',
   ),
@@ -254,7 +254,7 @@ $serialize_sql_setting = array (
   array (
     'status' => '0',
     'addtext' => '支持',
-    'subtracttext' => '反对',
+    'subtracttext' => '反對',
     'defaultshow' => '1',
     'daycount' => '0',
     'ownthread' => '0',
@@ -262,33 +262,33 @@ $serialize_sql_setting = array (
   ),
   'seotitle' =>
   array (
-    'portal' => '门户',
-    'forum' => '论坛',
-    'group' => '圈子',
-    'home' => '家园',
+    'portal' => '門戶',
+    'forum' => '論壇',
+    'group' => '群組',
+    'home' => '家園',
   ),
   'activityfield' =>
   array (
-    'realname' => '真实姓名',
-    'mobile' => '手机',
-    'qq' => 'QQ号',
+    'realname' => '真實姓名',
+    'mobile' => '手機',
+    'qq' => 'QQ 號',
   ),
   'article_tags' =>
   array (
-    1 => '原创',
-    2 => '热点',
-    3 => '组图',
+    1 => '原創',
+    2 => '熱門',
+    3 => '組圖',
     4 => '爆料',
-    5 => '头条',
-    6 => '幻灯',
-    7 => '滚动',
-    8 => '推荐',
+    5 => '首篇',
+    6 => '幻燈',
+    7 => '滾動',
+    8 => '推薦',
   ),
   'verify' =>
   array (
     6 =>
     array (
-      'title' => '实名认证',
+      'title' => '實名認證',
       'available' => '0',
       'showicon' => '0',
       'viewrealname' => '0',
@@ -322,7 +322,7 @@ $serialize_sql_setting = array (
   ),
   'focus' =>
   array (
-    'title' => '站长推荐',
+    'title' => '站長推薦',
     'data' =>
     array (
     ),
@@ -334,7 +334,7 @@ $serialize_sql_setting = array (
     array (
       'available' => 1,
       'displayorder' => 0,
-      'title' => '基本资料',
+      'title' => '基本資料',
       'field' =>
       array (
         'realname' => 'realname',
@@ -358,7 +358,7 @@ $serialize_sql_setting = array (
     ),
     'contact' =>
     array (
-      'title' => '联系方式',
+      'title' => '聯繫方式',
       'available' => '1',
       'displayorder' => '1',
       'field' =>
@@ -376,7 +376,7 @@ $serialize_sql_setting = array (
     array (
       'available' => 1,
       'displayorder' => 2,
-      'title' => '教育情况',
+      'title' => '教育情況',
       'field' =>
       array (
         'graduateschool' => 'graduateschool',
@@ -387,7 +387,7 @@ $serialize_sql_setting = array (
     array (
       'available' => 1,
       'displayorder' => 3,
-      'title' => '工作情况',
+      'title' => '工作情況',
       'field' =>
       array (
         'occupation' => 'occupation',
@@ -398,7 +398,7 @@ $serialize_sql_setting = array (
     ),
     'info' =>
     array (
-      'title' => '个人信息',
+      'title' => '個人資料',
       'available' => '1',
       'displayorder' => '4',
       'field' =>
