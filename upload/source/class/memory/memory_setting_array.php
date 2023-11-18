@@ -11,13 +11,13 @@ if (!defined('IN_DISCUZ')) {
 }
 
 /*
- * $_G['setting'] = new memory_setting_array()
- * 由于memory_setting_array继承了ArrayObject，因此可以正常以原来的方式访问，比如 $_G['setting']['memory']
- * 在启用了redis的情况下，这个对象采用lazy + eager load的方式工作：
- * 	1. 默认构造函数不加载任何setting值
- * 	2. 在FIELDS_GROUPS里定义的多个field group，任何一个field的访问，都会自动加载这个field所在的整个group
- * 	3. 对于不在这里定义的field，访问时再加载
- * 对于其它类型的memory，直接加载整个setting
+* $_G['setting'] = new memory_setting_array()
+ * 由於 memory_setting_array 繼承了 ArrayObject，因此可以正常以原來的方式瀏覽，比如 $_G['setting']['memory']
+ * 在啟用了 redis 的情況下，這個物件採用 lazy + eager load 的方式工作：
+ * 	1. 預設構造函數不載入任何 setting 值
+ * 	2. 在 FIELDS_GROUPS 裡定義的多個 field group，任何一個 field 的瀏覽，都會自動載入這個 field 所在的整個 group
+ * 	3. 對於不在這裡定義的 field，瀏覽時再載入
+ * 對於其它類型的 memory，直接載入整個 setting
  */
 class memory_setting_array implements ArrayAccess {
 	private $can_lazy = false;
@@ -60,7 +60,7 @@ class memory_setting_array implements ArrayAccess {
 	public function __construct()
 	{
  		$this->can_lazy = C::memory()->goteval && C::memory()->gothash;
-		if (!$this->can_lazy) { // 不支持lazy load的时候，直接加载整个数据
+		if (!$this->can_lazy) { // 不支援 lazy load 的時候，直接載入整個資料
 			$this->array = memory('get', self::SETTING_KEY);
 			foreach ($this->array as $key => $value) {
 				if ($value) $this->array[$key] = dunserialize($value);
@@ -109,8 +109,8 @@ class memory_setting_array implements ArrayAccess {
 	}
 
 	/*
-	 * 不支持lazy load的时候，直接整个保存
-	 * 支持lazy load的时候，保存为hash，每个field都做serialize
+	 * 不支援 lazy load 的時候，直接整個儲存
+	 * 支援 lazy load 的時候，儲存為 hash，每個 field 都做 serialize
 	 */
 	public static function save($data)
 	{

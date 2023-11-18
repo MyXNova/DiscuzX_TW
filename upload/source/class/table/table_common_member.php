@@ -270,7 +270,7 @@ class table_common_member extends discuz_table_archive
 	}
 
 	public function insert($data, $return_insert_id = false, $replace = false, $silent = false, $null1 = null, $null2 = null, $null3 = null, $null4 = 0, $null5 = 0) {
-		// $null 1~n 需要在取消兼容层后删除
+		// $null 1~n 需要在取消相容層後刪除
 		if (defined('DISCUZ_DEPRECATED')) {
 			throw new Exception('NotImplementedException');
 			return parent::insert($data, $return_insert_id, $replace, $silent);
@@ -373,7 +373,7 @@ class table_common_member extends discuz_table_archive
 				$this->switch_keys('disable');
 			}
 			$uidlist = DB::fetch_all('SELECT uid FROM '.$temptablename.' ORDER BY uid DESC', null, 'uid');
-			unset($uidlist[key($uidlist)]);// 考虑到用户分表操作的最后一个用户可能也是数据库中最后一个用户，因此在此固定扣除一个用户，保证最后一个用户不会被移动到归档表，从而避免最后一个用户被移动到归档表导致用户主表自增值异常的问题
+			unset($uidlist[key($uidlist)]);// 考慮到用戶分表操作的最後一個使用者可能也是資料庫中最後一個使用者，因此在此固定扣除一個用戶，保證最後一個用戶不會被移動到歸檔資料表，從而避免最後一個用戶被移動到歸檔資料表導致用戶主資料表自增值異常的問題
 			$uids = dimplode(array_keys($uidlist));
 			$movesql = 'REPLACE INTO %t SELECT * FROM %t WHERE uid IN ('.$uids.')';
 			$deletesql = 'DELETE FROM %t WHERE uid IN ('.$uids.')';

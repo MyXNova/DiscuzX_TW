@@ -129,7 +129,7 @@ class table_forum_post extends discuz_table
 	}
 
 	public function fetch($id, $force_from_db = false, $null = true) {
-		// $null 需要在取消兼容层后删除
+		// $null 需要在取消相容層後刪除
 		if (defined('DISCUZ_DEPRECATED')) {
 			throw new Exception("UnsupportedOperationException");
 		} else {
@@ -181,7 +181,7 @@ class table_forum_post extends discuz_table
 	}
 
 	public function fetch_all($ids, $force_from_db = false, $null = true) {
-		// $null 需要在取消兼容层后删除
+		// $null 需要在取消相容層後刪除
 		if (defined('DISCUZ_DEPRECATED')) {
 			throw new Exception("UnsupportedOperationException");
 		} else {
@@ -459,7 +459,7 @@ class table_forum_post extends discuz_table
 	}
 
 	public function update($val, $data, $unbuffered = false, $low_priority = false, $null1 = false, $null2 = null, $null3 = null, $null4 = null, $null5 = null) {
-		// $null 1~n 需要在取消兼容层后删除
+		// $null 1~n 需要在取消相容層後刪除
 		if (defined('DISCUZ_DEPRECATED')) {
 			throw new Exception("UnsupportedOperationException");
 		} else {
@@ -521,7 +521,7 @@ class table_forum_post extends discuz_table
 	}
 
 	public function update_cache($val, $data, $unbuffered = false, $low_priority = false, $null1 = array(), $null2 = 'merge') {
-		// $null 1~n 需要在取消兼容层后删除
+		// $null 1~n 需要在取消相容層後刪除
 		if (defined('DISCUZ_DEPRECATED')) {
 			throw new Exception("UnsupportedOperationException");
 		} else {
@@ -642,7 +642,7 @@ class table_forum_post extends discuz_table
 	}
 
 
-	// 不使用事务，如果position冲突，则插入失败，重试五次
+	// 不使用事務，如果 position 衝突，則插入失敗，重試五次
 	private function _insert_use_db($tableid, $data, $return_insert_id = false, $replace = false, $silent = false) {
 		$tablename = self::get_tablename($tableid);
 		foreach (range(1, 5) as $try_count) {
@@ -651,25 +651,25 @@ class table_forum_post extends discuz_table
 				$ret = DB::insert($tablename, $data, $return_insert_id, $replace, $silent);
 				return $ret;
 			} catch (Exception $e) {
-				if ($try_count >= 2) usleep(mt_rand(2, 6) * 10000); // 如果第二次还不行，停几十毫秒再试
-				if ($try_count >= 3 && $try_count <= 4) usleep(mt_rand(4, 6) * 10000); // 第三次以后再加延时
-				if ($try_count === 5) throw $e; // 如果第五次不行，抛异常
+				if ($try_count >= 2) usleep(mt_rand(2, 6) * 10000); // 如果第二次還不行，停幾十毫秒再試
+				if ($try_count >= 3 && $try_count <= 4) usleep(mt_rand(4, 6) * 10000); // 第三次以後再加延時
+				if ($try_count === 5) throw $e; // 如果第五次不行，拋異常
 			}
 		}
 	}
 
-	// 从数据库中读取最大position + 1
+	// 從資料庫中讀取最大 position + 1
 	private function _next_pos_from_db($tablename, $tid) {
 		return DB::result_first("SELECT IFNULL(MAX(position), 0) + 1 FROM " . DB::table($tablename) . " WHERE tid = " . $tid);
 	}
 
-	// 用缓存获取下一个position
+	// 用快取獲取下一個 position
 	private function _next_pos_from_memory($key) {
 		return memory('incex', $key, 1, 0, "");
 	}
 
 	public function insert($data, $return_insert_id = false, $replace = false, $silent = false, $null = false) {
-		// $null 需要在取消兼容层后删除
+		// $null 需要在取消相容層後刪除
 		if (defined('DISCUZ_DEPRECATED')) {
 			throw new Exception("UnsupportedOperationException");
 		} else {
@@ -678,29 +678,29 @@ class table_forum_post extends discuz_table
 	}
 
 	/*
-	 * 在InnoDB的情况下，要保证每个tid下，position是从1开始，并且每次加1，这样与MyISAM的语义相同
-	 * 在非InnoDB的时候(MyISAM)，直接插入
+	 * 在 InnoDB 的情況下，要保證每個 tid 下，position 是從 1 開始，並且每次加 1，這樣與 MyISAM 的語義相同
+	 * 在非 InnoDB 的時候（MyISAM），直接插入
 	 */
 	public function insert_post($tableid, $data, $return_insert_id = false, $replace = false, $silent = false) {
-		if (strtolower(getglobal("config/db/common/engine")) !== 'innodb') { // 如果不是innodb，则是原来myisam，position是按tid自增的
+		if (strtolower(getglobal("config/db/common/engine")) !== 'innodb') { // 如果不是 innodb，則是原來 myisam，position 是按 tid 自增的
 			return DB::insert(self::get_tablename($tableid), $data, $return_insert_id, $replace, $silent);
 		}
 		$tablename = self::get_tablename($tableid);
 
-		// 是否使用内存处理position, redis和memcache都可以
+		// 是否使用記憶體處理 position, redis 和 memcache 都可以
 		$mc = strtolower(memory('check'));
-		if ($mc !== 'memcache' && $mc !== 'redis' && $mc !== 'memcached') { // 如果不是memcache或redis，则使用数据库插入
+		if ($mc !== 'memcache' && $mc !== 'redis' && $mc !== 'memcached') { // 如果不是 memcache 或 redis，則使用資料庫插入
 			return $this->_insert_use_db($tableid, $data, $return_insert_id, $replace, $silent);
 		}
 
-		$memory_position_key = "forum_post_position_" . $data['tid']; // 为每一个tid维护一个key
+		$memory_position_key = "forum_post_position_" . $data['tid']; // 為每一個 tid 維護一個 key
 		$next_pos = $this->_next_pos_from_memory($memory_position_key);
 
-		if (!$next_pos) { // 如果这个key不存在，则从数据库中加载，并设置到缓存中
+		if (!$next_pos) { // 如果這個 key 不存在，則從資料庫中載入，並設置到快取中
 			$next_pos = $this->_next_pos_from_db($tablename, $data['tid']);
-			if (!memory('add', $memory_position_key, $next_pos, 259200 /* 3天 */)) { // 用add添加到缓存中
-				$next_pos = $this->_next_pos_from_memory($memory_position_key); // 如果add不成功(key已存在，在上面SQL的过程中，被其它进程设置)，则直接incr
-				// 如果还是拿不到next_pos，删除key，fallback到数据库
+			if (!memory('add', $memory_position_key, $next_pos, 259200 /* 3天 */)) { // 用 add 添加到快取中
+				$next_pos = $this->_next_pos_from_memory($memory_position_key); // 如果 add 不成功（key 已存在，在上面 SQL 的過程中，被其它行程設置），則直接 incr
+				// 如果還是拿不到 next_pos，刪除 key，fallback 到資料庫
 				if (!$next_pos) {
 					memory('rm', $memory_position_key);
 					return $this->_insert_use_db($tableid, $data, $return_insert_id, $replace, $silent);
@@ -708,15 +708,15 @@ class table_forum_post extends discuz_table
 			}
 		}
 		foreach (range(1, 3) as $try_count) {
-			// 更新数据的position字段
+			// 更新資料的 position 欄位
 			$data['position'] = $next_pos;
 			try {
 				$ret = DB::insert($tablename, $data, $return_insert_id, $replace, $silent);
 				return $ret;
 			} catch (Exception $e) {
-				// 插入失败，可能是position冲突，再生成一个position试一下
+				// 插入失敗，可能是 position 衝突，再產生一個 position 試一下
 				$next_pos = $this->_next_pos_from_memory($memory_position_key);
-				if (!$next_pos || $try_count === 3) { // 如果还是拿不到next_pos，或者已经重试过三次, 删除key，fallback到数据库
+				if (!$next_pos || $try_count === 3) { // 如果還是拿不到 next_pos，或者已經重試過三次，刪除 key，fallback 到資料庫
 					memory('rm', $memory_position_key);
 					return $this->_insert_use_db($tableid, $data, $return_insert_id, $replace, $silent);
 				}
@@ -725,7 +725,7 @@ class table_forum_post extends discuz_table
 	}
 
 	public function delete($val, $unbuffered = false, $null = false) {
-		// $null 需要在取消兼容层后删除
+		// $null 需要在取消相容層後刪除
 		if (defined('DISCUZ_DEPRECATED')) {
 			throw new Exception("UnsupportedOperationException");
 		} else {

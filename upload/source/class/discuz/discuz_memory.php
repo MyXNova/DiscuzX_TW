@@ -22,12 +22,12 @@ class discuz_memory extends discuz_base
 	public $enable = false;
 	public $debug = array();
 
-	public $gotset = false; // 是否支持Set数据类型
-	public $gothash = false; // 是否支持Hash数据类型
-	public $goteval = false; // 是否支持lua脚本eval
-	public $gotsortedset = false; // 是否支持SortedSet
-	public $gotcluster = false; // 是否是集群环境
-	public $gotpipeline = false; // 是否支持pipeline
+	public $gotset = false; // 是否支援 Set 資料類型
+	public $gothash = false; // 是否支援 Hash 資料類型
+	public $goteval = false; // 是否支援 lua 腳本 eval
+	public $gotsortedset = false; // 是否支援 SortedSet
+	public $gotcluster = false; // 是否是集群環境
+	public $gotpipeline = false; // 是否支援 pipeline
 
 	public function __construct() {
 	}
@@ -260,9 +260,9 @@ class discuz_memory extends discuz_base
 	}
 
 	/*
-	 * 如果设置了sha_key，将脚本load，然后将sha保存在$prefix_$sha_key中
-	 * 如果sha_key中有sha，则执行evalSha
-	 * 如果没有sha_key，则eval脚本
+	 * 如果設置了 sha_key，將腳本 load，然後將 sha 儲存在 $prefix_$sha_key 中
+	 * 如果 sha_key 中有 sha，則執行 evalSha
+	 * 如果沒有 sha_key，則 eval 腳本
 	 */
 	public function evalscript($script, $argv, $sha_key, $prefix = '') {
 		if (!$this->enable || !$this->goteval) {
@@ -280,7 +280,7 @@ class discuz_memory extends discuz_base
 				if (!$script) return false;
 				$should_load = true;
 			} else {
-				if (!$this->memory->scriptexists($sha)) { // 重启redis后，有可能sha-key存在，但script已经不存在了
+				if (!$this->memory->scriptexists($sha)) { // 重啟 redis 後，有可能 sha-key 存在，但 script 已經不存在了
 					$should_load = true;
 				}
 			}

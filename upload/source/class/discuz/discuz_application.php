@@ -272,7 +272,7 @@ class discuz_application extends discuz_base{
 
 	}
 
-	private function _init_cnf() {// 新增本方法用于预先加载配置文件，便于在初始化环境时通过$this->config使用配置文件内选项控制初始化流程
+	private function _init_cnf() {// 新增本方法用於預先載入設定檔案，便於在初始化環境時透過 $this->config 使用設定檔案內選項控制初始化流程
 
 		$_config = array();
 		@include DISCUZ_ROOT.'./config/config_global.php';
@@ -289,7 +289,7 @@ class discuz_application extends discuz_base{
 
 	}
 
-	private function _init_config() {// 原有的基于配置文件设置站点的方法保留原方法名，改为使用$this->var['config']对config进行读写
+	private function _init_config() {// 原有的基於設定檔案設置網站的方法保留原方法名，改為使用 $this->var['config'] 對 config 進行讀寫
 
 		if(empty($this->var['config']['security']['authkey'])) {
 			$this->var['config']['security']['authkey'] = md5($this->var['config']['cookie']['cookiepre'].$this->var['config']['db'][1]['dbname']);
@@ -309,8 +309,8 @@ class discuz_application extends discuz_base{
 			error_reporting(0);
 		}
 
-		// DISCUZ_DEPRECATED 用于标识 Discuz! X 体系内即将废弃的功能、函数或方法, 便于二开站点维护或三方插件开发
-		// 开启后系统出错意味着相关功能将在后续版本删除或抛出异常, 我们建议您不要继续依赖已在此标识下抛出异常的功能
+		// DISCUZ_DEPRECATED 用於標識 Discuz! X 體系內即將廢棄的功能、函數或方法，便於二開網站維護或三方外掛程式開發
+		// 開啟後系統出錯意味著相關功能將在後續版本刪除或拋出異常，我們建議您不要繼續依賴已在此標識下拋出異常的功能
 		if(!empty($this->var['config']['deprecated'])) {
 			define('DISCUZ_DEPRECATED', $this->var['config']['deprecated']);
 		}
@@ -368,7 +368,7 @@ class discuz_application extends discuz_base{
 
 		if(isset($_GET['formhash']) && $_GET['formhash'] !== formhash()) {
 			if(defined('CURMODULE') && constant('CURMODULE') == 'logging' && isset($_GET['action']) && $_GET['action'] == 'logout') {
-				header("HTTP/1.1 302 Found");// 修复多次点击退出时偶发“您当前的访问请求当中含有非法字符，已经被系统拒绝”的Bug
+				header("HTTP/1.1 302 Found");// 修復多次點選退出時偶發「您當前的瀏覽請求當中含有非法字元，已經被系統拒絕」的 Bug
 				header("Location: index.php");
 				exit();
 			} else {
@@ -397,25 +397,25 @@ class discuz_application extends discuz_base{
 	}
 
 	private function _is_https() {
-		// PHP 标准服务器变量
+		// PHP 標準伺服器變數
 		if(isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) != 'off') {
 			return true;
 		}
-		// X-Forwarded-Proto 事实标准头部, 用于反代透传 HTTPS 状态
+		// X-Forwarded-Proto 事實標準頭部，用於反代透傳 HTTPS 狀態
 		if(isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) == 'https') {
 			return true;
 		}
-		// 阿里云全站加速私有 HTTPS 状态头部
-		// Git 意见反馈 https://gitee.com/Discuz/DiscuzX/issues/I3W5GP
+		// 阿里雲全站加速私有 HTTPS 狀態頭部
+		// Git 意見回饋 https://gitee.com/Discuz/DiscuzX/issues/I3W5GP
 		if(isset($_SERVER['HTTP_X_CLIENT_SCHEME']) && strtolower($_SERVER['HTTP_X_CLIENT_SCHEME']) == 'https') {
 			return true;
 		}
-		// 西部数码建站助手私有 HTTPS 状态头部
-		// 官网意见反馈 https://discuz.dismall.com/thread-3849819-1-1.html
+		// 西部數碼建站助手私有 HTTPS 狀態頭部
+		// 官網意見回饋 https://discuz.dismall.com/thread-3849819-1-1.html
 		if(isset($_SERVER['HTTP_FROM_HTTPS']) && strtolower($_SERVER['HTTP_FROM_HTTPS']) != 'off') {
 			return true;
 		}
-		// 服务器端口号兜底判断
+		// 伺服器埠號兜底判斷
 		if(isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443) {
 			return true;
 		}

@@ -14,7 +14,7 @@ class table_forum_threaddisablepos extends discuz_table {
 	private $enable_set = false;
 
 	/*
-	 * memory支持Set的情况下，所有的数据保存于一个Set下
+	 * memory 支援 Set 的情況下，所有的資料儲存於一個 Set 下
 	 */
 	public function __construct() {
 		$this->_table = 'forum_threaddisablepos';
@@ -23,8 +23,8 @@ class table_forum_threaddisablepos extends discuz_table {
 		$this->_cache_ttl = 0;
 		parent::__construct();
 
-		// 依赖set
-		// 不影响原_allowmem变量，这样在没有Set的情况下，还能使用原来的缓存加速方案
+		// 依賴 set
+		// 不影響原 _allowmem 變數，這樣在沒有 Set 的情況下，還能使用原來的快取加速方案
 		$this->enable_set = $this->_allowmem && C::memory()->gotset;
 	}
 

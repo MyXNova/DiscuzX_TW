@@ -17,7 +17,7 @@ class ip {
 	}
 
 	/*
-	 * 将IPv6地址外面加方括号，用于显示
+	 * 將 IPv6 地址外面加方括號，用於顯示
 	 */
 	public static function to_display($ip) {
 		if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
@@ -27,13 +27,13 @@ class ip {
 	}
 
 	/*
-	 * 将各种显示格式的IPv6地址处理回标准IPv6格式
+	 * 將各種顯示格式的 IPv6 地址處理回標準 IPv6 格式
 	 * [::1] -> ::1
 	 * [::1]/16 -> ::1/16
 	 */
 	public static function to_ip($ip) {
 		if (strlen($ip) == 0) return $ip;
-		if (preg_match('/(.*?)\[((.*?:)+.*)\](.*)/', $ip, $m)) { // [xx:xx:xx]格式
+		if (preg_match('/(.*?)\[((.*?:)+.*)\](.*)/', $ip, $m)) { // [xx:xx:xx] 格式
 			if (filter_var($m[2], FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
 				$ip = $m[1].$m[2].$m[4];
 			}
@@ -42,20 +42,20 @@ class ip {
 	}
 
 	/*
-	 * 验证IP是否合法，支持v4和v6
+	 * 驗證 IP 是否合法，支援 v4 和 v6
 	 */
 	public static function validate_ip($ip) {
 		return filter_var($ip, FILTER_VALIDATE_IP) !== false;
 	}
 
 	/*
-	 * 验证是否是合法的CIDR:
+	 * 驗證是否是合法的 CIDR:
 	 * 	- 包含 /
-	 * 	- / 后面大于0
-	 * 	- / 前面是合法的IP
+	 * 	- / 後面大於 0
+	 * 	- / 前面是合法的 IP
 	 * 返回值：
-	 * 	- TRUE，表示是合法的CIDR，$new_str为处理过的CIDR(IP部分调用了to_ip)
-	 * 	- FALSE, 不是合法的CIDR
+	 * 	- TRUE，表示是合法的 CIDR，$new_str 為處理過的 CIDR（IP 部分調用了 to_ip）
+	 * 	- FALSE, 不是合法的 CIDR
 	 */
 	public static function validate_cidr($str, &$new_str) {
 		if(strpos($str, '/') !== false) {
@@ -78,12 +78,12 @@ class ip {
 	}
 
 	/*
-	 * 给一个ipv4或v6的cidr，计算最小IP和最大IP
-	 * 如果输入的是一个IP，那最大最小IP都等于其自身
+	 * 給一個 ipv4 或 v6 的 cidr，計算最小 IP 和最大 IP
+	 * 如果輸入的是一個 IP，那最大最小 IP 都等於其自身
 	 * $as_hex = true
-	 * 	返回值为 二进制表达的字符串格式
+	 * 	返回值為 二進位表達的字串格式
 	 * $as_hex = false
-	 * 	返回值可用inet_ntop轮换为IP字符串表达式 
+	 * 	返回值可用 inet_ntop 輪換為 IP 字串運算式
 	 */
 	public static function calc_cidr_range($str, $as_hex = false) {
 		if(self::validate_cidr($str, $str)) {
@@ -134,7 +134,7 @@ class ip {
 	}
 
 	/*
-	 * 将一个IP地址转为16进制表达的字符串
+	 * 將一個 IP 地址轉為 16 進位表達的字串
 	 */
 	public static function ip_to_hex_str($ip)
 	{
@@ -150,7 +150,7 @@ class ip {
 	}
 
 	/*
-	 * 以下三个函数，检查$requestIp是否在$ip给出的cidr范围内
+	 * 以下三個函數，檢查 $requestIp 是否在 $ip 給出的 cidr 範圍內
 	 */
 
 	public static function check_ip($requestIp, $ips)
@@ -221,7 +221,7 @@ class ip {
 	}
 
 	/*
-	 * 将IP转为位置，支持传入CIDR
+	 * 將 IP 轉為位置，支援傳入 CIDR
 	 */
 	public static function convert($ip) {
 		global $_G;
