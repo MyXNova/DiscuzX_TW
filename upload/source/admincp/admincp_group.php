@@ -113,7 +113,7 @@ var rowtypedata = [
 				foreach ($forums[$id] as $forum) {
 					$showed[] = showgroup($forum);
 					$lastfid = 0;
-					if(!empty($subs[$forum['fid']])) {//群组不展示了  废弃代码
+					if(!empty($subs[$forum['fid']])) {//群組不展示了  廢棄代碼
 						foreach ($subs[$forum['fid']] as $sub) {
 							$showed[] = showgroup($sub, 'sub');
 							$lastfid = $sub['fid'];
@@ -505,7 +505,7 @@ var rowtypedata = [
 
 		} else {
 
-			$threads = C::t('forum_thread')->count_by_fid($fid);//群组不展示了  废弃代码
+			$threads = C::t('forum_thread')->count_by_fid($fid);//群組不展示了  廢棄代碼
 			$formhash = formhash();
 			cpmsg('grouptype_delete_alarm', "action=group&operation=deletetype&fid=$fid&confirmed=1&formhash=$formhash", 'loadingform', array(), '<div id="percent">0%</div>', FALSE);
 			echo "

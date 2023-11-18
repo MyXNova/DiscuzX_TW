@@ -512,7 +512,7 @@ if($operation == 'export') {
 		}
 
 		foreach($exportziplog as $key => $val) {
-			sort($val);//修改 确保-1.zip排前面,才会自动解压-2.zip
+			sort($val);//修改 確保 -1.zip 排前面，才會自動解壓縮 -2.zip
 			$info = $val[0];
 			$info['volume'] = count($val);
 			$info['dateline'] = is_int($info['dateline']) ? dgmdate($info['dateline']) : $lang['unknown'];
@@ -939,7 +939,7 @@ if($operation == 'export') {
 						$tempvalue = str_replace('mediumtext', 'text', $value);
 						$discuzdbnew[$dbtable][$key] = str_replace('mediumtext', 'text', $discuzdbnew[$dbtable][$key]);
 						if($tempvalue != $discuzdbnew[$dbtable][$key]) {
-							// MySQL 8.0.17 开始不再支持除tinyint(1)以外的任何int类数据类型的显示宽度，检测到此行为则移除数值。
+							// MySQL 8.0.17 開始不再支援除 tinyint(1) 以外的任何 int 類別資料類型的顯示寬度，偵測到此行為則移除數值。
 							if((strpos($tempvalue['Type'], 'int(') !== false) && !empty($discuzdbnew[$dbtable][$key]['Type']) && (strpos($discuzdbnew[$dbtable][$key]['Type'], '(') === false)) {
 								$tempvalue['Type'] = preg_replace('/\(\d+\)/', '', $tempvalue['Type']);
 								if($tempvalue != $discuzdbnew[$dbtable][$key]) {

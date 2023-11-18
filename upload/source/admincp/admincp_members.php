@@ -324,7 +324,7 @@ EOF;
 	exit();
 
 } elseif($operation == 'exphistory') {
-	// 用户历史资料下载
+	// 使用者歷史資料下載
 	if(!isset($_GET['uid'])) {
 		cpmsg('members_no_find_user', '', 'error');
 	}
@@ -1990,23 +1990,23 @@ EOF;
 			}
 
 			if(in_array('others', $_GET['clear'])) {
-				// 家园访客记录清理
+				// 家園訪客記錄清理
 				C::t('home_clickuser')->delete_by_uid($member['uid']);
 				C::t('home_visitor')->delete_by_uid_or_vuid($member['uid']);
-				// 家园关注关系清理
+				// 家園關注關係清理
 				C::t('home_follow')->delete_by_uid($member['uid']);
 				C::t('home_follow')->delete_by_followuid($member['uid']);
-				// 好友关系以及好友请求清理
+				// 好友關係以及好友請求清理
 				C::t('home_friend')->delete_by_uid_fuid($member['uid']);
 				C::t('home_friend_request')->delete_by_uid_or_fuid($member['uid']);
-				// 动态清理
+				// 動態清理
 				C::t('home_feed')->delete_by_uid($member['uid']);
 				// 通知清理
 				C::t('home_notification')->delete_by_uid($member['uid']);
 				// 打招呼清理
 				C::t('home_poke')->delete_by_uid_or_fromuid($member['uid']);
 				C::t('home_pokearchive')->delete_by_uid_or_fromuid($member['uid']);
-				// 论坛推广清理
+				// 論壇推廣清理
 				C::t('forum_promotion')->delete_by_uid($member['uid']);
 			}
 
@@ -2270,9 +2270,9 @@ EOF;
 			}
 		}
 
-		// 用户历史资料下载 开始
+		// 使用者歷史資料下載 開始
 		showsetting('members_edit_exphistory', '', '', "<a href=\"".ADMINSCRIPT."?action=members&operation=exphistory&uid={$member['uid']}\" class=\"act\">{$lang['members_edit_exphistory']}</a>");
-		// 用户历史资料下载 结束
+		// 使用者歷史資料下載 結束
 
 		showsubmit('editsubmit');
 		showtablefooter();
@@ -2287,7 +2287,7 @@ EOF;
 		$questionid = $_GET['clearquestion'] ? 0 : '';
 		$secmobicc = $_GET['secmobiccnew'];
 		$secmobile = $_GET['secmobilenew'];
-		//空字符串代表没传递这个参数，传递0时，代表清空这个数据
+		//空字串代表沒傳遞這個參數，傳遞 0 時，代表清空這個資料
 		if($secmobicc === '') {
 			$secmobicc == 0;
 		}elseif(!preg_match('#^(\d){1,3}$#', $secmobicc)) {
@@ -2548,45 +2548,45 @@ EOF;
 					continue;
 				}
 				if(strpos($banipaddr, '/') !== false) {
-					// 对于 CIDR 需要校验其合法性, 并判断是否有设置 CIDR 的权限
+					// 對於 CIDR 需要校驗其合法性，並判斷是否有設置 CIDR 的許可權
 					if($_G['adminid'] != 1 || !ip::validate_cidr($banipaddr, $banipaddr)) {
 						continue;
 					}
 				} else if(strpos($banipaddr, '*') !== false) {
-					// 对于带 * 的旧版规则的处理, 只支持转换为标准的 CIDR 网段, 不支持凑段
-					// * 与 CIDR 一样, 需要判断权限
+					// 對於帶 * 的舊版規則的處理，只支援轉換為標準的 CIDR 網段，不支援湊段
+					// * 與 CIDR 一樣，需要判斷許可權
 					if($_G['adminid'] != 1) {
 						continue;
 					}
-					// 设置掩码并分解 IP 地址为四段, 如果分解失败或不是四段则忽略
+					// 設置遮罩並分解 IP 地址為四段，如果分解失敗或不是四段則忽略
 					$mask = 0;
 					$ipnew = explode('.', $banipaddr);
 					if(!is_array($ipnew) || count($ipnew) != 4) {
 						continue;
 					}
-					// 只支持能够转化为标准 ABC 类的地址, 否则忽略
+					// 只支援能夠轉化為標準 ABC 類的位址，否則忽略
 					for($i = 0; $i < 4; $i++) {
 						if(strcmp($ipnew[$i], '*') === 0) {
 							if($i == 0) {
-								// * 开头不是合法 IP , 忽略
+								// * 開頭不是合法 IP，忽略
 								break;
 							} else if($mask) {
-								// 如果子网掩码存在, 则更新本段为 0
+								// 如果子網路遮罩存在，則更新本段為 0
 								$ipnew[$i] = 0;
 							} else {
-								// 如果子网掩码不存在, 则更新本段为 0 , 并生成子网掩码
+								// 如果子網路遮罩不存在，則更新本段為 0，並產生子網路遮罩
 								$ipnew[$i] = 0;
 								$mask = $i * 8;
 							}
 						} else {
-							// 如果 * 后面跟数字, 或者不是合法的 IP, 则此条不做转换
+							// 如果 * 後面跟數字，或者不是合法的 IP，則此條不做轉換
 							if($mask || !is_numeric($ipnew[$i]) || $ipnew[$i] < 0 || $ipnew[$i] > 255) {
 								$mask = 0;
 								break;
 							}
 						}
 					}
-					// 如果生成了子网掩码, 则尝试拼接 CIDR 并送校验, 忽略无法通过校验的规则
+					// 如果產生了子網路遮罩，則嘗試拼接 CIDR 並送校驗，忽略無法通過校驗的規則
 					if($mask) {
 						$banipaddr = implode('.', $ipnew);
 						$banipaddr = $banipaddr . '/' . $mask;
@@ -3572,9 +3572,9 @@ function notifymembers($operation, $variable) {
 					runlog('sendmail', "{$member['email']} sendmail failed.");
 				}
 			} elseif($_GET['notifymembers'] == 'sms') {
-				// 用户 UID : $member['uid'], 短信类型: 通知类短信, 服务类型: 系统级短消息通知业务
-				// 国际电话区号: $member['secmobicc'], 手机号: $member['secmobile'], 内容: "[$subject]$message$addmsg", 强制发送: true
-				// 短信发送前先校验安全手机号是否正确, 避免错误安全手机号送往短信网关
+				// 用戶 UID：$member['uid']，簡訊類型：通知類簡訊，服務類型：系統級短消息通知業務
+				// 國際電話區號：$member['secmobicc']，手機號碼：$member['secmobile']，內容："[$subject]$message$addmsg"，強制傳送：true
+				// 簡訊傳送前先校驗安全手機號碼是否正確，避免錯誤安全手機號碼送往簡訊閘道
 				if(!empty($member['secmobicc']) && !empty($member['secmobile']) && preg_match('#^(\d){1,3}$#', $member['secmobicc']) && preg_match('#^(\d){1,12}$#', $member['secmobile'])) {
 					sms::send($member['uid'], 1, 2, $member['secmobicc'], $member['secmobile'], "[$subject]$message$addmsg", 1);
 				}

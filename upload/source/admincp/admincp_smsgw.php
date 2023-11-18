@@ -13,7 +13,7 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 
 $root = '<a href="'.ADMINSCRIPT.'?action=smsgw">'.cplang('smsgw_admin').'</a>';
 
-// list 表示短信网关列表, edit 表示编辑短信网关, setting 表示短信网关全局配置
+// list 表示簡訊閘道列表，edit 表示編輯簡訊閘道, setting 表示簡訊閘道全域組態
 $operation = $operation ? $operation : 'setting';
 
 cpheader();
@@ -77,7 +77,7 @@ if($operation == 'list') {
 				"<a href=\"".ADMINSCRIPT."?action=smsgw&operation=edit&smsgwid={$smsgw['smsgwid']}\" class=\"act\">{$lang['edit']}</a>"
 			));
 		}
-		// 如果有新增加的文件, 需要添加到列表内
+		// 如果有新增加的檔案，需要增加到清單內
 		if(count($avaliablesmsgw) > 0) {
 			foreach($avaliablesmsgw as $smsgw) {
 				$arr = array('type' => $smsgw['type'], 'class' => $smsgw['class'], 'order' => 0, 'name' => $smsgw['name'], 'sendrule' => $smsgw['sendrule']);
@@ -220,27 +220,27 @@ if($operation == 'list') {
 } elseif($operation == 'setting') {
 
 	if(submitcheck('smsgwsubmit')) {
-		// 是否开启 SMS
+		// 是否開啟 SMS
 		$smsstatus = (int)$_GET['smsstatusnew'];
-		// 默认国际电话区号, 默认 86
+		// 預設國際電話區號，預設 886
 		$smsdefaultcc = (int)$_GET['smsdefaultccnew'];
-		$smsdefaultcc = $smsdefaultcc > 0 ? $smsdefaultcc : 86;
-		// 默认短信验证码长度, 默认 4
+		$smsdefaultcc = $smsdefaultcc > 0 ? $smsdefaultcc : 886;
+		// 預設簡訊驗證碼長度，預設 4
 		$smsdefaultlength = (int)$_GET['smsdefaultlengthnew'];
 		$smsdefaultlength = $smsdefaultlength > 0 ? $smsdefaultlength : 4;
-		// 限制时间区间, 默认 86400 秒
+		// 限制時間區間，預設 86400 秒
 		$smstimelimit = (int)$_GET['smstimelimitnew'];
 		$smstimelimit = $smstimelimit > 0 ? $smstimelimit : 86400;
-		// 单用户/单号码短信限制时间区间内总量, 默认 5 条
+		// 單用戶 / 單號碼簡訊限制時間區間內總量，預設 5 條
 		$smsnumlimit = (int)$_GET['smsnumlimitnew'];
 		$smsnumlimit = $smsnumlimit > 0 ? $smsnumlimit : 5;
-		// 单用户/单号码短信时间间隔, 默认 300 秒
+		// 單用戶 / 單號碼簡訊時間間隔，預設 300 秒
 		$smsinterval = (int)$_GET['smsintervalnew'];
 		$smsinterval = $smsinterval > 0 ? $smsinterval : 300;
-		// 万号段短信限制时间区间内总量, 默认 20 条
+		// 萬號段簡訊限制時間區間內總量，預設 20 條
 		$smsmillimit = (int)$_GET['smsmillimitnew'];
 		$smsmillimit = $smsmillimit > 0 ? $smsmillimit : 20;
-		// 全局短信限制时间区间内总量, 默认 1000 条
+		// 全域簡訊限制時間區間內總量，預設 1000 條
 		$smsglblimit = (int)$_GET['smsglblimitnew'];
 		$smsglblimit = $smsglblimit > 0 ? $smsglblimit : 1000;
 
@@ -262,21 +262,21 @@ if($operation == 'list') {
 			array('smsgw_admin_setting', 'smsgw&operation=setting', 1),
 			array('smsgw_admin_list', 'smsgw&operation=list', 0)
 		));
-		// 是否开启 SMS
+		// 是否開啟 SMS
 		$smsstatus = C::t('common_setting')->fetch_setting('smsstatus');
-		// 默认国际区号, 默认 86
+		// 預設國際區號，預設 886
 		$smsdefaultcc = C::t('common_setting')->fetch_setting('smsdefaultcc');
-		// 默认短信验证码长度, 默认 4
+		// 預設簡訊驗證碼長度，預設 4
 		$smsdefaultlength = C::t('common_setting')->fetch_setting('smsdefaultlength');
-		// 限制时间区间, 默认 86400 秒
+		// 限制時間區間，預設 86400 秒
 		$smstimelimit = C::t('common_setting')->fetch_setting('smstimelimit');
-		// 单用户/单号码短信限制时间区间内总量, 默认 5 条
+		// 單用戶 / 單號碼簡訊限制時間區間內總量，預設 5 條
 		$smsnumlimit = C::t('common_setting')->fetch_setting('smsnumlimit');
-		// 单用户/单号码短信时间间隔, 默认 300 秒
+		// 單用戶 / 單號碼簡訊時間間隔，預設 300 秒
 		$smsinterval = C::t('common_setting')->fetch_setting('smsinterval');
-		// 万号段短信限制时间区间内总量, 默认 20 条
+		// 萬號段簡訊限制時間區間內總量，預設 20 條
 		$smsmillimit = C::t('common_setting')->fetch_setting('smsmillimit');
-		// 全局短信限制时间区间内总量, 默认 1000 条
+		// 全域簡訊限制時間區間內總量，預設 1000 條
 		$smsglblimit = C::t('common_setting')->fetch_setting('smsglblimit');
 
 		showformheader("smsgw&operation=$operation");

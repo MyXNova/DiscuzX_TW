@@ -1604,7 +1604,7 @@ EOT;
 										$threadtypes_newicon = trim($_GET['newicon'][$key]);
 										$newtypeid = C::t('forum_threadclass')->insert(array('fid' => $fid, 'name' => $val, 'displayorder' => $threadtypes_newdisplayorder, 'icon' => $threadtypes_newicon, 'moderators' => intval($_GET['newmoderators'][$key])), true);
 									} else {
-										$threadtypes_newicon = $newtypearr['icon'];// 已存在的分类,使用原来属性
+										$threadtypes_newicon = $newtypearr['icon'];// 已存在的分類，使用原來屬性
 										$threadtypes_newdisplayorder = $newtypearr['displayorder'];
 										$_GET['newmoderators'][$key] = $newtypearr['moderators'];
 									}

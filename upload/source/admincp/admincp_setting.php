@@ -2284,13 +2284,13 @@ EOT;
 
 		/*search={"setting_uc":"action=setting&operation=uc"}*/
 		showtips('setting_uc_tips');
-		// 新增 Discuz! 到 UCenter 的通信检测
+		// 新增 Discuz! 到 UCenter 的通訊檢測
 		if(!UC_STANDALONE) {
 			loaducenter();
 			showboxheader('setting_uc_linkstatus', '', 'id="linkstatus"');
 			$query = uc_app_ls();
 			$status = is_array($query) && count($query) >= 1 && !empty($query[UC_APPID]['type']) && $query[UC_APPID]['type'] == 'DISCUZX';
-			// 如果是数据库模式, 那么同时要测试接口是否可以正常通信
+			// 如果是資料庫模式，那麼同時要測試介面是否可以正常通訊
 			if($status && defined('UC_CONNECT') && UC_CONNECT == 'mysql') {
 				$query = call_user_func('uc_api_post', 'app', 'ls', array());
 				$query = uc_unserialize($query);
@@ -2467,7 +2467,7 @@ EOT;
 		showsetting('setting_ranklist_index_cache_time', 'settingnew[ranklist][cache_time]', $setting['ranklist']['cache_time'], 'text');
 		showsetting('setting_ranklist_index_select', array('settingnew[ranklist][index_select]', array(array('all',cplang('dateline_all')), array('thismonth',cplang('thismonth')), array('thisweek',cplang('thisweek')), array('today',cplang('today')))), $setting['ranklist']['index_select'], 'select');
 		showsetting('setting_ranklist_ignorefid', 'settingnew[ranklist][ignorefid]', $setting['ranklist']['ignorefid'], 'text');
-		// 新增 竞价排名开关和公告信息
+		// 新增 競價排名開關和公告資訊
 		showsetting('setting_ranklist_member_show', 'settingnew[ranklist][membershow]', $setting['ranklist']['membershow'], 'radio', 0, 1);
 		showsetting('setting_ranklist_member_show_announcement', 'settingnew[ranklist][membershowannouncement]', $setting['ranklist']['membershowannouncement'], 'textarea');
 		showtablefooter();
@@ -3285,7 +3285,7 @@ EOT;
 
 	if($operation == 'attach') {
 		if($settingnew['allowattachurl'] && !in_array($_G['config']['download']['readmod'], array(1, 4))) {
-			// 如需附件URL地址、媒体附件播放，需选择支持Range参数的读取模式1或4，其他模式会导致部分浏览器下视频播放异常
+			// 如需附件 URL 位址、媒體附件播放，需選擇支援 Range 參數的讀取模式 1 或 4，其他模式會導致部分瀏覽器下視訊播放異常
 			cpmsg('attach_readmod_error', '', 'error');
 		}
 		$settingnew['thumbwidth'] = intval($settingnew['thumbwidth']) > 0 ? intval($settingnew['thumbwidth']) : 200;

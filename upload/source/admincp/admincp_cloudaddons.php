@@ -281,7 +281,7 @@ if(!$operation || in_array($operation, array('plugins', 'templates'))) {
 			$v = reset($batch);
 			dheader('location: '.$v[0]);
 		} else {
-			//插件已经是最新版或者扩展没有安装文件，才可能进入这里
+			//插件已經是最新版或者擴充沒有安裝檔案，才可能進入這裡
 			list($_GET['key'], $_GET['type'], $_GET['rid']) = explode('.', $addonids[0]);
 			if($_GET['type'] == 'plugin') {
 				dheader('location: '.ADMINSCRIPT.'?action=plugins&operation=upgrade&pluginid='.$plugin['pluginid']);
