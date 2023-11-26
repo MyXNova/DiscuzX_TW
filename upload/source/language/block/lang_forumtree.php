@@ -13,10 +13,10 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'forumtree_name' => '版块树形列表',
-	'forumtree_desc' => '树形显示版块列表',
-	'forumtree_fids' => '显示的版块',
-	'forumtree_fids_comment' => '设置允许显示的版块，留空为显示所有版块',
+	'forumtree_name' => '版區樹形列表',
+	'forumtree_desc' => '樹形顯示版區列表',
+	'forumtree_fids' => '顯示的版區',
+	'forumtree_fids_comment' => '設定允許顯示的版區，留空為顯示所有版區',
 );
 
 ?>
