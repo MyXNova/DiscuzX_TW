@@ -168,9 +168,9 @@ function dshowmessage($message, $url_forward = '', $values = array(), $extrapara
 	}
 
 	if(strpos($message, 'nopermission') > 0) {
-		if ($_G['member']['groupid'] == 8 && $_G['setting']['regverify'] == 1) { // 需要邮件验证
+		if ($_G['member']['groupid'] == 8 && $_G['setting']['regverify'] == 1) { // 需要電子信箱驗證
 			$show_message .= lang('message', 'nopermission_email');
-		} else if ($_G['member']['groupid'] == 8 && $_G['setting']['regverify'] == 2) { // 需要人工审核
+		} else if ($_G['member']['groupid'] == 8 && $_G['setting']['regverify'] == 2) { // 需要人工審核
 			$show_message .= lang('message', 'nopermission_verify');
 		}
 	}

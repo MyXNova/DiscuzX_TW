@@ -564,7 +564,7 @@ function emailcheck_send($uid, $email) {
 	global $_G;
 
 	if($uid && $email) {
-		// 读取用户论坛表内的时间，限制重发间隔
+		// 讀取使用者論壇資料表內的時間，限制重發間隔
 		$memberauthstr = C::t('common_member_field_forum')->fetch($uid);
 		if(!empty($memberauthstr['authstr'])) {
 			list($dateline) = explode("\t", $memberauthstr['authstr']);
@@ -573,7 +573,7 @@ function emailcheck_send($uid, $email) {
 				return false;
 			}
 		}
-		// 用户论坛字段表内authstr字段保存token和时间戳，实现邮件链接不可重复使用
+		// 使用者論壇資料表 authstr 欄位儲存 token 和時間戳記，實現 E-Mail 連結不可重複使用
 		$timestamp = $_G['timestamp'];
 		$idstring = substr(md5($email), 0, 6);
 		C::t('common_member_field_forum')->update($uid, array('authstr' => "$timestamp\t3\t$idstring"));

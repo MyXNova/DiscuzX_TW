@@ -420,7 +420,7 @@ function build_cache_setting() {
 	}
 
 	$defaultcurhost = empty($_G['setting']['domain']['app']['default']) ? '{CURHOST}' : $_G['setting']['domain']['app']['default'];
-	$output = array('str'=>array(), 'preg' => array()); //str为二级域名的查找和替换，preg为rewrite和默认域名的查找和替换
+	$output = array('str'=>array(), 'preg' => array()); //str 為二級網域名稱的尋找和替換，preg 為 rewrite 和預設網域名稱的尋找和替換
 	$_G['domain'] = array();
 	if(is_array($_G['setting']['domain']['app'])) {
 		$apps = $_G['setting']['domain']['app'];
@@ -521,8 +521,8 @@ function build_cache_setting() {
 
 	$data['minsubjectsize'] = empty($data['minsubjectsize']) ? 1 : $data['minsubjectsize'];
 
-	// 如果站点做过用户分表, 需要在更新缓存时判定一下用户分表是否存在, 不存在的话需要加上.
-	// 修复因站点自身问题导致用户分表丢失导致程序出错的问题.
+	// 如果網站做過使用者分表，需要在更新快取時判定一下使用者分表是否存在，不存在的話需要加上。
+	// 修復因網站自身問題導致使用者分表丟失導致程式出錯的問題。
 	if($data['membersplit']) {
 		C::t('common_member_archive')->check_table();
 	}

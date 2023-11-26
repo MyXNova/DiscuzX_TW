@@ -14,7 +14,7 @@ if(!defined('IN_DISCUZ')) {
 set_time_limit(0);
 function sendmail($toemail, $subject, $message = '', $from = '') {
 	global $_G;
-	// 使用 \@m.invalid 作为保留域名
+	// 使用 \@m.invalid 作為保留網域名稱
 	if(preg_match("/@m\.invalid$/i", $toemail)){
 		return false;
 	}
@@ -98,7 +98,7 @@ function sendmail($toemail, $subject, $message = '', $from = '') {
 			return false;
 		}
 		stream_set_blocking($fp, true);
-		// 新增发送超时设置, 避免连接后无响应导致吊死
+		// 新增發送逾時設置，避免連接後無回應導致吊死
 		stream_set_timeout($fp, $_G['setting']['mail']['timeout']);
 
 		$lastmessage = fgets($fp, 512);
@@ -232,7 +232,7 @@ function sendmail($toemail, $subject, $message = '', $from = '') {
 
 function sendmail_cron($toemail, $subject, $message) {
 	global $_G;
-	// 使用 \@m.invalid 作为保留域名
+	// 使用 \@m.invalid 作為保留網域名稱
 	if(preg_match("/@m\.invalid$/i", $toemail)){
 		return false;
 	}

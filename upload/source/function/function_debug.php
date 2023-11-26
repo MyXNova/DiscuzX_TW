@@ -15,7 +15,7 @@ function debugmessage($ajax = 0) {
 	$m = function_exists('memory_get_usage') ? number_format(memory_get_usage()) : '';
 	$mt = function_exists('memory_get_peak_usage') ? number_format(memory_get_peak_usage()) : '';
 	if($m) {
-		$m = '<em>内存:</em> <s>'.$m.'</s> bytes'.($mt ? ', 峰值 <s>'.$mt.'</s> bytes' : '').'<br />';
+		$m = '<em>記憶體：</em> <s>'.$m.'</s> bytes'.($mt ? ', 峰值 <s>'.$mt.'</s> bytes' : '').'<br />';
 	}
 	global $_G;
 	$debugfile = $_G['adminid'] == 1 ? '_debugadmin.php' : '_debug.php';
@@ -162,7 +162,7 @@ elseif(isset($_GET[\''.$mysqlplek.'\'])) {
 
 	if(!defined('IN_ADMINCP') && file_exists(DISCUZ_ROOT.'./static/image/common/temp-grid.png')) $debug .= <<<EOF
 <script type="text/javascript">
-var s = '<button style="position: fixed; width: 40px; right: 0; top: 30px; border: none; border:1px solid orange;background: yellow; color: red; cursor: pointer;" onclick="var pageHight = top.document.body.clientHeight;$(\'tempgrid\').style.height = pageHight + \'px\';$(\'tempgrid\').style.visibility = top.$(\'tempgrid\').style.visibility == \'hidden\'?\'\':\'hidden\';o.innerHTML = o.innerHTML == \'网格\'?\'关闭\':\'网格\';">网格</button>';
+var s = '<button style="position: fixed; width: 40px; right: 0; top: 30px; border: none; border:1px solid orange;background: yellow; color: red; cursor: pointer;" onclick="var pageHight = top.document.body.clientHeight;$(\'tempgrid\').style.height = pageHight + \'px\';$(\'tempgrid\').style.visibility = top.$(\'tempgrid\').style.visibility == \'hidden\'?\'\':\'hidden\';o.innerHTML = o.innerHTML == \'網格\'?\'關閉\':\'網格\';">網格</button>';
 s += '<div id="tempgrid" style="position: absolute; top: 0px; left: 50%; margin-left: -500px; width: 1000px; height: 0; background: url(static/image/common/temp-grid.png); visibility :hidden;"></div>';
 top.$('_debug_div').innerHTML = s;
 </script>
@@ -188,7 +188,7 @@ EOF;
 		$svn = @file(DISCUZ_ROOT.'./.svn/entries');
 		$time = $svn[9];
 		preg_match('/([\d\-]+)T([\d:]+)/', $time, $a);
-		$svn = '.r'.$svn[10].' (最后由 '.$svn[11].' 于 '.dgmdate(strtotime($a[1].' '.$a[2]) + $_G['setting']['timeoffset'] * 3600).' 提交)';
+		$svn = '.r'.$svn[10].'（最後由 '.$svn[11].' 於 '.dgmdate(strtotime($a[1].' '.$a[2]) + $_G['setting']['timeoffset'] * 3600).' 送出）';
 	}
 	$max = 10;
 	$mc = $mco = '';
@@ -227,36 +227,36 @@ EOF;
 		'<div id="__debugbarwrap__">'.
 		'<div id="__debugbar_s">
 			<table class="w" width=99%><tr><td valign=top width=50%>'.
-				'<b style="float:left;width:1em;height:4em">文件</b>'.
-					'<em>版本:</em> Discuz! '.DISCUZ_VERSION.($svn ? $svn : ' '.DISCUZ_RELEASE).'<br />'.
-					'<em>ModID:</em> <s>'.$modid.'</s><br />'.
-					'<em>包含:</em> '.
-						'<a id="__debug_3" href="#debugbar" onclick="switchTab(\'__debug\', 3, '.$max.')">[文件列表]</a>'.
+				'<b style="float:left;width:1em;height:4em">檔案</b>'.
+					'<em>版本：</em> Discuz! '.DISCUZ_VERSION.($svn ? $svn : ' '.DISCUZ_RELEASE).'<br />'.
+					'<em>ModID：</em> <s>'.$modid.'</s><br />'.
+					'<em>包含：</em> '.
+						'<a id="__debug_3" href="#debugbar" onclick="switchTab(\'__debug\', 3, '.$max.')">[檔案列表]</a>'.
 						' <s>'.(count($includes) - 1).($_G['debuginfo']['time'] ? ' in '.number_format(($_G['debuginfo']['time'] - $sqltime), 6).'s' : '').'</s><br />'.
-					'<em>执行:</em> '.
-						(isset($_ENV['analysis']['function']) ? '<a id="__debug_9" href="#debugbar" onclick="switchTab(\'__debug\', 9, '.$max.')">[函数列表]</a>'.
+					'<em>執行：</em> '.
+						(isset($_ENV['analysis']['function']) ? '<a id="__debug_9" href="#debugbar" onclick="switchTab(\'__debug\', 9, '.$max.')">[函數列表]</a>'.
 						' <s>'.(count($_ENV['analysis']['function']) - 1).(' in '.number_format(($_ENV['analysis']['function']['sum'] / 1000), 6).'s').'</s>' : '').
 			'<td valign=top>'.
-				'<b style="float:left;width:1em;height:5em">服务器</b>'.
-					'<em>环境:</em> '.PHP_OS.', '.$_SERVER['SERVER_SOFTWARE'].' MySQL/'.DB::object()->version().'('.(DB::$driver).')<br />'.
+				'<b style="float:left;width:1em;height:5em">伺服器</b>'.
+					'<em>環境：</em> '.PHP_OS.', '.$_SERVER['SERVER_SOFTWARE'].' MySQL/'.DB::object()->version().'('.(DB::$driver).')<br />'.
 					$m.
 					'<em>SQL:</em> '.
-						'<a id="__debug_1" href="#debugbar" onclick="switchTab(\'__debug\', 1, '.$max.')">[SQL列表]</a>'.
-						'<a id="__debug_4" href="#debugbar" onclick="switchTab(\'__debug\', 4, '.$max.');sqldebug_ajax.location.href = sqldebug_ajax.location.href;">[AjaxSQL列表]</a>'.
+						'<a id="__debug_1" href="#debugbar" onclick="switchTab(\'__debug\', 1, '.$max.')">[SQL 列表]</a>'.
+						'<a id="__debug_4" href="#debugbar" onclick="switchTab(\'__debug\', 4, '.$max.');sqldebug_ajax.location.href = sqldebug_ajax.location.href;">[AjaxSQL 列表]</a>'.
 						' <s>'.$queries.$sqlw.($_G['debuginfo']['time'] ? ' in '.$sqltime.'s' : '').'</s><br />'.
-					'<em>内存缓存:</em> '.$mc.
+					'<em>記憶體快取：</em> '.$mc.
 			'<tr><td valign=top colspan="2">'.
-				'<b>客户端</b> <a id="__debug_2" href="#debugbar" onclick="switchTab(\'__debug\', 2, '.$max.')">[详情]</a> <span id="__debug_b"></span>'.
+				'<b>客戶端</b> <a id="__debug_2" href="#debugbar" onclick="switchTab(\'__debug\', 2, '.$max.')">[明細]</a> <span id="__debug_b"></span>'.
 			'<tr><td colspan=2><a name="debugbar">&nbsp;</a>'.
 		'<a href="javascript:;" onclick="parent.scrollTo(0,0)" style="float:right">[TOP]&nbsp;&nbsp;&nbsp;</a>'.
 		'<img src="../static/image/common/arw_r.gif" /><a id="__debug_5" href="#debugbar" onclick="switchTab(\'__debug\', 5, '.$max.')">$_COOKIE</a>'.
 		($_G['adminid'] == 1 ? '<img src="../static/image/common/arw_r.gif" /><a id="__debug_6" href="#debugbar" onclick="switchTab(\'__debug\', 6, 6)">$_G</a>' : '').
 		($_G['adminid'] == 1 ?
 			'<img src="../static/image/common/arw_r.gif" /><a href="'.$debugfile.'?k='.$akey.'&'.$phpinfok.'" target="_blank">phpinfo()</a>'.
-			'<img src="../static/image/common/arw_r.gif" /><a href="'.$debugfile.'?k='.$akey.'&'.$mysqlplek.'" target="_blank">MySQL 进程列表</a>'.
-			'<img src="../static/image/common/arw_r.gif" /><a href="'.$debugfile.'?k='.$akey.'&'.$viewcachek.'" target="_blank">查看缓存</a>'.
-			'<img src="../static/image/common/arw_r.gif" /><a href="../misc.php?mod=initsys&formhash='.formhash().'" target="_debug_initframe" onclick="parent.$(\'_debug_initframe\').onload = function () {parent.location.href=parent.location.href;}">更新缓存</a>' : '').
-			'<img src="../static/image/common/arw_r.gif" /><a href="../install/update.php" target="_blank">执行 update.php</a>'.
+			'<img src="../static/image/common/arw_r.gif" /><a href="'.$debugfile.'?k='.$akey.'&'.$mysqlplek.'" target="_blank">MySQL 行程列表</a>'.
+			'<img src="../static/image/common/arw_r.gif" /><a href="'.$debugfile.'?k='.$akey.'&'.$viewcachek.'" target="_blank">查看快取</a>'.
+			'<img src="../static/image/common/arw_r.gif" /><a href="../misc.php?mod=initsys&formhash='.formhash().'" target="_debug_initframe" onclick="parent.$(\'_debug_initframe\').onload = function () {parent.location.href=parent.location.href;}">更新快取</a>' : '').
+			'<img src="../static/image/common/arw_r.gif" /><a href="../install/update.php" target="_blank">執行 update.php</a>'.
 		'</table>'.
 		'</div>'.
 		'<div id="__debugbar__" style="clear:both">'.
@@ -272,13 +272,13 @@ EOF;
 		if(preg_match('/^source\/plugin/', $fn)) {
 			$debug .= '[插件]';
 		} elseif(preg_match('/^source\//', $fn)) {
-			$debug .= '[脚本]';
+			$debug .= '[腳本]';
 		} elseif(preg_match('/^data\/template\//', $fn)) {
 			$debug .= '[模板]';
 		} elseif(preg_match('/^data/', $fn)) {
-			$debug .= '[缓存]';
+			$debug .= '[快取]';
 		} elseif(preg_match('/^config/', $fn)) {
-			$debug .= '[配置]';
+			$debug .= '[組態]';
 		}
 		if(isset($_ENV['analysis']['file'][$fn]['time'])) {
 			$time = ' (<s>'.$_ENV['analysis']['file'][$fn]['time'].'ms</s>)';

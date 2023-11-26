@@ -420,7 +420,7 @@ function loadforum($fid = null, $tid = null) {
 	if(isset($_G['forum']['fid']) && $_G['forum']['fid'] == $fid || isset($_G['thread']['tid']) && $_G['thread']['tid'] == $tid){
 		return null;
 	}
-	if(!empty($_GET['archiver'])) {//X1.5的Archiver兼容
+	if(!empty($_GET['archiver'])) {// X1.5 的 Archiver 相容
 		if($fid) {
 			dheader('location: archiver/?fid-'.$fid.'.html');
 		} elseif($tid) {
@@ -833,7 +833,7 @@ function insertpost($data) {
 	if(isset($data['tid'])) {
 		$thread = C::t('forum_thread')->fetch_thread($data['tid']);
 		$tableid = $thread['posttableid'];
-		// 第三方插件和系统内普遍直接用 insertpost 插入回复, 因此改为在这里处理
+		// 協力廠商外掛程式和系統內普遍直接用 insertpost 插入回覆，因此改為在這裡處理
 		if(!$data['first'] && $thread['replies'] <= 0 && C::t('forum_sofa')->fetch($thread['tid'])) {
 			C::t('forum_sofa')->delete($thread['tid']);
 		}
