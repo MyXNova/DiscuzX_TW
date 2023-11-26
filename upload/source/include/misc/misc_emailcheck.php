@@ -21,7 +21,7 @@ if($_GET['hash']) {
 
 if($uid && isemail($email) && $time > TIMESTAMP - 86400) {
 	$member = getuserbyuid($uid);
-	// 校验用户论坛字段表内authstr字段保存的token和时间戳，实现邮件链接不可重复使用
+	// 驗證使用者論壇資料表內 authstr 欄位儲存的 token 和時間戳記，實現 E-Mail 連結不可重複使用
 	$member = array_merge(C::t('common_member_field_forum')->fetch($uid), $member);
 	list($dateline, $operation, $idstring) = explode("\t", $member['authstr']);
 	if($dateline != $time || $operation != 3 || $idstring != substr(md5($email), 0, 6)) {
@@ -50,12 +50,12 @@ if($uid && isemail($email) && $time > TIMESTAMP - 86400) {
 	$oldemail = $member['email'];
 	updatecreditbyaction('realemail', $uid);
 	C::t('common_member')->update($uid, $setarr);
-	// 清除用户论坛字段表内保存的authstr字段
+	// 清除使用者論壇資料表內儲存的 authstr 欄位
 	C::t('common_member_field_forum')->update($uid, array('authstr' => ''));
 	C::t('common_member_validate')->delete($uid);
 	dsetcookie('newemail', "", -1);
 
-	// 给原有邮箱发送修改邮箱的邮件
+	// 給原有 E-mail 信箱傳送修改 E-mail 信箱地址的信件
 	if(!function_exists('sendmail')) {
 		include libfile('function/mail');
 	}
