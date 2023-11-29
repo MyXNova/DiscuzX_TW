@@ -13,10 +13,10 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'promotion_name' => '站点推广任务',
-	'promotion_desc' => '到“<a href="home.php?mod=spacecp&ac=promotion" target="_blank" class="xi2">访问推广</a>”页面，复制您的推广链接，发给QQ好友、您的博客或其他大型网站，推广获积分',
-	'promotion_complete_var_iplimit' => '推广 IP 数下限',
-	'promotion_complete_var_iplimit_comment' => '当日推广 IP 数大于或等于此设置，才能完成任务',
+	'promotion_name' => '網站推廣任務',
+	'promotion_desc' => '到「<a href="home.php?mod=spacecp&ac=promotion" target="_blank" class="xi2">瀏覽推廣</a>」頁面，複製您的推廣連結，發給 QQ 好友、您的部落格或其他大型網站，推廣獲積分',
+	'promotion_complete_var_iplimit' => '推廣 IP 數下限',
+	'promotion_complete_var_iplimit_comment' => '當日推廣 IP 數大於或等於此設定，才能完成任務',
 );
 
 ?>

@@ -13,15 +13,15 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'chgusername_name' => '更名卡',
-	'chgusername_desc' => '可以修改当前用户的用户名',
-	'chgusername_newusername' => '请输入新用户名',
-	'chgusername_info_nonexistence' => '请输入新用户名后再提交',
-	'chgusername_check_failed' => '用户名合法性检测失败，请您更换后再试',
-	'chgusername_name_badword' => '用户名包含被系统屏蔽的字符，请您更换后再试',
-	'chgusername_name_exists' => '用户名已经存在，请您更换后再试',
-	'chgusername_change_failed' => '用户名修改操作提交失败，请联系管理员',
-	'chgusername_change_success' => '用户名修改操作提交成功，请几分钟后重新登录，如出现任何问题请联系管理员',
+	'chgusername_name' => '改名卡',
+	'chgusername_desc' => '可以修改當前會員的會員名稱',
+	'chgusername_newusername' => '請輸入新會員名稱',
+	'chgusername_info_nonexistence' => '請輸入新會員名稱後再送出',
+	'chgusername_check_failed' => '會員名稱合法性檢測失敗，請您更換後再試',
+	'chgusername_name_badword' => '會員名稱包含被系統遮罩的字元，請您更換後再試',
+	'chgusername_name_exists' => '會員名稱已經存在，請您更換後再試',
+	'chgusername_change_failed' => '會員名稱修改操作送出失敗，請聯繫管理員',
+	'chgusername_change_success' => '會員名稱修改操作送出成功，請幾分鐘後重新登入，如出現任何問題請聯繫管理員',
 
 );
 

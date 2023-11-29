@@ -13,13 +13,13 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'email_name' => '验证邮箱任务',
-	'email_desc' => '验证邮箱获得相应的奖励。',
-	'email_view' => '<strong>请按照以下的说明来参与本任务：</strong>
+	'email_name' => '認證信箱任務',
+	'email_desc' => '認證信箱獲得對應的獎勵。',
+	'email_view' => '<strong>請按照以下的說明來參與本任務：</strong>
 		<ul>
-		<li><a href="home.php?mod=spacecp&ac=profile&op=password" target="_blank">新窗口打开账号设置页面</a></li>
-		<li>在新打开的设置页面中，将自己的邮箱真实填写(新填写的邮箱需要先保存)，并点击“重新接收验证邮件”链接</li>
-		<li>几分钟后，系统会给您发送一封邮件，收到邮件后，请按照邮件的说明，访问邮件中的验证链接就可以了</li>
+		<li><a href="home.php?mod=spacecp&ac=profile&op=password" target="_blank">新視窗開啟帳號設定頁面</a></li>
+		<li>在新開啟的設定頁面中，將自己的信箱真實填寫(新填寫的信箱需要先儲存)，並點選「重新接收驗證郵件」連結</li>
+		<li>幾分鐘後，系統會給您寄送一封郵件，收到郵件後，請按照郵件的說明，瀏覽郵件中的驗證連結就可以了</li>
 		</ul>',
 );
 

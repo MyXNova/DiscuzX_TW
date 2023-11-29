@@ -14,5 +14,5 @@ if(!defined('IN_DISCUZ')) {
 $lang = array
 (
 	'calcmad_name' => '九九乘法表',
-	'calcmad_desc' => '随机显示九九乘法表内包含的乘除法的验证问答',
+	'calcmad_desc' => '隨機顯示九九乘法表內包含的乘除法的驗證問答',
 );
