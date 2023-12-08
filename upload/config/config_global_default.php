@@ -182,7 +182,7 @@ $_config['security']['fsockopensafe']['ipversion']	= array('ipv6', 'ipv4');	//fs
 $_config['security']['fsockopensafe']['verifypeer']	= false;	// fsockopen 是否驗證憑證有效性，開啟可提升安全性，但需自行解決憑證設定問題
 
 $_config['security']['error']['showerror'] = '1';	//是否在資料庫或系統嚴重異常時顯示錯誤詳細資訊，0=不顯示（更安全），1=顯示詳細資訊（預設），2=只顯示錯誤本身
-$_config['security']['error']['guessplugin'] = '1';	//是否在資料庫或系統嚴重異常時猜測可能報錯的外掛程式，0=不猜測，1=猜測（預設）
+$_config['security']['error']['guessplugin'] = '1';	//是否在資料庫或系統嚴重異常時猜測可能報錯的插件，0=不猜測，1=猜測（預設）
 
 $_config['admincp']['founder']			= '1';		// 網站創始人：擁有網站管理後台的最高權限，每個網站可以設定 1 名或多名創始人
 													// 可以使用 uid，也可以使用會員名稱；多個創始人之間請使用逗號「,」分開;

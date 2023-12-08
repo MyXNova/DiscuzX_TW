@@ -2648,7 +2648,7 @@ $lang = array
 	'setting_mobile_allowmobile' => '開啟手機版',
 	'setting_mobile_allowmobile_comment' => '開啟本功能，會員使用手機瀏覽論壇時，將自動跳轉到手機版介面<br />手機瀏覽網域名稱配置請進入：<a href="?action=domain&operation=app">全域 - 網域名稱設定 - 套用網域名稱</a><br />底端導覽設定請進入：<a href="?action=nav&operation=footernav">介面 - 導覽設定 - 底端導覽</a>',
 	'setting_mobile_allowmnew' => '啟用當地語系化微社區前端',
-	'setting_mobile_allowmnew_comment' => '使用當地語系化微社區前端，當地語系化微社區前端的 URL 為「' . $_G['siteurl'] . 'm/」。<br />開啟後本前端體系將替換原有的手機版體系，但<b>不支持協力廠商外掛程式以及搜尋引擎收錄，請謹慎使用</b>',
+	'setting_mobile_allowmnew_comment' => '使用當地語系化微社區前端，當地語系化微社區前端的 URL 為「' . $_G['siteurl'] . 'm/」。<br />開啟後本前端體系將替換原有的手機版體系，但<b>不支持第三方插件以及搜尋引擎收錄，請謹慎使用</b>',
 	'setting_mobile_mobileforward' => '開啟手機瀏覽器自動跳轉',
 	'setting_mobile_mobileforward_comment' => '開啟後會員使用手機瀏覽器瀏覽社群論壇功能頁以外網頁時自動跳轉到論壇首頁進行瀏覽',
 	'setting_mobile_preview' => '開啟電腦瀏覽手機版預覽功能',
@@ -5368,7 +5368,7 @@ $lang = array
 	'plugins_config_uninstall' => '移除',
 	'plugins_config_upgrade' => '更新',
 	'plugins_config_delete' => '移除',
-	'plugins_config_uninstall_tips' => '您確定要把 {pluginname} 外掛程式卸載並不可逆的刪除由 {pluginname} 外掛程式產生的所有資料麼？',
+	'plugins_config_uninstall_tips' => '您確定要把 {pluginname} 插件卸載並不可逆的刪除由 {pluginname} 插件產生的所有資料麼？',
 	'plugins_config_upgrade_other' => '您確定要把 {pluginname} {version} 插件更新到以下版本嗎？',
 	'plugins_config_uninstallplugin' => '移除此插件',
 	'plugins_edit' => '設計插件',
@@ -5814,7 +5814,7 @@ $lang = array
 	'ec_alipay_check' => '支付測試',
 
 	'ec_wechat' => '微信支付設定',
-	'ec_wechat_tips' => '<li>微信支付（https://pay.weixin.qq.com）是騰訊集團旗下中國領先的協力廠商支付平臺，一直致力於為用戶和企業提供安全、便捷、專業的線上支付服務。以「微信支付，不止支付」為核心理念，為個人使用者創造了多種便民服務和應用場景，為各類企業以及小微商戶提供專業的收款能力，經營能力，資金結算解決方案，以及安全保障。企業、商品、門店、用戶已經透過微信連在了一起，讓智慧生活，變成了現實。</li><li><b>由於涉及現金交易，為避免因操作不當而造成的資金損失，請在開始使用微信支付積分交易功能（不包含支付寶按鈕功能）前，務必仔細閱讀《用戶使用說明書》中有關電子商務的部分，當確認完全理解和接受相關流程及使用方法後再進行相關設定。</b></li><li>您使用微信支付服務是建立在完全自願的基礎上，除 Discuz! 因主觀惡意的因素造成的資金損失以外，騰訊雲不對因使用此功能造成的任何損失承擔責任。</li><li>微信支付客戶服務電話為 95017。</li>',
+	'ec_wechat_tips' => '<li>微信支付（https://pay.weixin.qq.com）是騰訊集團旗下中國領先的第三方支付平臺，一直致力於為用戶和企業提供安全、便捷、專業的線上支付服務。以「微信支付，不止支付」為核心理念，為個人使用者創造了多種便民服務和應用場景，為各類企業以及小微商戶提供專業的收款能力，經營能力，資金結算解決方案，以及安全保障。企業、商品、門店、用戶已經透過微信連在了一起，讓智慧生活，變成了現實。</li><li><b>由於涉及現金交易，為避免因操作不當而造成的資金損失，請在開始使用微信支付積分交易功能（不包含支付寶按鈕功能）前，務必仔細閱讀《用戶使用說明書》中有關電子商務的部分，當確認完全理解和接受相關流程及使用方法後再進行相關設定。</b></li><li>您使用微信支付服務是建立在完全自願的基礎上，除 Discuz! 因主觀惡意的因素造成的資金損失以外，騰訊雲不對因使用此功能造成的任何損失承擔責任。</li><li>微信支付客戶服務電話為 95017。</li>',
 	'ec_wechat_on' => '是否啟用微信支付',
 	'ec_wechat_version' => 'API 版本',
 	'ec_wechat_version_comment' => 'APIV3 要求 PHP 版本 >= 7.2',
@@ -6196,7 +6196,7 @@ $lang = array
 	'hookcheck_discuzhook' => '原檔案嵌入點',
 	'hookcheck_delhook' => '遺失的嵌入點',
 
-	'replacekey_tips' => '<li>當網站淪陷時您應該考慮在此處更新金鑰，以避免駭客透過已知的 AUTHKEY 取得網站控制許可權。</li><li><font color="blue">少數外掛程式會使用網站金鑰保留資料，當重設金鑰時相關資料會丟失且無法恢復，敬請注意並在更新前做好資料庫與網站檔案的備份工作。</font></li>',
+	'replacekey_tips' => '<li>當網站淪陷時您應該考慮在此處更新金鑰，以避免駭客透過已知的 AUTHKEY 取得網站控制許可權。</li><li><font color="blue">少數插件會使用網站金鑰保留資料，當重設金鑰時相關資料會丟失且無法恢復，敬請注意並在更新前做好資料庫與網站檔案的備份工作。</font></li>',
 	'replacekey_tips_step1' => '在操作之前建議您選擇低峰期操作或在操作前關閉網站，並做好資料、檔案備份工作，點選下面按鈕開始更換',
 	'replacekey_tips_step2' => '正在進行金鑰更新，請稍候......',
 

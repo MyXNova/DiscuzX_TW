@@ -34,7 +34,7 @@ $lang = array
 	'backtrace' => '執行資訊',
 	'error_end_message' => '<a href="http://{host}">{host}</a> 已經將此出錯訊息詳細記錄，由此給您帶來的瀏覽不便我們深感歉意',
 	'suggestion_user' => '如果您是使用者，建議您嘗試重新整理網頁、關閉所有瀏覽器視窗重新進行操作。如果無法解決，建議您完整截圖本網頁並儲存，隨後向網站管理員回報此問題',
-	'suggestion_plugin' => '如果您是網站管理員，建議您嘗試在管理中心關閉 <a href="admin.php?action=plugins&frames=yes" class="guess" target="_blank">{guess}</a> 外掛程式並 <a href="admin.php?action=tools&operation=updatecache&frames=yes" class="guess" target="_blank">更新快取</a> 。如關閉外掛程式後問題解決，建議您憑完整截圖聯繫外掛程式供應商獲得幫助',
+	'suggestion_plugin' => '如果您是網站管理員，建議您嘗試在管理中心關閉 <a href="admin.php?action=plugins&frames=yes" class="guess" target="_blank">{guess}</a> 插件並 <a href="admin.php?action=tools&operation=updatecache&frames=yes" class="guess" target="_blank">更新快取</a> 。如關閉插件後問題解決，建議您憑完整截圖聯繫插件供應商獲得幫助',
 	'suggestion' => '如果您是網站管理員，建議您嘗試在管理中心 <a href="admin.php?action=tools&operation=updatecache&frames=yes" target="_blank">更新快取</a> ，或憑完整截圖透過 <a href="https://www.dismall.com/" target="_blank">官方論壇</a> 尋求幫助。如果您確定是程式自身 Bug，您也可直接 <a href="https://gitee.com/discuz/DiscuzX/issues" target="_blank">送出 Issue</a> 給我們',
 
 	'file_upload_error_-101' => '上傳失敗！上傳檔案不存在或不合法，請返回。',

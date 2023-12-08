@@ -134,7 +134,7 @@ $lang = array (
   'cloudaddons_check_write_error' => '"data/download/" 或 "data/addonmd5/" 目錄無法建立或寫入，這將會導致應用無法安裝，請檢查伺服器環境',
   'cloudaddons_file_read_error' => '檔案讀取錯誤，請重試',
   'cloudaddons_file_write_error' => '檔案寫入錯誤，請重試',
-  'cloudaddons_noaccess' => '只有網站創始人帳號才能使用 <a href="https://addon.dismall.com/" target="_blank">Discuz! 應用中心</a> 安裝外掛程式和範本，如有疑問，請進入應用中心諮詢應用中心客服：<a href="https://addon.dismall.com/" target="_blank">https://addon.dismall.com/</a>',
+  'cloudaddons_noaccess' => '只有網站創始人帳號才能使用 <a href="https://addon.dismall.com/" target="_blank">Discuz! 應用中心</a> 安裝插件和模板，如有疑問，請進入應用中心諮詢應用中心客服：<a href="https://addon.dismall.com/" target="_blank">https://addon.dismall.com/</a>',
 
   'admingroups_edit_nonexistence' => '請先選擇您要進行操作的管理組：',
 
@@ -268,7 +268,7 @@ $lang = array (
 
   'alipay_not_contract' => '請輸入支付寶簽約會員資料',
   'alipay_succeed' => '支付寶功能設定成功 ',
-  'wechat_succeed' => '微信付款功能設定成功 ',
+  'wechat_succeed' => '微信支付功能設定成功 ',
   'qpay_succeed' => 'QQ 錢包功能設定成功 ',
   'orders_disabled' => '您沒有啟用交易積分或支付寶積分充值功能，無法對訂單進行管理',
   'ecommerce_invalidcredit' => '信用度必須大於 0 才能進行評級',

@@ -309,7 +309,7 @@ $lang = array(
 	'qq_dialog' => '發起 QQ 聊天',
 
 	'payment_alipay' => '支付寶',
-	'payment_wechat' => '微信付款',
+	'payment_wechat' => '微信支付',
 	'payment_qpay' => 'QQ 錢包付款',
 	'payment_status_0' => '未付款',
 	'payment_status_1' => '已付款',

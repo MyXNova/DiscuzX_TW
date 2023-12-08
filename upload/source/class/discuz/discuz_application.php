@@ -309,7 +309,7 @@ class discuz_application extends discuz_base{
 			error_reporting(0);
 		}
 
-		// DISCUZ_DEPRECATED 用於標識 Discuz! X 體系內即將廢棄的功能、函數或方法，便於二開網站維護或三方外掛程式開發
+		// DISCUZ_DEPRECATED 用於標識 Discuz! X 體系內即將廢棄的功能、函數或方法，便於二開網站維護或三方插件開發
 		// 開啟後系統出錯意味著相關功能將在後續版本刪除或拋出異常，我們建議您不要繼續依賴已在此標識下拋出異常的功能
 		if(!empty($this->var['config']['deprecated'])) {
 			define('DISCUZ_DEPRECATED', $this->var['config']['deprecated']);

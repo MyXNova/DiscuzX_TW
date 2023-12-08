@@ -21,7 +21,7 @@ class sms {
 
 	// DISCUZ_CLASS_SMS_SRVTYPE 表示特定業務類型，以便快速查詢對應業務
 	// 系統級手機號碼驗證業務為 1，系統級短消息通知業務為 2
-	// 協力廠商業務可設置為 0 或不低於 10000 的整數
+	// 第三方業務可設置為 0 或不低於 10000 的整數
 	const DISCUZ_CLASS_SMS_SRVTYPE_OTHERSRV = 0;
 	const DISCUZ_CLASS_SMS_SRVTYPE_SECCHECK = 1;
 	const DISCUZ_CLASS_SMS_SRVTYPE_NEWSLETT = 2;
@@ -47,7 +47,7 @@ class sms {
 	const DISCUZ_CLASS_SMS_VERIFY_PASS = 1;
 
 	// DISCUZ_CLASS_SMSGW_GWTYPE 代表閘道類型
-	// 消息短訊為 1，範本短訊為 0
+	// 消息短訊為 1，模板短訊為 0
 	const DISCUZ_CLASS_SMSGW_GWTYPE_MSG = 0;
 	const DISCUZ_CLASS_SMSGW_GWTYPE_TPL = 1;
 
