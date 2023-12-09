@@ -437,9 +437,9 @@ IconIndex=1
 		$filename = $_G['setting']['bbname'].'.url';
 	}
 
-	// 遵循RFC 6266国际标准，按照RFC 5987中的规则对文件名进行编码
+	// 遵循 RFC 6266 國際標準，按照 RFC 5987 中的規則對檔案名稱進行編碼
 	$filenameencode = strtolower(CHARSET) == 'utf-8' ? rawurlencode($filename) : rawurlencode(diconv($filename, CHARSET, 'UTF-8'));
-	// 连2011年发布的国际标准都没能正确支持的浏览器厂商的黑名单列表
+	// 連 2011 年發佈的國際標準都沒能正確支援的瀏覽器廠商的黑名單清單
 	// 目前包括：UC，夸克，搜狗，百度
 	$rfc6266blacklist = strexists($_SERVER['HTTP_USER_AGENT'], 'UCBrowser') || strexists($_SERVER['HTTP_USER_AGENT'], 'Quark') || strexists($_SERVER['HTTP_USER_AGENT'], 'SogouM') || strexists($_SERVER['HTTP_USER_AGENT'], 'baidu');
 	dheader('Content-type: application/octet-stream');

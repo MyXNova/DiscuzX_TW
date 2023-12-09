@@ -96,7 +96,7 @@ if($acceptconfirm) {
 		showmessage('you_have_friends', $jumpurl);
 	}
 
-	// 允许单个用户屏蔽所有人加 Ta 为好友
+	// 允許單個用戶遮罩所有人加 Ta 為好友
 	$fields = C::t('common_member_field_home')->fetch($uid);
 	if(!$fields['allowasfriend']) {
 		showmessage('is_blacklist');

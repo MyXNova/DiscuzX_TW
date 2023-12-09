@@ -176,7 +176,7 @@ function get_guide_list($view, $start = 0, $num = 50, $again = 0) {
 			return array();
 		}
 		if($view == 'sofa') {
-			// 只从没有设置权限的板块获取数据，不在接收前端发来的板块 fid
+			// 只從沒有設定權限的版區獲取資料，不再接收前端發來的版區 fid
  			$sofa = C::t('forum_sofa')->fetch_all_by_fid($fids, $start, $num);
 			$tids = array_keys($sofa);
 		}
@@ -192,7 +192,7 @@ function get_guide_list($view, $start = 0, $num = 50, $again = 0) {
 		if($thread['displayorder'] < 0) {
 			continue;
 		}
-		// 可能由于插件直接插入 post 等原因导致缓存表不符合实际情况, 这里对于不符合实际情况的数据做清理
+		// 可能由於插件直接插入 post 等原因導致快取資料表不符合實際情況，這裡對於不符合實際情況的資料做清理
 		if($view == 'sofa' && $thread['replies'] > 0) {
 			$notsofatids[] = $thread['tid'];
 			continue;

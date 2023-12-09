@@ -53,7 +53,7 @@ if($_G['setting']['attachexpire']) {
 				dheader('location: '.$_G['siteurl'].'static/image/common/none.gif');
 			} else {
 				if(!$requestmode) {
-					// 生成链接的用户是当前用户则可以直接获取新链接, 否则引导用户去原贴处理
+					// 產生連結的使用者是目前使用者則可以直接取得新連結, 否則引導使用者去原文處理
 					if($sameuser) {
 						showmessage('attachment_expired', '', array('aid' => aidencode($aid, 0, $attach['tid']), 'pid' => $attach['pid'], 'tid' => $attach['tid']));
 					} else {
@@ -88,7 +88,7 @@ if(!$requestmode && $_G['setting']['attachrefcheck'] && $_SERVER['HTTP_REFERER']
 
 periodscheck('attachbanperiods');
 
-// 获取 thread 分表
+// 獲取 thread 分表
 loadcache('threadtableids');
 $threadtableids = !empty($_G['cache']['threadtableids']) ? $_G['cache']['threadtableids'] : array();
 if(!in_array(0, $threadtableids)) {
@@ -96,7 +96,7 @@ if(!in_array(0, $threadtableids)) {
 }
 $archiveid = in_array($_GET['archiveid'], $threadtableids) ? intval($_GET['archiveid']) : 0;
 
-// 检查附件 aid 数据记录，取得附件和主题信息
+// 檢查附件 aid 資料記錄，取得附件和主題資訊
 $attachexists = FALSE;
 if(!empty($aid) && is_numeric($aid)) {
 	$attach = C::t('forum_attachment_n')->fetch_attachment($tableid, $aid);
@@ -124,11 +124,11 @@ if(!$attachexists) {
 }
 
 if(!$requestmode) {
-	// 获取附件所在版块信息
+	// 獲取附件所在版塊資訊
 	$forum = C::t('forum_forumfield')->fetch_info_for_attach($thread['fid'], $_G['uid']);
 	$_GET['fid'] = $forum['fid'];
 
-	// 判断附件下载权限
+	// 判斷附件下載權限
 	if($attach['isimage']) {
 		$allowgetattach = ($_G['uid'] == $attach['uid']) ? true : ((!empty($forum['allowgetimage'])) ? ($forum['allowgetimage'] == 1 ? true : false) : ($forum['getattachperm'] ? forumperm($forum['getattachperm']) : $_G['group']['allowgetimage']));
 	} else {
@@ -141,7 +141,7 @@ if(!$requestmode) {
 
 	$ismoderator = in_array($_G['adminid'], array(1, 2)) ? 1 : ($_G['adminid'] == 3 ? C::t('forum_moderator')->fetch_uid_by_tid($attach['tid'], $_G['uid'], $archiveid) : 0);
 
-	// 检查附件所在主题是否付费
+	// 檢查附件所在主題是否付費
 	$ispaid = FALSE;
 	$exemptvalue = $ismoderator ? 128 : 16;
 	if(!$thread['special'] && $thread['price'] > 0 && (!$_G['uid'] || ($_G['uid'] != $attach['uid'] && !($_G['group']['exempt'] & $exemptvalue)))) {
@@ -150,14 +150,14 @@ if(!$requestmode) {
 		}
 	}
 
-	// 检查收费附件及购买记录查询
+	// 檢查收費附件及購買記錄查詢
 	$exemptvalue = $ismoderator ? 64 : 8;
 	if($attach['price'] && (!$_G['uid'] || ($_G['uid'] != $attach['uid'] && !($_G['group']['exempt'] & $exemptvalue)))) {
 		$payrequired = $_G['uid'] ? !C::t('common_credit_log')->count_by_uid_operation_relatedid($_G['uid'], 'BAC', $attach['aid']) : 1;
 		$payrequired && showmessage('attachement_payto_attach', 'forum.php?mod=misc&action=attachpay&aid='.$attach['aid'].'&tid='.$attach['tid']);
 	}
 
-	// 检查版块权限，如果该主题已付费，则放行
+	// 檢查版區權限，如果該主題已付費，則放行
 	if(!$ispaid && !$allowgetattach) {
 		if(($forum['getattachperm'] && !forumperm($forum['getattachperm'])) || ($forum['viewperm'] && !forumperm($forum['viewperm']))) {
 			showmessagenoperm('getattachperm', $forum['fid']);
@@ -170,7 +170,7 @@ if(!$requestmode) {
 $isimage = $attach['isimage'];
 $_G['setting']['ftp']['hideurl'] = $_G['setting']['ftp']['hideurl'] || ($isimage && !empty($_GET['noupdate']) && $_G['setting']['attachimgpost'] && strtolower(substr($_G['setting']['ftp']['attachurl'], 0, 3)) == 'ftp');
 
-// 输出图片附件的预览图
+// 輸出圖片附件的預覽圖
 if(empty($_GET['nothumb']) && $attach['isimage'] && $attach['thumb']) {
 	$db = DB::object();
 	$db->close();
@@ -195,7 +195,7 @@ if(!$attach['remote'] && !is_readable($filename)) {
 }
 
 if(!$requestmode) {
-	// 非图片附件下载进行积分检查
+	// 非圖片附件下載進行積分檢查
 	$exemptvalue = $ismoderator ? 32 : 4;
 	if(!$isimage && !($_G['group']['exempt'] & $exemptvalue)) {
 		$creditlog = updatecreditbyaction('getattach', $_G['uid'], array(), '', 1, 0, $thread['fid']);
@@ -214,9 +214,9 @@ if(!$requestmode) {
 	}
 }
 
-// 多线程下载支持
-// 解析 range 的范围，readmod = 1 or 4 的时候，支持 range
-// range 传入有可能没有 end，这时候要在获取了文件大小后，根据文件大小设置 range_end
+// 多執行緒下載支持
+// 解析 range 的範圍，readmod = 1 or 4 的時候，支援 range
+// range 傳入有可能沒有 end，這時候要在獲取了檔案大小後，根據檔案大小設定 range_end
 $range_start = 0;
 $range_end = 0;
 $has_range_header = false;
@@ -225,7 +225,7 @@ if(($readmod == 4 || $readmod == 1) && !empty($_SERVER['HTTP_RANGE'])) {
 	list($range_start, $range_end) = explode('-',(str_replace('bytes=', '', $_SERVER['HTTP_RANGE'])));
 }
 
-// 更新附件下载次数
+// 更新附件下載次數
 if(!$requestmode && !$has_range_header && empty($_GET['noupdate'])) {
 	if($_G['setting']['delayviewcount']) {
 		$_G['forum_logfile'] = './data/cache/forum_attachviews_'.intval(getglobal('config/server/id')).'.log';
@@ -244,7 +244,7 @@ if(!$requestmode && !$has_range_header && empty($_GET['noupdate'])) {
 	}
 }
 
-// 关闭数据库及输出附件内容
+// 關閉資料庫及輸出附件內容
 $db = DB::object();
 $db->close();
 !$_G['config']['output']['gzip'] && ob_end_clean();
@@ -254,15 +254,15 @@ if($attach['remote'] && !$_G['setting']['ftp']['hideurl'] && $isimage) {
 	dheader('location:'.$_G['setting']['ftp']['attachurl'].'forum/'.$attach['attachment']);
 }
 
-// 获取支持h5媒体播放的mimetype，Safari要有mimetype和range支持才能正确播放
+// 獲取支援 HTML5 媒體播放的 mimetype，Safari 要有 mimetype 和 range 支援才能正確播放
 $mimetype = ext_to_mimetype($attach['filename']);
 $filesize = !$attach['remote'] ? filesize($filename) : $attach['filesize'];
-// 如果range_end没有传入，更新range_end
+// 如果 range_end 沒有傳入，更新 range_end
 if ($has_range_header && !$range_end) $range_end = $filesize - 1;
-// 遵循RFC 6266国际标准，按照RFC 5987中的规则对文件名进行编码
+// 遵循 RFC 6266 國際標準，按照 RFC 5987 中的規則對檔案名稱進行編碼
 $filenameencode = strtolower(CHARSET) == 'utf-8' ? rawurlencode($attach['filename']) : rawurlencode(diconv($attach['filename'], CHARSET, 'UTF-8'));
 
-// 连2011年发布的国际标准都没能正确支持的浏览器厂商的黑名单列表
+// 連 2011 年發佈的國際標準都沒能正確支援的瀏覽器廠商的黑名單清單
 // 目前包括：UC，夸克，搜狗，百度
 $rfc6266blacklist = strexists($_SERVER['HTTP_USER_AGENT'], 'UCBrowser') || strexists($_SERVER['HTTP_USER_AGENT'], 'Quark') || strexists($_SERVER['HTTP_USER_AGENT'], 'SogouM') || strexists($_SERVER['HTTP_USER_AGENT'], 'baidu');
 
@@ -303,7 +303,7 @@ if(!empty($xsendfile)) {
 	}
 }
 
-// readmod = 1 or 4 的时候，支持Range
+// readmod = 1 or 4 的時候，支援 Range
 if (($readmod == 4) || ($readmod == 1)) {
 	dheader('Accept-Ranges: bytes');
 	if($has_range_header) {
@@ -355,7 +355,7 @@ function getlocalfile($filename, $readmod = 2, $range_start = 0, $range_end = 0)
 }
 
 function send_file_by_chunk($fp, $limit = PHP_INT_MAX) {
-	static $CHUNK_SIZE = 65536; // 每次最大读 64KB
+	static $CHUNK_SIZE = 65536; // 每次最大讀 64KB
 	$count = 0;
 	while (!feof($fp)) {
 		$size_to_read = $CHUNK_SIZE;

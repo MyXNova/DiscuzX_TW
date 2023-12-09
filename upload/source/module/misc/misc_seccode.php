@@ -82,7 +82,7 @@ if($('$showid')) {
 EOF;
 
 } elseif(getgpc('action') == 'update' && defined("IN_MOBILE") && constant("IN_MOBILE") == 2) {
-	//移动端和PC端验证码功能拉齐
+	//移動端和 PC 端驗證碼功能拉齊
 	$message = '';
 	$showid = 'seccode_'.$idhash;
 	$rand = random(5, 1);
@@ -151,10 +151,10 @@ EOF;
 	$refererhost['host'] = (isset($refererhost['host']) ? $refererhost['host'] : '').(!empty($refererhost['port']) ? (':'.$refererhost['port']) : '');
 
 	if(($_G['setting']['seccodedata']['type'] < 2 && ($refererhost['host'] != $_SERVER['HTTP_HOST'])) || ((defined("IN_MOBILE") && in_array($_G['setting']['seccodedata']['type'], array(2, 3)) && ($refererhost['host'] != $_SERVER['HTTP_HOST'])) && ($_G['setting']['seccodedata']['type'] == 2 && !extension_loaded('ming') && $_POST['fromFlash'] != 1 || $_G['setting']['seccodedata']['type'] == 3 && $_GET['fromFlash'] != 1))) {
-		//当模式为英文=0、中文=1两种验证码时，校验Referer和Host是否为同一站点，不是就退出
-		//当模式为Flash=2、语音=3两种验证码时，要么是手机版且Referer和Host为同一站点（不是就退出，X3.5新增验证码降级功能），
-		//要么是Flash+Ming+FromFlash，要么是语音验证码+FromFlash（不是就退出）
-		//这个逻辑浪费了我二三十分钟，写上注释以免后人入坑
+		//當模式為 英文=0、中文=1 兩種驗證碼時，校驗 Referer 和 Host 是否為同一網站，不是就退出
+		//當模式為 Flash=2、語音=3 兩種驗證碼時，要麼是手機版且 Referer 和 Host 為同一網站（不是就退出，X3.5 新增驗證碼降級功能），
+		//要麼是 Flash+Ming+FromFlash，要麼是語音驗證碼 +FromFlash（不是就退出）
+		//這個邏輯浪費了我二三十分鐘，寫上注釋以免後人入坑
 		exit('Access Denied');
 	}
 
