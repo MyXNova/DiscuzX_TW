@@ -19,7 +19,7 @@
 				<item id="0">
 					<item id="name"><![CDATA[location]]></item>
 					<item id="param"><![CDATA[]]></item>
-					<item id="menu"><![CDATA[平台入口]]></item>
+					<item id="menu"><![CDATA[平臺入口]]></item>
 					<item id="url"><![CDATA[]]></item>
 					<item id="type"><![CDATA[3]]></item>
 					<item id="adminid"><![CDATA[0]]></item>
@@ -32,7 +32,7 @@
 				<item id="1">
 					<item id="name"><![CDATA[remote]]></item>
 					<item id="param"><![CDATA[]]></item>
-					<item id="menu"><![CDATA[平台入口]]></item>
+					<item id="menu"><![CDATA[平臺入口]]></item>
 					<item id="url"><![CDATA[]]></item>
 					<item id="type"><![CDATA[11]]></item>
 					<item id="adminid"><![CDATA[0]]></item>
@@ -58,7 +58,7 @@
 				<item id="3">
 					<item id="name"><![CDATA[setting]]></item>
 					<item id="param"><![CDATA[]]></item>
-					<item id="menu"><![CDATA[设置]]></item>
+					<item id="menu"><![CDATA[設定]]></item>
 					<item id="url"><![CDATA[]]></item>
 					<item id="type"><![CDATA[3]]></item>
 					<item id="adminid"><![CDATA[0]]></item>

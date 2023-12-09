@@ -5,25 +5,25 @@ if (!defined('IN_DISCUZ')) {
 }
 
 /*
-// 调用范例
+// 調用範例
 
-// 引用库
+// 引用庫
 require_once DISCUZ_ROOT.'./source/plugin/witframe_api/core.php';
 
 $siteuniqueid = $_G['setting']['siteuniqueid'];
 
-// 自动注册站点信息，获取站点配置信息
+// 自動註冊網站資訊，取得網站設定資訊
 $conf = Lib\Site::Discuz_GetConf($siteuniqueid);
 print_r($conf);
 
-// 添加应用的授权，自动添加 Sample 应用的授权
+// 增加應用的授權，自動增加 Sample 應用的授權
 Lib\Site::AddAuthInfo(10005, 1003, 'abcdE');
 
-// 调用apis
+// 調用 apis
 $r = Lib\Apis::Sample_v1_apis(['now' => time()]);
 print_r($r);
 
-// 返回登录Wit的链接
+// 返回登入 Wit 的連結
 $r = Lib\Site::Discuz_LoginWit($siteuniqueid);
 echo $r['url'];
 

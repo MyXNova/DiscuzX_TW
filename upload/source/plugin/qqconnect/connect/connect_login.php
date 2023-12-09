@@ -156,7 +156,7 @@ if($op == 'init') {
 				'conisqqshow' => $isqqshow,
 			));
 
-		} else { // debug 当前登录的论坛账号并没有绑定任何QQ号，则可以绑定当前的这个QQ号
+		} else { // debug 當前登入的論壇帳號並沒有綁定任何 QQ 號，則可以綁定目前的這個 QQ 號
 			if(empty($current_connect_member)) {
 				C::t('#qqconnect#common_member_connect')->insert(array(
 					'uid' => $_G['uid'],
@@ -209,7 +209,7 @@ if($op == 'init') {
 
 	} else {
 
-		if($connect_member) { // debug 此分支是用户直接点击QQ登录，并且这个QQ号已经绑好一个论坛账号了，将直接登进论坛了
+		if($connect_member) { // debug 此分支是會員直接點選 QQ 登入，並且這個 QQ 號已經綁好一個論壇帳號了，將直接登進論壇了
 			C::t('#qqconnect#common_member_connect')->update($connect_member['uid'], array(
 				'conuintoken' => $conuintoken,
 				'conopenid' => $conopenid,
@@ -233,7 +233,7 @@ if($op == 'init') {
 			dsetcookie('stats_qc_login', 3, 86400);
 			showmessage('login_succeed', $referer, $param, array('extrajs' => $ucsynlogin));
 
-		} else { // debug 此分支是用户直接点击QQ登录，并且这个QQ号还未绑定任何论坛账号，将将跳转到一个新页引导用户注册个新论坛账号或绑一个已有的论坛账号
+		} else { // debug 此分支是會員直接點選 QQ 登入，並且這個 QQ 號還未綁定任何論壇帳號，將將跳轉到一個新頁引導會員註冊個新論壇帳號或綁一個已有的論壇帳號
 
 			$auth_hash = authcode($conopenid, 'ENCODE');
 			$insert_arr = array(

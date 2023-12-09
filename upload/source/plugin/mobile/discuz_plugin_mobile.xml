@@ -5,7 +5,7 @@
 		<item id="plugin">
 			<item id="available"><![CDATA[1]]></item>
 			<item id="adminid"><![CDATA[1]]></item>
-			<item id="name"><![CDATA[掌上论坛]]></item>
+			<item id="name"><![CDATA[掌上論壇]]></item>
 			<item id="identifier"><![CDATA[mobile]]></item>
 			<item id="description"><![CDATA[]]></item>
 			<item id="datatables"><![CDATA[]]></item>
@@ -42,54 +42,54 @@
 		<item id="version"><![CDATA[X2.5,X3,X3.1,X3.2,X3.3,X3.4,X3.5]]></item>
 		<item id="language">
 			<item id="scriptlang">
-				<item id="mobile_tip_ios"><![CDATA[<a href="https://discuz.dismall.com/mobile.php?platform=ios">用掌上论坛访问本站,拥有更好阅读体验</a>]]></item>
-				<item id="mobile_tip_android"><![CDATA[<a href="https://discuz.dismall.com/mobile.php?platform=android">用掌上论坛访问本站,拥有更好阅读体验</a>]]></item>
-				<item id="mobile_tip_wp7"><![CDATA[<a href="https://discuz.dismall.com/mobile.php?platform=windowsphone">用掌上论坛访问本站,拥有更好阅读体验</a>]]></item>
-				<item id="mobile_extend_newthread"><![CDATA[最新发表]]></item>
-				<item id="mobile_extend_newreply"><![CDATA[最新回复]]></item>
-				<item id="mobile_extend_digest"><![CDATA[最新精华]]></item>
-				<item id="mobile_extend_newpic"><![CDATA[最新图片]]></item>
-				<item id="mobile_fromtype_ios"><![CDATA[来自: iPhone客户端]]></item>
-				<item id="mobile_fromtype_android"><![CDATA[来自: Android客户端]]></item>
-				<item id="mobile_fromtype_windowsphone"><![CDATA[来自: WindowsPhone客户端]]></item>
-				<item id="mobile_post_author_visible"><![CDATA[该帖仅作者可见]]></item>
-                <item id="mobilesign_formhash_failed"><![CDATA[formhash验证失败或未登录]]></item>
-                <item id="mobilesign_success"><![CDATA[签到成功]]></item>
-                <item id="mobilesign_failed"><![CDATA[已进行过签到]]></item>
+				<item id="mobile_tip_ios"><![CDATA[<a href="https://discuz.dismall.com/mobile.php?platform=ios">用掌上論壇瀏覽本站，擁有更好閱讀體驗</a>]]></item>
+				<item id="mobile_tip_android"><![CDATA[<a href="https://discuz.dismall.com/mobile.php?platform=android">用掌上論壇瀏覽本站，擁有更好閱讀體驗</a>]]></item>
+				<item id="mobile_tip_wp7"><![CDATA[<a href="https://discuz.dismall.com/mobile.php?platform=windowsphone">用掌上論壇瀏覽本站，擁有更好閱讀體驗</a>]]></item>
+				<item id="mobile_extend_newthread"><![CDATA[最新發表]]></item>
+				<item id="mobile_extend_newreply"><![CDATA[最新回覆]]></item>
+				<item id="mobile_extend_digest"><![CDATA[最新精華]]></item>
+				<item id="mobile_extend_newpic"><![CDATA[最新圖片]]></item>
+				<item id="mobile_fromtype_ios"><![CDATA[來自：iPhone 客戶端]]></item>
+				<item id="mobile_fromtype_android"><![CDATA[來自：Android 客戶端]]></item>
+				<item id="mobile_fromtype_windowsphone"><![CDATA[來自：WindowsPhone 客戶端]]></item>
+				<item id="mobile_post_author_visible"><![CDATA[該文章僅作者可見]]></item>
+                <item id="mobilesign_formhash_failed"><![CDATA[formhash 驗證失敗或未登入]]></item>
+                <item id="mobilesign_success"><![CDATA[簽到成功]]></item>
+                <item id="mobilesign_failed"><![CDATA[已進行過簽到]]></item>
 			</item>
 			<item id="templatelang">
-				<item id="mobile_tips"><![CDATA[推荐使用二维码收藏并访问论坛<br />使用二维码收藏论坛的方法：<br />1，装掌上论坛应用后，点击使用二维码收藏论坛。<br />2，将二维码置于相机焦点中即可收藏成功。]]></item>
-				<item id="username"><![CDATA[用户名]]></item>
-				<item id="password"><![CDATA[密码]]></item>
-				<item id="password_confirm"><![CDATA[确认密码]]></item>
+				<item id="mobile_tips"><![CDATA[推薦使用 QR Code 收藏並瀏覽論壇<br />使用 QR Code 收藏論壇的方法︰<br />1，裝掌上論壇應用程式後，點選使用 QR Code 收藏論壇。<br />2，將 QR Code 置於相機焦距中即可收藏成功。]]></item>
+				<item id="username"><![CDATA[會員名稱]]></item>
+				<item id="password"><![CDATA[會員密碼]]></item>
+				<item id="password_confirm"><![CDATA[確認密碼]]></item>
 				<item id="email"><![CDATA[Email]]></item>
-				<item id="invite_code"><![CDATA[邀请码]]></item>
-				<item id="register_message"><![CDATA[注册原因]]></item>
-				<item id="seccode"><![CDATA[验证码]]></item>
-				<item id="change_seccode"><![CDATA[换一个]]></item>
-				<item id="secqaa"><![CDATA[验证问答]]></item>
-				<item id="close"><![CDATA[关闭]]></item>
-				<item id="admin_tips"><![CDATA[尊敬的站长，您可以在Discuz!程序根目录上传"mobile.png"图片(尺寸178x178)，以确保论坛客户端能成功获得到论坛的logo]]></item>
-				<item id="iphone_alt"><![CDATA[iphone-适用于苹果手机]]></item>
-				<item id="android_alt"><![CDATA[Android-适用于装有安卓系统的三星/HTC/小米等手机]]></item>
-				<item id="windowsphone_alt"><![CDATA[WinodwsPhone-适用于装有微软WindowsPhone7 系统的手机]]></item>
-				<item id="discuzmobile_alt"><![CDATA[掌上论坛优势]]></item>
-				<item id="tips_1"><![CDATA[随时随地，快速访问]]></item>
-				<item id="tips_1_desc"><![CDATA[只要手机在手，您都可以快速、方便地看贴发帖，与论坛好友收发短消息。]]></item>
-				<item id="tips_2"><![CDATA[极致优化，畅快"悦"读]]></item>
-				<item id="tips_2_desc"><![CDATA[独有的论坛界面和触屏设计，手机论坛也变得赏心悦目，操作自如。]]></item>
-				<item id="tips_3"><![CDATA[即拍即发，分享生活]]></item>
-				<item id="tips_3_desc"><![CDATA[不管是风景图画，还是新闻现场，拍照发帖一气呵成，让您在论坛出尽风头。]]></item>
-				<item id="qr_desc"><![CDATA[下载客户端后，拍摄二维码快速访问本站:]]></item>
-				<item id="qr"><![CDATA[二维码]]></item>
-				<item id="wapmode"><![CDATA[或者通过以下地址访问:]]></item>
-				<item id="qqregmode1"><![CDATA[完善账号信息]]></item>
-				<item id="qqregmode2"><![CDATA[绑定已有账号]]></item>
-				<item id="register_validate_email_tips"><![CDATA[注册需要验证邮箱，请务必填写正确的邮箱，提交后请及时查收邮件。]]></item>
-				<item id="post_hide_reply_hidden"><![CDATA[如果您要查看本帖隐藏内容请回复]]></item>
+				<item id="invite_code"><![CDATA[邀請碼]]></item>
+				<item id="register_message"><![CDATA[註冊原因]]></item>
+				<item id="seccode"><![CDATA[驗證碼]]></item>
+				<item id="change_seccode"><![CDATA[換一個]]></item>
+				<item id="secqaa"><![CDATA[驗證問答]]></item>
+				<item id="close"><![CDATA[關閉]]></item>
+				<item id="admin_tips"><![CDATA[尊敬的站長，您可以在 Discuz! 程式根目錄上傳 "mobile.png" 圖片(大小 178x178)，以確保論壇客戶端能成功獲得論壇 logo]]></item>
+				<item id="iphone_alt"><![CDATA[iPhone-適用於蘋果手機]]></item>
+				<item id="android_alt"><![CDATA[Android-適用於裝有 Android 系統手機]]></item>
+				<item id="windowsphone_alt"><![CDATA[WinodwsPhone-適用於裝有微軟 WindowsPhone 系統的手機]]></item>
+				<item id="discuzmobile_alt"><![CDATA[掌上論壇優勢]]></item>
+				<item id="tips_1"><![CDATA[隨時隨地，快速瀏覽]]></item>
+				<item id="tips_1_desc"><![CDATA[只要手機在手，您都可以快速、方便地閱讀、發表文章，與論壇好友收發短訊。]]></item>
+				<item id="tips_2"><![CDATA[極致優化，暢快"悅"讀]]></item>
+				<item id="tips_2_desc"><![CDATA[獨有的論壇介面和觸控螢幕設計，手機論壇也變得賞心悅目，操作自如。]]></item>
+				<item id="tips_3"><![CDATA[即拍即發，分享生活]]></item>
+				<item id="tips_3_desc"><![CDATA[不管是風景圖畫，還是新聞現場，拍照發表一氣呵成，讓您在論壇出盡風頭。]]></item>
+				<item id="qr_desc"><![CDATA[下載客戶端後，拍攝 QR Code 快速瀏覽本站：]]></item>
+				<item id="qr"><![CDATA[QR Code]]></item>
+				<item id="wapmode"><![CDATA[或者透過以下網址瀏覽：]]></item>
+				<item id="qqregmode1"><![CDATA[完善帳號資料]]></item>
+				<item id="qqregmode2"><![CDATA[綁定已有帳號]]></item>
+				<item id="register_validate_email_tips"><![CDATA[註冊需要驗證電子信箱，請務必填寫正確的電子信箱，送出後請即時查收 E-mail。]]></item>
+				<item id="post_hide_reply_hidden"><![CDATA[如果您要檢視本文章隱藏內容請回覆]]></item>
 			</item>
             <item id="installlang">
-                <item id="mobilesign"><![CDATA[微社区签到]]></item>
+                <item id="mobilesign"><![CDATA[微社群簽到]]></item>
             </item>
 		</item>
 		<item id="installfile"><![CDATA[install.php]]></item>

@@ -29,8 +29,8 @@ if(in_array('mobile', $_G['setting']['plugins']['available'])) {
 			$posts += $forum['posts'];
 		}
 		loadcache('userstats');
-		// 由于微社区依赖 discuzversion == X3.2, 且微社区平台代码无法修改
-		// 因此在 X3.5 使用 truediscuzversion 标示正确的 Discuz! Version.
+		// 由於微社群依賴 discuzversion == X3.2，且微社群平臺代碼無法修改
+		// 因此在 X3.5 使用 truediscuzversion 標示正確的 Discuz! Version.
 		$array = array(
 			'discuzversion' => 'X3.2',
 			'truediscuzversion' => DISCUZ_VERSION,
