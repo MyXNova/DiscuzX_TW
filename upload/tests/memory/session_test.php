@@ -23,7 +23,7 @@ class SessionTest
                                 'fid' => '2',
                                 'tid' => '3'
                         ),
-                        array( // 与上一个用户同IP, 同fid，同tid
+                        array( // 與上一個用戶同 IP，同 fid，同 tid
                                 'sid' => 'dkfjie',
                                 'ip' => '192.168.1.1',
                                 'uid' => '13',
@@ -36,7 +36,7 @@ class SessionTest
                                 'fid' => '2',
                                 'tid' => '3'
                         ),
-                        array( // 与第一个用户同uid，但不同IP
+                        array( // 與第一個用戶同 uid，但不同 IP
                                 'sid' => '88uuii',
                                 'ip' => '::1',
                                 'uid' => '12',
@@ -68,7 +68,7 @@ class SessionTest
         public function testByIp() {
                 $this->insertAll();
 
-                // 按lastactivity倒序
+                // 按 lastactivity 倒序
                 $items = $this->bymem->fetch_all_by_ip('192.168.1.1');
                 assertEqual($items[0]['sid'], 'dkfjie');
                 assertEqual($items[1]['sid'], 'abcdef');
