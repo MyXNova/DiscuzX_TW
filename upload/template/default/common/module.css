@@ -5,62 +5,62 @@ Extend CSS file for Discuz! X
 https://www.discuz.vip
 Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 
-1. 一些通用模块的样式
+1. 一些通用模組的樣式
 	1. 公告
-	2. 在线会员列表
-	3. 类似圈子中邀请好友中的好友列表
-	4. 动态列表
-	5. 进度条
-	6. 广场以外的引用、代码样式
-	7. 版主管理(包括2.3、2.4)
-	8. 登录注册
-	9. 标签
-2. 发帖相关样式
-	1. 编辑器中的功能样式
-	2. 主题图标
-	3. 提交表单
-	4. 发特殊主题帖
-3. 列表样式
-	1. 广场版块、圈子分类列表
+	2. 線上會員列表
+	3. 類似群組中邀請好友中的好友列表
+	4. 動態列表
+	5. 進度條
+	6. 廣場以外的引用、程式碼樣式
+	7. 版主管理(包括 2.3、2.4)
+	8. 登入註冊
+	9. 標籤
+2. 發文相關樣式
+	1. 編輯器中的功能樣式
+	2. 主題圖示
+	3. 送出表單
+	4. 發特殊主題文章
+3. 列表樣式
+	1. 廣場版區、群組分類列表
 	2. 房屋列表
-	3. 主题列表
-4. 帖子内容区域样式
-	1. 结构
-	2. 作者、时间、楼层等一些属性
-	3. 帖子正文
-		1. 回帖推荐、点评等
-		2. 用户详细信息
-		3. 帖子附件及一些特殊样式(如锁定、引用、代码等)
-	4. 特殊帖样式
-	5. 广场和空间共用的商品、辩论等样式
-	6. 显示原始图片弹出层样式
-5. 圈子相关样式
-6. 文章、日志等页面样式
-7. 空间相关样式
-8. 门户相关样式
-10.搜索相关样式
-11.排行榜相关样式
-12.统计相关样式
+	3. 主題列表
+4. 文章內容區域樣式
+	1. 結構
+	2. 作者、時間、樓層等一些屬性
+	3. 文章正文
+		1. 回文推薦、點評等
+		2. 會員詳細資料
+		3. 文章附件及一些特殊樣式(如鎖定、引用、程式碼等)
+	4. 特殊文章樣式
+	5. 廣場和空間共用的商品、辯論等樣式
+	6. 顯示原始圖片彈出層樣式
+5. 群組相關樣式
+6. 文章、網誌等網頁樣式
+7. 空間相關樣式
+8. 門戶相關樣式
+10.搜尋相關樣式
+11.排行榜相關樣式
+12.統計相關樣式
 
-* 全局 CSS 样式参见 common.css
-* 以下为模块 CSS 写法举例
-* 分类之间空三行，模块之间空两行，区块之间空一行 */
+* 全域 CSS 樣式參見 common.css
+* 以下為模組 CSS 寫法舉例
+* 分類之間空三行，模組之間空兩行，區塊之間空一行 */
 
 /** group::index **/
-	/* 圈子 index 模块使用的CSS */
+	/* 群組 index 模組使用的 CSS */
 /** end **/
 
 /** group::index,forum::index **/
-	/* 圈子 index 和 论坛 index 模块使用的CSS */
+	/* 群組 index 和 論壇 index 模組使用的 CSS */
 /** end **/
 
 /** forum **/
-	/* 论坛 所有模块使用的CSS */
+	/* 論壇 所有模組使用的 CSS */
 /** end **/
 
 
 
-/* ------------------------------------------------------------------------ 一些通用模块的样式 */
+/* ------------------------------------------------------------------------ 一些通用模組的樣式 */
 
 /** forum::index **/
 #pt .y { width: 550px; height: 29px; overflow: hidden; }
@@ -71,7 +71,7 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 /*
 	Name:			mod_announcement
 	Level:			Function
-	Explain:		公告。放置在不同位置时注意调整 #anc, #an li 的高度
+	Explain:		公告。放置在不同位置時注意調整 #anc, #an li 的高度
 	Last Modify:	Pony 1203191111
 */
 	#an { margin-bottom: 5px; }
@@ -82,15 +82,15 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 			#anc, #an li { height: 29px; overflow: hidden; }
 			#anc i { font-style: italic; }
 
-/* 在线会员列表 */
+/* 線上會員列表 */
 	.oll li { float: left; overflow: hidden; white-space: nowrap; width: 19.9%; height: 24px; line-height: 24px; }
 		.oll img { vertical-align: middle; }
 
-/* 论坛首页热点 by Pony */
+/* 論壇首頁熱門 by Pony */
 	.heat { width: 370px; }
 	.heatl { padding-left: 15px; margin-left: 384px; border-left: 1px solid #DDD; }
 
-/* 论坛首页四格 by Alice */
+/* 論壇首頁四格 by Alice */
 	#category_grid { padding: 0; border-top:1px solid {COMMONBORDER}; }
 		#category_grid table { width:100%;table-layout: fixed; }
 			#category_grid td { width: 25%; border-left: 1px solid #CDCDCD; }
@@ -113,14 +113,14 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 
 /** misc::faq **/
 /*
-	Explain:		帮助页面的标题要显示出来
+	Explain:		常見問題網頁的標題要顯示出來
 	Last Modify:	Pony 1203231449
 */
 	.ct2_a h1.mt { display: block; }
 /** end **/
 
 /** misc::invite,group,forum::viewthread,portal::view,home::space **/
-	/* .usl -> 用于类似圈子中邀请好友中的好友列表 by Pony */
+	/* .usl -> 用於類似群組中邀請好友中的好友列表 by Pony */
 		.usl { overflow: scroll; overflow-x: hidden; padding: 5px; width: 580px; height: 280px; }
 		.usl2 { width: auto; border: dashed {WRAPBORDERCOLOR}; border-width: 0 1px 1px; }
 			.usl li { overflow: hidden; float: left; margin: 3px; width: 134px; height: 64px; }
@@ -140,7 +140,7 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 
 
 /** home::space,home::spacecp,group::group,misc::ranklist,portal::view,forum::viewthread,group::viewthread,home::medal,misc::tag **/
-	/* .el -> feed_list 动态列表 by Pony */
+	/* .el -> feed_list 動態列表 by Pony */
 	.e { overflow: hidden; }
 		.e .i, .el .i { padding: 6px 10px; border-bottom: 1px dashed {COMMONBORDER}; background: #F7F7F7; }
 	.el {}
@@ -148,7 +148,7 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 		.el li { padding: 10px 20px; min-height: 20px; border-bottom: 1px dashed {COMMONBORDER}; }
 		.el .t { position: absolute; margin: 1px 0 0 -20px; }
 		.el .o { overflow: hidden; float: right; margin: 4px -20px -4px 0; width: 16px; height: 16px; font-size: 16px; line-height: 16px; font-family: dzicon; text-align: center; color: #FF9A9A; }
-			/* 外宽改变时 .ie6 .el .o, .ie6 .xlda .el .o 的 margin 值需要更改 */
+			/* 外寬改變時 .ie6 .el .o, .ie6 .xlda .el .o 的 margin 值需要更改 */
 			.el .o:before { content: "\f149"; }
 			.el .o:hover { text-decoration: none; }
 			.el .del:before { content: "\f116"; }
@@ -160,7 +160,7 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 				.el .ec .hot a:hover { text-decoration: none; }
 				.el .ec .hot em { display: block; line-height: 30px; font-size: 16px; color: {HIGHLIGHTLINK}; cursor: pointer; }
 		.el a { color: {HIGHLIGHTLINK}; }
-		/* 有头像的动态列表 */
+		/* 有頭像的動態列表 */
 		.xlda .el { overflow: hidden; float: left; margin-top: -4px; width: 100%; }
 			.xlda .el li { margin-bottom: -4px; padding-top: 14px; }
 		#share_preview .h { display: none; }
@@ -168,13 +168,13 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 
 
 /** forum::viewthread,group::viewthread,home::task,misc::stat,home::space **/
-	/* 进度条 */
+	/* 進度條 */
 		.pbg { height: 16px; border: 1px solid #CCC; background: #EEE; -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px; overflow: hidden; }
 		.pbr { height: 16px; width: 470px; background-color: #5AAF4A; -webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0; overflow: hidden; }
 		.pbg2 { display: block; height: 10px; width: 130px; margin: 0 auto; background: #FFF; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; overflow: hidden; }
 		.pbr2 { display: block; height: 10px; background: #F155C8; -webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0; overflow: hidden; }
 
-	/* 勋章链接hover时不显示下划线 by Pony 20110519 */
+	/* 勳章連結 hover 時不顯示底線 by Pony 20110519 */
 	.md_ctrl a:hover { text-decoration: none; }
 /** end **/
 
@@ -198,10 +198,10 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 .tig_bottom1{color:#FEFEE9;display:block;height:8px;top:55px;margin-left:20px;position:absolute;z-index:111;}
 .vct{font: 12px/1.5 Tahoma;margin:0;}
 .container{border:1px solid #B1B1B1;margin-top:8px;margin-right:80px;background-color:#FEFEE9;border-radius: 3px;padding: 5px;width:120px;position:absolute;top:-80px;right:0;}
-	/* 点击加载下一页按钮样式  by Alice */
+	/* 點選讀取下一頁按鈕樣式  by Alice */
 	.pgbtn a { display: block; margin-bottom: 10px; border: 1px solid rgb(194, 213, 227); border-radius: 3px; text-align: center; }
 	.pgbtn a:hover { background: #fff; text-decoration: none; }
-	/* 贴子页开启半闭左右列表 by Alice */
+	/* 文章頁開啟半閉左右列表 by Alice */
 	.side_btn { position:relative; display:block; }
 	.side_btn a { position:absolute; left:-21px; top:-10px; display:block; width:7px; height:38px; overflow:hidden; }
 	.side_btn a svg { fill: {MENUBGCOLOR}; }
@@ -211,7 +211,7 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 /** end **/
 
 /**  forum::forumdisplay,forum::viewthread,group::viewthread,home::space,home::spacecp,home::invite,portal::view,portal::comment,forum::post,group::post **/
-	/* 广场以外的引用、代码样式 by Pony */
+	/* 廣場以外的引用、程式碼樣式 by Pony */
 		.quote { overflow: hidden; margin: 10px 0; padding-left: 16px; background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='14' height='10'%3e%3cpath fill='%23ddd' d='M4 2l2 1-2 3h2v4H1V6zM11 2l2 1-2 3h2v4h-5V6z'/%3e%3c/svg%3e") no-repeat 0 0; color: {MIDTEXT}; }
 			.quote blockquote { display: inline; margin: 0; padding-right: 16px; background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='14' height='10'%3e%3cpath fill='%23ddd' d='M1 7l2 1 3-4V0H1v4h2zM8 7l2 1 3-4V0H8v4h2z'/%3e%3c/svg%3e") no-repeat 100% 100%; }
 			.m_c .quote { width: 585px; }
@@ -220,21 +220,21 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 /** end **/
 
 /** forum::modcp,misc::stat **/
-	/* 版块管理 */
+	/* 版區管理 */
 		.mdcp {}
 			.stl { float: left; width: 15%; }
 			.str { float: left; overflow: auto; overflow-y: hidden; width: 84%; }
 /** end **/
 
 /** misc::tag **/
-/* 标签列表 by Pony */
+/* 標籤列表 by Pony */
 	.taglist { min-height: 270px; }
 		.taglist a { margin-right: 20px; line-height: 30px; white-space: nowrap; }
 /** end **/
 
 
 
-/* ------------------------------------------------------------------------ 发帖相关样式 */
+/* ------------------------------------------------------------------------ 發文相關樣式 */
 /** forum::post,forum::forumdisplay,forum::viewthread,group::post,group::forumdisplay,group::viewthread **/
 .ct2_a .mn { float: left; }
 .appl { float: right; margin-top: 8px; border: none; background-color: transparent; }
@@ -251,7 +251,7 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 .fnm li, .fszm li, .simm li { cursor: pointer; }
 .qsv { padding-left: 16px; width: 16px; height: 16px; background: url({IMGDIR}/repquote.gif) no-repeat 50% 50%; cursor: pointer; }
 
-/* 发帖时选择标签 by Pony */
+/* 發文時選擇標籤 by Pony */
 	.marked:after { font-family: dzicon; content: "\f128"; color: #F60; margin-left: 2px; }
 	#taglistarea a { white-space: nowrap; zoom: 1; }
 		#taglistarea .marked { padding-right: 0; font-weight: 700; color: {NOTICETEXT} !important; }
@@ -298,7 +298,7 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 
 
 /** forum::post,group::post,portal::portalcp,home::spacecp **/
-/* 发帖、日志、文章时上传的图片列表样式 by Pony 11090615 */
+/* 發文、網誌、文章時上傳的圖片列表樣式 by Pony 11090615 */
 .upfl { margin-top: -1px; height: auto !important; height: 165px; max-height: 300px; overflow: auto; overflow-x: hidden; }
 	.upfl a, #imgattachlist a { color: {HIGHLIGHTLINK}; }
 	.upfl table td { border-bottom: 1px solid {COMMONBORDER}; height: 30px; line-height: 24px; }
@@ -313,7 +313,7 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 /*
 	Name:			mod_opattach
 	Level:			Function
-	Explain:		发文章时上传的图片上的操作区域的样式
+	Explain:		發文章時上傳的圖片上的操作區域的樣式
 	Last Modify:	Pony 11082416
 */
 	.opattach { display: block; position: relative; margin: 0 auto; width: 110px; border: 1px solid #CDCDCD; }
@@ -331,7 +331,7 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 
 
 /** forum::viewthread,forum::forumdisplay,forum::post,group **/
-/* 主题图标 by michael */
+/* 主題圖示 by michael */
 #newspecial_menu { width: 90px; }
 	#newspecial_menu li, #sti .wx { display: block; zoom: 1; }
 	#newspecial_menu li:before, #sti .wx:before { content: "\f134"; font-family: dzicon; display: inline-block; height: 24px; width: 30px; line-height: 24px; text-align: center; font-size: 20px; color: #FF9C00; vertical-align: middle; }
@@ -349,7 +349,7 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 
 
 /** forum::modcp,forum::post,group::post,home::spacecp,portal::portalcp **/
-/* 提交表单 */
+/* 送出表單 */
 	.exfm { margin: 10px 0; padding: 10px 14px; border: 1px dashed {SPECIALBORDER}; background: {SPECIALBG}; }
 		.exfm .pn { height: 22px; font-size: 12px; }
 		.exfm .rq { float: right; padding-right: 2px; }
@@ -357,7 +357,7 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 			.exfm table th, .exfm table td { padding: 4px 2px; }
 		.mdcp .um { margin-bottom: 0; padding: 10px 5px; }
 
-/* 发特殊主题帖 by dfox */
+/* 發特殊主題文章 by dfox */
 	.sinf p, .sadd p { padding: 2px 0; height: 30px; line-height: 30px; }
 	.sinf .px, .sadd .px { width: 120px; }
 	.sinf { float: left; padding-right: 14px; width: 380px; border-right: 1px dashed {WRAPBORDERCOLOR}; }
@@ -391,7 +391,7 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 
 
 /** forum::forumdisplay,forum::viewthread,group::forumdisplay,group::viewthread **/
-	/* 开启快速发帖和推荐表情时的样式 by Pony */
+	/* 開啟快速發文和推薦表情時的樣式 by Pony */
 	#f_pst .bm_c { padding: 20px; }
 		#f_pst .tedt { width: auto; }
 		.hasfsl { margin-right: 170px; zoom: 1; }
@@ -403,7 +403,7 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 	/*
 		Name:			mod_mobile-type
 		Level:			Function
-		Explain:		手机发帖的相关样式
+		Explain:		手機發文的相關樣式
 		Author:			Lushnis
 		Last Modify:	Pony 1204111343
 	*/
@@ -416,7 +416,7 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 	/*
 		Name:			threadbeginid
 		Level:			Function
-		Explain:	 	起始动画或图片的位置样式
+		Explain:	 	起始動畫或圖片的位置樣式
 		Author:			Jane
 		Last Modify:	Jane 1210251731
 	*/
@@ -427,9 +427,9 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 
 
 
-/* ------------------------------------------------------------------------ 广场版块、圈子分类等列表样式 */
+/* ------------------------------------------------------------------------ 廣場版區、群組分類等列表樣式 */
 /** forum::index,forum::forumdisplay,group::index,group::group,search::group **/
-/* 版块列表 */
+/* 版區列表 */
 .fl {}
 	.fl_tb { width: 100%; }
 		.fl_tb td { padding: 10px 0; }
@@ -448,7 +448,7 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 	.fl_row td { border-top: 1px dashed {COMMONBORDER}; }
 	.fl_icn img, .fl_icn svg , .fl_icn_g img, .fl_icn_g svg { vertical-align: middle; }
 
-/* 圈子分类列表 */
+/* 群組分類列表 */
 	.flt {}
 		.flt .flc { width: 294px; }
 		.gcop { margin-right: 15px; clear: left; }
@@ -462,42 +462,42 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 /*
 	Name:			mod_board_navigation
 	Level:			Function
-	Explain:		看贴页左侧的版块导航。宽度在CSS里没有默认值，宽度在后台设置
+	Explain:		閱讀文章頁左側的版區導覽。寬度在 CSS 裡沒有預設值，寬度在後台設定
 	Last Modify:	Jane
 */
 .bdl { float: left; overflow: hidden; border: 1px solid #BDD7E3; background-color: #F5F9FB; }
 	.bdl_h { height: 32px; line-height: 22px; }
 .bdl .tbn { margin: 10px; }
-	/* 分区 */
+	/* 分區 */
 	.bdl dl { margin: -1px -10px 0; }
 		.bdl dt { overflow: hidden; height: 27px; line-height: 27px; border: solid #CCE0EB; border-width: 1px 0; background: #F5F9FB; }
 			.bdl dt a { display: block; padding: 0 15px 0 10px; }
 				.bdl dt a:hover, .bdl_a a:hover { text-decoration: none; }
-	/* 版块，默认收起 */
+	/* 版區，預設收起 */
 	.bdl dd { display: none; }
 		.bdl dd a { display: block; margin: 0 3px; padding: 0 7px; height: 26px; line-height: 26px; overflow: hidden; }
-	/* 展开的分区 */
+	/* 展開的分區 */
 	.bdl dl.a { padding-bottom: 4px; background-color: #FFF; }
 		.bdl dl.a dt { margin-bottom: 3px; }
 		.bdl dl.a dd, .bdl_fav dd { display: block; overflow: hidden; zoom: 1; }
-			/* 当前版块 */
+			/* 目前版區 */
 			.bdl dd.bdl_a a { background-color: #F5F9FB; font-weight: 700; color: {HIGHLIGHTLINK}; }
 
 	.previewPost { width: 100%; font-size: 14px; }
-	/* 点击加载下一页按钮样式 */
+	/* 點選讀取下一頁按鈕樣式 */
 	#autopbn { display: block; margin-bottom: 10px; border: 1px solid rgb(194, 213, 227); border-radius: 3px; text-align: center; }
 	#autopbn:hover { background: #fff; text-decoration: none; }
-	/* 上涨和下降图标样式 */
+	/* 上漲和下降圖示樣式 */
 	.ico_increase, .ico_fall { font-family: dzicon; display: inline-block; width: 12px; height: 16px; line-height: 16px; transform: scale(1.5); color: #F6271E; margin: 0 8px; text-align: center; }
 	.ico_increase:before { content: "\f124"; }
 	.ico_fall:before { content: "\f125"; }
-	/* 版块热帖日历样式 */
+	/* 版區熱門日曆樣式 */
 	#ReTie_review h6 { padding: 0 10px; line-height: 27px; }
 	.review_this { padding: 5px 0 10px; }
 	.review_this li { float: left; width: 7.5%; text-align: center; }
 /*
 	Level:			Channel
-	Explain:		板块新帖提醒
+	Explain:		版區新文章提醒
 	Last Modify:	Max.Cong
 */
 	#forumnew{ position: absolute; right: 0; top: 0; z-index: -1; }
@@ -524,7 +524,7 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 /*
 	Name:			mod_forum_jump
 	Level:			Function
-	Explain:		快速跳转菜单
+	Explain:		快速跳轉選單
 	Last Modify:	Pony 11080915
 */
 #fjump_menu { overflow-x: hidden; max-height: 600px; }
@@ -536,9 +536,9 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 
 
 
-/* ------------------------------------------------------------------------ 主题列表样式 */
+/* ------------------------------------------------------------------------ 主題列表樣式 */
 /** forum::forumdisplay,forum::viewthread,forum::modcp,forum::collection,group,home::space,home::task,home::follow,search::forum,search::group,member::groupexpiry,misc::ranklist,misc::stat,misc::tag,forum::guide,portal::block **/
-/* fct --> froumatction 板块功能按钮 */
+/* fct --> froumatction 版區功能按鈕 */
 	.fct a { float: left; margin-left: 8px; }
 	.fa_fav_0:before, .fa_fav:before, .fa_rss:before, .fa_achv:before, .fa_bin:before, .fa_ivt:before { font-family: dzicon; display: inline-block; line-height: 14px; width: 16px; margin-left: 4px; transform: scale(1.5); }
 		.fa_fav_0:hover, .fa_fav:hover, .fa_rss:hover, .fa_achv:hover, .fa_bin:hover, .fa_ivt:hover { text-decoration: none; }
@@ -549,7 +549,7 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 		.fa_bin:before { content: "\f10c"; color: #AAA; }
 		.fa_ivt:before { content: "\f11f"; color: #2B7ACD; }
 
-/* 主题列表相关 */
+/* 主題列表相關 */
 	/*.tl .th th a { float: left; margin-right: 10px; padding-right: 17px; background: url({IMGDIR}/arw_d2.gif) no-repeat 100% 50%; }*/
 	#fh { width: 644px; }
 		.mw #fh { width: 100%; }
@@ -565,14 +565,14 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 	.xst { font-family: {THREADTITLEFONT}; font-size: {THREADTITLEFONTSIZE}; }
 		.xst i { font-style: italic; }
 
-	/* threadtype 帖子类型 */
+	/* threadtype 文章類型 */
 	.ttp { margin-bottom: 5px; padding-top: 10px; border-width: 2px 0 0; background: transparent; }
 		.ttp li { float: left; padding-bottom: 5px; }
 		.ttp a, .ttp strong { float: left; margin-right: 5px; padding: 4px 8px 3px; height: 18px; border: 1px solid {COMMONBORDER}; background: {WRAPBG}; white-space: nowrap; }
 			.ttp a:hover { border-color: {HIGHLIGHTLINK}; color: {HIGHLIGHTLINK}; text-decoration: none; }
 		.ttp .a a { padding-right: 12px;  padding-left: 12px; border-color: {HIGHLIGHTLINK}; background: {SPECIALBG}; color: {HIGHLIGHTLINK}; }
 		.ttp .pipe { float: left; margin-right: 10px; padding: 0; width: 2px; height: 27px; background: {SPECIALBORDER}; text-indent: -9999px; }
-	/* 版块有大量主题分类时的展开收起样式 by Pony */
+	/* 版區有大量主題分類時的展開收起樣式 by Pony */
 	.cttp { overflow: hidden; padding-right: 35px; height: 32px; }
 		.cttp .unfold, .cttp .fold { float: right; display: inline; margin: 5px -35px 9px 0; padding: 0 0 0 10px; width: 25px; height: 18px; background-color: transparent; color: {HIGHLIGHTLINK}; font-weight: 400; }
 
@@ -625,7 +625,7 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 				.tl cite, .tl .num em { display: block; }
 				.tl th em { margin-right: 4px; zoom: 1; }
 					.tl th em, .tl th em a { color: #007CD5; }
-				.tl td em { font-size: 11px; font-family: Arial, Psimsun, sans-serif; -webkit-text-size-adjust: none; }
+				.tl td em { font-size: 11px; font-family: Arial, PMingLiU, sans-serif; -webkit-text-size-adjust: none; }
 					.tl td em, .tl td em a { color: {LIGHTTEXT}; }
 			/*.tl .th th, .tl .th td { padding: 8px 0; background: {SPECIALBG}; border-top: 1px solid {SPECIALBORDER}; }*/
 			.tl .ts th, .tl .ts td { padding: 3px 0; border-bottom-color: {COMMONBORDER}; background: {COMMONBG}; }
@@ -639,10 +639,10 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 
 	.tl_reply:before { display: inline-block; content: ""; width: 6px; height: 6px; background: #BBB; border-radius: 3px; margin: 0 4px 2px 0; }
 
-	/* recy --> recyclebin 主题列表的回收站主题样式 by shuaishuai*/
+	/* recy --> recyclebin 主題列表的回收站主題樣式 by shuaishuai*/
 	.recy { text-decoration: line-through; }
 
-	/* 主题分页 */
+	/* 主題分頁 */
 	.tps { white-space: nowrap; }
 		.tps a { padding: 2px 4px; color: {TABLETEXT}; }
 			.tps a:hover { background-color: {COMMONBG}; color: #007CD5; }
@@ -650,7 +650,7 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 /*
 	Name:			mod_thread_type_index
 	Level:			Function
-	Explain:		分类信息检索
+	Explain:		分類訊息檢索
 	Last Modify:	Pony 12020309
 */
 .tsm { overflow: hidden; margin-bottom: -10px; width: 100%; border-collapse: collapse !important; }
@@ -665,7 +665,7 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 /*
 	Name:			mod_thread_type_search
 	Level:			Function
-	Explain:		分类信息搜索
+	Explain:		分類訊息搜尋
 	Last Modify:	Pony 11050314
 */
 	.mfm .mtm { margin-right: 10px; }
@@ -677,7 +677,7 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 /*
 	Name:			mod_thread_type
 	Level:			Function
-	Explain:		论坛圈子的帖子主题分类分类信息等的筛选样式
+	Explain:		論壇群組的文章主題分類分類訊息等的篩選樣式
 	Author:			lushnis
 	Last Modify:	Pony
 */
@@ -687,7 +687,7 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 
 
 
-/* ----------------------------------------------------------------------- 帖子内容区域样式 */
+/* ----------------------------------------------------------------------- 文章內容區域樣式 */
 /** forum::viewthread,group::viewthread **/
 .plh { line-height: 46px; }
 	.plh .plc { padding-bottom: 0; }
@@ -695,12 +695,12 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 /*
 	Name:			mod_viewthread_header
 	Level:			Function
-	Explain:		看帖页标题区域
+	Explain:		閱讀文章頁標題區域
 	Last Modify:	Pony 201201181105
 */
 	.vwthd { padding-right: 80px !important; }
 		.vwthd div.y { display: inline; margin-right: -60px; }
-		.ts { display: inline; font: 700 16px 'Microsoft Yahei', 'Hei', Tahoma, 'SimHei', sans-serif; }
+		.ts { display: inline; font: 700 16px 'Microsoft JhengHei', 'Hei', Tahoma, 'SimHei', sans-serif; }
 
 #nv_forum #ct { border-color: {SPECIALBORDER}; }
 
@@ -710,7 +710,7 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 .attl_g, .attl_m { margin-left: 10px; padding-left: 16px; background: url({IMGDIR}/attl_icon.png) no-repeat 0 3px; }
 	.attl_m { background-position: -100px 3px; }
 
-/* 默认分类信息 by michael */
+/* 預設分類訊息 by michael */
 	.cgtl { overflow: hidden; }
 	.cgtl td, .cgtl th, .cgtl caption { padding: 5px; border-bottom: 1px solid {SPECIALBORDER}; }
 	.cgtl caption { background: {SPECIALBG}; border-top: 1px solid {SPECIALBORDER}; font-size: 14px; font-weight: 700; }
@@ -719,7 +719,7 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 /*
 	Name:			mod_cp_pls
 	Level:			Function
-	Explain:		帖子页每个楼层用户信息下方的管理链接
+	Explain:		文章頁每個樓層會員資料下方的管理連結
 	Author:			Pony 12010414
 */
 .cp_pls a { float: left; margin-right: 4px; line-height: 1.231; }
@@ -738,7 +738,7 @@ a.thread_mod { height: 19px; line-height: 19px; display: inline-block; color: #4
 /*
 	Name:			mod_cp_pls
 	Level:			Function
-	Explain:		贴子大图样式
+	Explain:		文章大圖樣式
 	Author:	Alice 201303281607
 */
 #imagelist_nav { background: none repeat scroll 0 0 #DDD; margin-top: 20px; height: 150px; width: 780px; }
@@ -766,7 +766,7 @@ a.thread_mod { height: 19px; line-height: 19px; display: inline-block; color: #4
 	.tit_author { display:block; }
 	.tit_author a { color: #369; font-size:14px; font-weight:700; }
 	
-/* 作者指向时全部展开 by Alice */
+/* 作者指向時全部展開 by Alice */
 	.authi .none { display:inline-block; }
 		.authi .none::before { display: inline-block; margin: 0 5px; content: ""; border-left: 0.4em solid; border-top: 0.4em solid transparent; border-right: 0; border-bottom: 0.4em solid transparent; }
 	.authi .show { display:none; }
@@ -776,7 +776,7 @@ a.thread_mod { height: 19px; line-height: 19px; display: inline-block; color: #4
 /** end **/
 
 /** forum::forumdisplay,group::forumdisplay **/
-/* 帖子列表“新窗”、“图片模式”等按钮样式 modified by Pony */
+/* 文章列表「新視窗」、「圖片模式」等按鈕樣式 modified by Pony */
 	#atarget, .unchk, .chked { line-height: 16px; color: {HIGHLIGHTLINK}; cursor: pointer; }
 	#atarget:before, .unchk:before, .chked:before { font-family: dzicon; display: inline-block; width: 14px; height: 14px; line-height: 14px; font-size: 14px; margin-right: 2px; color: {LIGHTTEXT}; }
 		#atarget:before, .unchk:before { content: "\f12e"; }
@@ -784,10 +784,10 @@ a.thread_mod { height: 19px; line-height: 19px; display: inline-block; color: #4
 		.unchk:hover, .chked:hover { text-decoration: none; }
 
 #a_magic_doodle { padding-left: 20px; background: url({STATICURL}image/magic/doodle.small.gif) 0 50% no-repeat; }
-		/* 重定义 tab 标签样式分类数字 by alice 13032514 */
+		/* 重新定義 tab 標籤樣式分類數字 by alice 13032514 */
 		.ttp .num { background:#999; padding:0 5px; margin-left:5px; border-radius:3px; color:#FFF !important; }
 		.ttp .a .num { background:#91BDD3; }
-		/* 重定义 贴子更多分类标签 by alice 13032614 */		
+		/* 重新定義 文章更多分類標籤 by alice 13032614 */
 		.pop_moremenu li { display:block; border-bottom:1px solid #E5EDF2; line-height:24px; }
 		.pop_moremenu a { display:inline; text-decoration:none; border-bottom:0; }
 		.pop_moremenu li:last-child { border-bottom:none; }
@@ -797,7 +797,7 @@ a.thread_mod { height: 19px; line-height: 19px; display: inline-block; color: #4
 	Name:			mod_media_list_thread
 	Level:			Global
 	depentend:		.ml
-	Explain:		图片模式的帖子列表
+	Explain:		圖片模式的文章列表
 	Author:			lushnis
 	Last Modify:	Pony 11121511
 */
@@ -817,7 +817,7 @@ a.thread_mod { height: 19px; line-height: 19px; display: inline-block; color: #4
 /*
 	Name:			mod_threadlist_last-child
 	Level:			Function
-	Explain:		帖子列表页支持 last-child 的浏览器不显示最后一条线
+	Explain:		文章列表頁支援 last-child 的瀏覽器不顯示最後一條線
 	Last Modify:	Pony
 */
 .tl tbody:last-child th, .tl tbody:last-child td { border-bottom: none; }
@@ -825,7 +825,7 @@ a.thread_mod { height: 19px; line-height: 19px; display: inline-block; color: #4
 /*
 	Name:			closeprev
 	Level:			Function
-	Explain:		帖子列表页隐藏置顶帖的按钮样式
+	Explain:		文章列表頁隱藏置頂文章的按鈕樣式
 	Last Modify:	Jane
 */
 .closeprev { width: 12px; height: 12px; background: transparent; line-height: 12px; text-align: center; cursor: pointer; overflow: hidden; margin: 5px 5px 0px 5px; }
@@ -833,7 +833,7 @@ a.thread_mod { height: 19px; line-height: 19px; display: inline-block; color: #4
 .closeprev:before { content: "\d7"; font-weight: 700; color: #CCC; }
 .closeprev:hover:before { color: #FFF;} 
 .pcb .jammer { font-size: 10px; color: {WRAPBG}; }
-/* 屏蔽提示 */
+/* 過濾提示 */
 #hiddenthread { border-top: 1px solid #C2D5E3; border-bottom: 1px solid #C2D5E3; line-height:40px;padding-left:20px;background: #FFFAF3; font-size: 12px; text-align: center; }
 #hiddenthread.last { border-top: none; }
 #hiddenthread a { display: block; text-indent: 25px; height: 29px; line-height: 29px; color: #EFAA00; }
@@ -877,7 +877,7 @@ a.thread_mod { height: 19px; line-height: 19px; display: inline-block; color: #4
 	#pl_top .ad .pls, #pl_top .ad .plc { height: 1px;overflow: hidden; }
 		#pl_top .pls { text-indent: 15px; }
 
-/* 帖子作者、时间、楼层等一些属性所在区块 */
+/* 文章作者、時間、樓層等一些屬性所在區塊 */
 	.pi { overflow: hidden; margin-bottom: 10px; padding: 10px 0; height: 16px; border-bottom: 1px dashed {COMMONBORDER}; }
 		.pi strong a { float: right; margin-top: -6px; padding: 4px 6px; border: 1px solid {WRAPBG}; font-weight: 400; }
 			.pi strong a:hover { border-color: {COMMONBORDER}; }
@@ -891,10 +891,10 @@ a.thread_mod { height: 19px; line-height: 19px; display: inline-block; color: #4
 		.pti {}
 			.authicn { cursor: pointer; color: #FF7E00; }
 			
-/* 贴子掌上论坛弹窗 */
+/* 文章掌上論壇彈窗 */
 	.code_bg {background: url({IMGDIR}/code_bg.png) no-repeat 0 0; display:inline-block; padding:4px; margin:10px 20px; }
 
-/* 帖子正文区块 */
+/* 文章正文區塊 */
 	.pcb { clear: left; margin-right: 130px; }
 		.pcb h1, .pcb h2 { margin: 8px 0; font-size: 1.17em; }
 			.pcb h1 a { font-weight: 400; }
@@ -946,7 +946,7 @@ a.thread_mod { height: 19px; line-height: 19px; display: inline-block; color: #4
 			.replysubtract:before { content: "\f125"; }
 		.modact { display: block; height: 32px; text-align: center; padding:30px 0 0; }
 			.modact, .modact a { line-height: 32px !important; }
-		/* 按钮 by alice */
+		/* 按鈕 by alice */
 		#p_btn { line-height: 24px; padding:3em 0; text-align:center; }
 			#p_btn a { display: inline-block; margin-right: 6px; padding-right: 4px; padding-left: 4px; background: #E6EDF2; vertical-align: top; white-space: nowrap; border-radius: 4px; }
 				#p_btn a:hover { text-decoration: none; }
@@ -979,7 +979,7 @@ a.thread_mod { height: 19px; line-height: 19px; display: inline-block; color: #4
 			.icon_ring { background:#FFF4DD; float: left; width:8px; height:8px; margin-right:5px; margin-top: 3px; border:2px solid #F26C4F; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2); overflow: hidden; }
 			.icon_ring:hover { background:#F26C4F; border:2px solid #FFF; }
 
-/* 回帖推荐 post sticklist by dfox */
+/* 回文推薦 post sticklist by dfox */
 	.psth { margin: 2em 0 2em -20px; padding: 5px 45px 5px 20px; width: 240px; background: #FFF4DD; color: {NOTICETEXT}; font-size: 14px; border-radius: 0 14px 14px 0; }
 	.tpst .psth { margin-left: -15px; }
 	.pstl { clear: left; padding: 0.5em 0;}
@@ -987,7 +987,7 @@ a.thread_mod { height: 19px; line-height: 19px; display: inline-block; color: #4
 			.psta img { width: 24px; height: 24px; vertical-align:midden; }
 		.psti { margin-left: 120px; line-height:24px; }
 
-/* 点评 by monkeye */
+/* 點評 by monkeye */
 	.f_c .cm { overflow: hidden; }
 	.cm .psth { background-color: #FFF4DD; color: {NOTICETEXT}; background-position: 100% 50%; font-size: 12px; }
 		.cm .pg { float: none; }
@@ -1001,7 +1001,7 @@ a.thread_mod { height: 19px; line-height: 19px; display: inline-block; color: #4
 			.cmstar .itms_0 { width: 10px; text-indent: -9999px; }
 			.cmstv_1 .itms_1, .cmstv_2 .itms_1, .cmstv_2 .itms_2, .cmstv_3 .itms_1, .cmstv_3 .itms_2, .cmstv_3 .itms_3, .cmstv_4 .itms_1, .cmstv_4 .itms_2, .cmstv_4 .itms_3, .cmstv_4 .itms_4, .cmstv_5 em { color: #F90; }
 
-/* 屏蔽提示 */
+/* 過濾提示 */
 	#hiddenpoststip { line-height:40px;padding-left:20px;background: #FFFAF3; font-size: 12px; text-align: center; }
 	#hiddenpoststip a { display: block; text-indent: 25px; height: 29px; line-height: 29px; color: #EFAA00; }
 	#hiddenpoststip a:hover { text-decoration: none; }
@@ -1009,7 +1009,7 @@ a.thread_mod { height: 19px; line-height: 19px; display: inline-block; color: #4
 /*
 	Name:			mod_viewthread_author
 	Level:			Function
-	Explain:		第二页以后显示主题作者
+	Explain:		第二頁以後顯示主題作者
 	Author:			lushnis
 	Last Modify:	Pony 11042913
 */
@@ -1022,7 +1022,7 @@ a.thread_mod { height: 19px; line-height: 19px; display: inline-block; color: #4
 
 i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: center; font-style: normal; line-height: 32px; color: {LIGHTTEXT}; }
 
-/* 用户详细信息 */
+/* 會員詳細資料 */
 	.bui { position: absolute; margin: -1px 0 0 -1px; padding: 15px 0 15px 20px; width: 430px !important; border: 1px solid {COMMONBORDER}; background: {WRAPBG}; box-shadow: 2px 2px 3px {WRAPBORDERCOLOR}; -webkit-box-shadow: 2px 2px 3px {WRAPBORDERCOLOR}; -moz-box-shadow: 2px 2px 3px {WRAPBORDERCOLOR}; }
 		.bui dl { margin: 5px 0 10px; }
 			.bui dt { width: 4.5em; }
@@ -1039,7 +1039,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 	/*
 		Name:			mod_user_interaction
 		Level:			Function
-		Explain:		帖子左侧用户互动操作
+		Explain:		文章左側會員互動操作
 		Last Modify:	Pony
 	*/
 	.pls .o li { background-position: 0 50%; background-repeat: no-repeat; }
@@ -1049,13 +1049,13 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.pls .o .poke2:before { content: "\f146"; }
 		.pls .o .pm2:before { content: "\f119"; }
 		.pls .o .addflw:before { content: "\f11e"; }
-	/* 帖子左侧用户组升级提示细微调整 Last Modify Pony */
+	/* 文章左側用戶組升級提示細微調整 Last Modify Pony */
 	.pls .tip_4 { margin-left: -5px; }
 
 	/*
 		Name:			mod_thread_attr
 		Level:			Function
-		Explain:		帖子中类似“游客，如果您要查看本帖隐藏内容请”等地方的样式
+		Explain:		文章中類似「遊客，如果您要檢視本文章隱藏內容請」等地方的樣式
 		Last Modify:	Pony 11060209
 	*/
 	.locked { overflow: hidden; margin: 10px 0; padding: 8px 8px 8px 24px; border: 1px dashed #FF9A9A; background: {WRAPBG} url({IMGDIR}/locked.gif) no-repeat 6px 50%; font-size: 12px; zoom: 1; }
@@ -1077,7 +1077,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 	/*
 		Name:			mod_thread_code_quote
 		Level:			Function
-		Explain:		帖子代码/引用等样式
+		Explain:		文章程式碼/引用等樣式
 		Author:			lushnis
 		Last Modify:	Pony 1205241556
 	*/
@@ -1119,7 +1119,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 	/*
 		Name:			mod_voter_list
 		Level:			Function
-		Explain:		投票者列表样式
+		Explain:		投票者列表樣式
 		Last Modify:	Pony
 	*/
 	.voterlist { width: 495px; height: 195px; overflow: auto; }
@@ -1129,7 +1129,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 	/*
 		Name:			mod_thread_trade_activity
 		Level:			Function
-		Explain:		spvimg,spi 为活动、商品公用部分
+		Explain:		spvimg,spi 為活動、商品共用部分
 		Author:			dfox
 		Last Modify:	Pony 11082511
 	*/
@@ -1153,11 +1153,11 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.actfm { height: auto !important; height: 220px; max-height: 220px; overflow-x: hidden; overflow-y: auto; }
 		.actl_pop { overflow: auto; max-width: 200px; max-height: 300px; }
 			.actl_pop li { display: block; padding: 3px 0; border-bottom: 1px dashed {COMMONBORDER}; }
-			/* 重定义弹窗里的链接 */
+			/* 重新定義彈窗裡的連結 */
 			.actl_pop a { display: inline; position: static; padding: 0; border: none; white-space: normal; }
 				.actl_pop a:hover { background: transparent; text-decoration: underline; }
 
-/* 悬赏 by dfox */
+/* 懸賞 by dfox */
 	.rwd {}
 		.rsld, .rusld { width: 90px; height: 114px; padding-top: 4px; background: #FFF3D9; text-align: center; color: #F30; position: relative; border-radius: 8px; }
 		.rsld { background: #EEE; color: {LIGHTTEXT}; }
@@ -1167,7 +1167,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.rwdn { margin-left: 110px; }
 	.rwdbst {}
 
-/* 辩论观点样式 by michael */
+/* 辯論觀點樣式 by michael */
 	.pdbt { float: right; margin: -5px 10px 0 0; }
 
 	.pdbts { float: left; overflow: hidden; height: 25px; line-height: 25px; background: #FF6F00; border-radius: 5px; }
@@ -1204,7 +1204,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.torder .spi { margin-left: 110px; }
 			.torder .spi strong { color: #F30; }
 
-/* 门户 viewthread 显示 */
+/* 門戶 viewthread 顯示 */
 .vw .pcb { margin-right: 0; }
 	.vw dd .pcb { width: 640px; }
 	.vw dd .rate { padding-left: 0; }
@@ -1236,7 +1236,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 /*
 	Name:			mod_visited_t&b
 	Level:			Function
-	Explain:		返回列表中显示的访问过的帖子和版块
+	Explain:		返回列表中顯示的瀏覽過的文章和版區
 	Last Modify:	Pony
 */
 #visitedforums_menu { width: 150px; }
@@ -1258,7 +1258,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 /*
 	Name:			mod_trade_list
 	Level:			Function
-	Explain:		帖子以及交易单中的商品列表
+	Explain:		文章以及交易單中的商品列表
 	Last Modify:	Pony 11060710
 */
 .tradl {}
@@ -1279,7 +1279,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 
 
 /** forum::viewthread,group::viewthread,home::space **/
-/* 辩论 debatesquare by michael & dfox */
+/* 辯論 debatesquare by michael & dfox */
 	.dtm { padding: 10px 0; text-align: center; font-weight: 700; }
 	.ds { margin-top: 1em; line-height: normal; }
 		.ds th { width: 60px; vertical-align: bottom; }
@@ -1296,7 +1296,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 			.ds .chart{ position: absolute; left: 0; bottom: 0; width: 60px; }
 				.ds .sc_1 .chart{ background: #F04700; }
 				.ds .sc_2 .chart{ background: #0092C5; }
-		/* 空间中的辩论列表 by Pony */
+		/* 空間中的辯論列表 by Pony */
 		#nv_home .ds table { table-layout: fixed; width: 100%; }
 		#nv_home .ds th div, #nv_home .ds .point_chart { height: 120px; line-height: 120px; }
 		#nv_home .ds .ph { font-size: 16px; text-align: center; }
@@ -1312,14 +1312,14 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 			.dr .mls { padding-top: 15px; clear: both; }
 			.dr .mls li { width: 70px; }
 
-/* 标签 .ptg */
+/* 標籤 .ptg */
 	.ptg:before { content: "\f14a"; font-family: dzicon; font-size: 16px; line-height: 14px; color: #7DA0CC; }
 		.ptg a { color: {HIGHLIGHTLINK}; }
 /** end **/
 
 
 /** forum::viewthread,group::viewthread,forum::trade,portal::view **/
-/* 帖子附件 by dfox */
+/* 文章附件 by dfox */
 	.pattl { overflow: hidden; padding: 1em 0; width: 100%; font-size: 12px; }
 	.tatt, .t_attach_img { padding: 5px; color: {LIGHTTEXT}; font-size: 12px; }
 		.tatt { width: 240px; }
@@ -1345,7 +1345,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 	.attp { width: 180px; text-align: left; }
 		.tattl .attp { width: 240px; }
 
-	/* 版主浏览包含收费附件的帖子，且附件插入到帖子内容中去的时候 by Pony */
+	/* 版主瀏覽包含收費附件的文章，且附件插入到文章內容中去的時候 by Pony */
 	.attprice { padding: 5px; border: 1px dashed #FF9A9A; }
 /** end **/
 
@@ -1353,7 +1353,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 	/*
 		Name:			mod_zoominner
 		Level:			Function
-		Explain:		显示原始图片弹出层
+		Explain:		顯示原始圖片彈出層
 		Last Modify:	Pony
 	*/
 	.zoominner { padding: 5px 10px 10px; background: {WRAPBG}; text-align: left; }
@@ -1374,22 +1374,22 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 
 
 /** forum::misc **/
-/* 非弹窗时显示出来的页面的样式重定义 */
+/* 非彈窗時顯示出來的網頁的樣式重新定義 */
 	.mn .flb { padding-left: 0; }
 	.f_c .list { margin-left: 0; }
 /** end **/
 
 
 /** portal::portalcp,portal::view,forum::viewthread,group::viewthread,home::space **/
-/* 自动给关键词增加的链接的样式 by Pony */
+/* 自動給關鍵詞增加的連結的樣式 by Pony */
 	.relatedlink, .relatedlink:hover { text-decoration: none !important; color: {TABLETEXT} !important; border-bottom: 1px solid blue; }
 
-/* 模块标识后面的收藏图片样式 by Pony */
+/* 模組標識後面的收藏圖片樣式 by Pony */
 	.favmark { margin-bottom: -3px; }
 /** end **/
 
 
-/* ----------------------------------------------------------------------- 圈子相关样式 by dfox */
+/* ----------------------------------------------------------------------- 群組相關樣式 by dfox */
 /** group::index **/
 	#g_focus { width: 320px; }
 	#g_commend {}
@@ -1402,7 +1402,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		#g_guide strong { display: block; }
 	.fl .bm_h { border-bottom: none; background-color: transparent; }
 
-/* 圈子列表 by Pony */
+/* 群組列表 by Pony */
 	.fl_icn, .fl_icn_g { width: 48px; }
 	.fl_g dl { margin-left: 48px; padding: 0 5px; }
 /** end **/
@@ -1434,11 +1434,11 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 
 
 /** group::my **/
-/* 设置关注的圈子弹窗 by Pony */
+/* 設定關注的群組彈窗 by Pony */
 	.attgroup { width: 450px; }
 		.attgroup li { float: left; overflow: hidden; margin-right: 5px; width: 145px; white-space: nowrap; }
 
-/* 关注按钮和所有圈子的按钮 by Shuaishuai*/
+/* 關注按鈕和所有群組的按鈕 by Shuaishuai*/
 	.groupbtn { float: left; margin: 0 2px; padding: 0 !important; height: 23px; border: 1px solid #C1CFDA !important; background: #EEF0F3 !important; border-radius: 3px; line-height: 23px; text-align: center; cursor: pointer; }
 	.groupbtn:hover{ text-decoration: none; }
 		.groupbtn span { display: block; padding: 0 7px; }
@@ -1446,7 +1446,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 
 
 
-/* ----------------------------------------------------------------------- 文章、日志等页面样式 */
+/* ----------------------------------------------------------------------- 文章、網誌等網頁樣式 */
 /** portal::list,home::space **/
 .bm_h .addnew { margin-left: 10px; }
 	.bm_h .addnew:before { display: inline-block; content: "+"; font-weight: 700; font-size: 18px; line-height: 14px; color: #309D36; margin-right: 2px; }
@@ -1487,7 +1487,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.albumback #ct { border-color:#CDCDCD; }
 		.albumback a.thread_mod:hover span { color:#539BCB !important; }
 
-/* .atd -> attitude 表态 by Pony */
+/* .atd -> attitude 表態 by Pony */
 	.atd { margin: 15px auto; }
 		.atd img { margin-bottom: 10px; }
 		.atd a { display: block; }
@@ -1507,7 +1507,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 .pgm { clear: both; padding: 5px 0; }
 	.pgm .pg { float: left; }
 
-/* 管理相关文章 */
+/* 管理相關文章 */
 .bart { position: relative; padding: 10px; width: 640px; }
 	.bartl { overflow-y: scroll; padding: 10px; width: 270px; height: 270px; border: 1px solid {COMMONBORDER}; }
 		.bartl li { overflow: hidden; width: 250px; height: 20px; }
@@ -1517,23 +1517,23 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 	.bart .chkall { padding-left: 10px; }
 	#chkalldiv p { width: 292px; }
 
-/* 管理模块 */
+/* 管理模組 */
 	.ptblk li { padding: 7px 0; border-bottom: 1px solid {COMMONBORDER}; }
 	.ptblk em { margin-right: 30px; }
 
-/* 文章标题颜色、加粗、斜体、下划线等样式 by Pony */
+/* 文章標題顏色、加粗、斜體、底線等樣式 by Pony */
 .colorwd { margin-right: 3px; }
 .dopt input { float: left; }
 
-/* 上一篇/下一篇文章 样式*/
+/* 上一篇/下一篇文章 樣式*/
 #nv_portal .vw .pren em { display: block; width: 100%; height: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 /** end **/
 
 
 
-/* ----------------------------------------------------------------------- 空间相关样式 */
+/* ----------------------------------------------------------------------- 空間相關樣式 */
 /** home::space,misc::ranklist **/
-/* .mi --> my_infomation 空间首页个人信息部分 */
+/* .mi --> my_infomation 空間首頁個人資訊部分 */
 	.mi {}
 		.mi th, .mi td { vertical-align: top; }
 		.mi th { width: 145px; }
@@ -1559,7 +1559,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 /*
 	Name:			mod_share_form
 	Level:			Function
-	Explain:		发布分享的表单
+	Explain:		發佈分享的表單
 	Last Modify:	Pony
 */
 	.sfm { margin: 0 0 20px 10px; }
@@ -1567,10 +1567,10 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.sfm .px { width: 432px; }
 		.sfm .pt { width: 432px; height: 67px; }
 
-/* 分享视频有截图时 by Pony */
+/* 分享視訊有截圖時 by Pony */
 .vdtn { width: 126px; height: 95px; border: 1px solid {COMMONBORDER}; cursor: pointer; }
 
-/* .pic -> picture 查看图片 by Pony */
+/* .pic -> picture 檢視圖片 by Pony */
 	.osld { padding-left: 18px; background: url({IMGDIR}/slide.png) no-repeat 0 50%; }
 	.pic {}
 		.pic .c { margin-top: 20px; text-align: center; }
@@ -1578,7 +1578,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.pic p { margin: 5px 0; }
 	.albim_pic_title { padding: 5px; border-top: 1px dashed {COMMONBORDER}; background: {COMMONBG}; }
 
-/* 侧边图片导航 Media list navigation */
+/* 側邊圖片導覽 Media list navigation */
 	.mlnv { text-align: center; }
 		.mlnv img { margin: 0 5px; padding: 2px; max-width: 100px; max-height: 100px; border: 1px solid {WRAPBORDERCOLOR}; background: {WRAPBG};}
 			.mlnv img.a { border-color: {NOTICETEXT}; background: #FFEAA8; }
@@ -1594,7 +1594,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 	.favl .o { background: url({IMGDIR}/op.png) no-repeat -4px -2px; }
 		.favl .o:hover { background-position: -4px -22px; }
 
-/* .cmt -> comment feed中的评论区域 by Pony */
+/* .cmt -> comment feed 中的評論區域 by Pony */
 	.cmt { margin: 10px 24px 0 0; padding: 10px; border: 1px solid #EAEAEA; background: {COMMONBG}; zoom: 1; }
 		.cmt form { margin-top: 10px; }
 			.cmt input, .cmt button { vertical-align: middle; }
@@ -1606,10 +1606,10 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.cmt .pg a, .cmt .pg strong { background-color: transparent; }
 		.cmt .pg a { border-color: {COMMONBG}; }
 			.cmt .pg a:hover { border-color: {WRAPBORDERCOLOR}; }
-		/* feed 区域里的评论 */
+		/* feed 區域裡的評論 */
 		.el .cmt li { padding-right: 0; border-bottom: none; }
 		.el .tri { display: none; }
-		/* feed 区域中评论的验证码 */
+		/* feed 區域中評論的驗證碼 */
 		.el .cmt .sec .px { width: 80px !important; }
 
 /* .pll -> poll_list 投票列表 */
@@ -1627,7 +1627,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 				.pll .s a.joins span { display: block; font-size: 16px; font-weight: 700; }
 			.pll .s a.go { padding: 0 0 0 17px; width: 43px; height: 24px; line-height: 24px; display:block; }
 
-/* .acl -> activity_list 活动列表 by Pony */
+/* .acl -> activity_list 活動列表 by Pony */
 	.acl { width: 100%; table-layout: fixed; }
 		.acl h3 { padding: 10px 0; font-size: 14px; }
 			.acl h3 span { float: left; margin: 1px 10px 0 0; width: 34px; text-align: center; }
@@ -1640,10 +1640,10 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.acl .orgr { width: 74px; }
 		.acl .ml li { margin-top: 6px; padding-bottom: 0; }
 
-/* .tlog -> trade_log 交易记录 by Pony */
+/* .tlog -> trade_log 交易記錄 by Pony */
 	.tlog th, .tlog td { padding: 10px 4px !important; }
 
-/* .rwdl -> reward_list 悬赏列表 by Pony */
+/* .rwdl -> reward_list 懸賞列表 by Pony */
 	.rwdl {}
 		.rwdl li { overflow: hidden; float: left; padding: 15px 10px 15px 100px; width: 290px; height: 92px; }
 		.rwdl .uslvd { position: absolute; margin-left: -100px; width: 90px; height: 92px; background: #FFF3D9; border-radius: 8px; }
@@ -1656,11 +1656,11 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.rwdl h4 { overflow: hidden; height: 36px; font-weight: 400; }
 		.rwdl p { white-space: nowrap; }
 
-/* .facel -> face_list 空间部分的表情 by Pony */
+/* .facel -> face_list 空間部分的表情 by Pony */
 	.facel { padding: 8px; width: 240px; }
 		.facel img { margin: 5px; }
 
-/* 提醒的内容中会用到。这里使用独立class，以便个性化。若想使提醒内容更醒目，可对summary下的span进行定义 */
+/* 提醒的內容中會用到。這裡使用獨立 class，以便個人化。若想使提醒內容更醒目，可對 summary 下的 span 進行定義 */
 	.summary { margin: 10px 0; }
 /** end **/
 
@@ -1669,7 +1669,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 /*
 	Name:			mod_pprl
 	Level:			Function
-	Explain:		空间、广播等个人资料页面
+	Explain:		空間、廣播等個人資料網頁
 	Last Modify:	Pony 1109271712
 */
 	#pprl a { color: {HIGHLIGHTLINK}; }
@@ -1681,13 +1681,13 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 
 
 /** home::space,home::spacecp,home::medal,misc::ranklist **/
-	/* 空间图片列表 */
+	/* 空間圖片列表 */
 	.mla li, .mlp li { width: 150px; }
 /** end **/
 
 
 /** home::space **/
-/* 快速好友查找链接按钮样式 by ShuaiShuai */
+/* 快速好友尋找連結按鈕樣式 by ShuaiShuai */
 	.sc_display{ display:inline-block; width:36px; text-align:right;}
 
 	#mood_mystatus { width: 410px; word-break: break-all; overflow: hidden; }
@@ -1700,7 +1700,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 /*
 	Name:			mod_pm_list
 	Level:			Channel
-	Explain:		短消息列表
+	Explain:		短訊列表
 	Last Modify:	Pony
 */
 	.pml {}
@@ -1721,7 +1721,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 /*
 	Name:			mod_pm_group
 	Level:			Function
-	Explain:		短消息群聊
+	Explain:		短訊群聊
 	Last Modify:	Pony
 */
 	.pm_g { padding: 10px 15px; border: 1px solid #C2D5E3; background: #F2F7FA; }
@@ -1748,12 +1748,12 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 
 
 /** home::spacecp **/
-/* 空间图片列表 */
+/* 空間圖片列表 */
 	.mls li { width: 90px; }
 /*
 	Name:			mod_my_credits_list
 	Level:			Function
-	Explain:		上传图片
+	Explain:		上傳圖片
 	Last Modify:	Pony 11082413
 */
 	.up_row { width: 100%; table-layout: fixed; }
@@ -1770,7 +1770,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 /*
 	Name:			mod_my_credits_list
 	Level:			Function
-	Explain:		我的积分列表
+	Explain:		我的積分列表
 	Last Modify:	Pony 11061714
 */
 	.creditl {}
@@ -1779,11 +1779,11 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 			.creditl li em { font-weight: 700; }
 		.creditl u { text-decoration: none; }
 
-/* 订单状态 */
+/* 訂單狀態 */
 	.order-status-0 { color: #444; }
 	.order-status-1 { color: green; }
 	.order-status-2 { color: #ddd; }
-/* 电脑端支付图标样式 */
+/* 電腦端付款圖示樣式 */
 	.channel-select { padding-bottom: 10px; }
 	.channel-select input { margin: 5px 8px 0 0; }
 	.channel-select img { vertical-align: top; }
@@ -1792,10 +1792,10 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 
 
 /** home::spacecp,home::magic **/
-/* 查找好友 .scf --> Search friend */
+/* 尋找好友 .scf --> Search friend */
 	.scf h2 { line-height: 2.2; font-weight: 700; font-size: 14px; }
 	.scf h2:before { content: "\f101"; font-family: dzicon; line-height: 20px; font-size: 18px; margin-right: 2px; }
-/* 用来展示复杂统计数据的表格，目前仅用户组页面用到 */
+/* 用來展示複雜統計資料的表格，目前僅用戶組網頁用到 */
 	.tdats { overflow: hidden; zoom: 1; margin: 10px 0; }
 		.tdats i { font-size: 14px; }
 		.tdats i:before { height: 18px; line-height: 18px; margin-right: 2px; }
@@ -1833,7 +1833,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 /*
 	Name:			mod_ct_vw
 	Level:			Function
-	Explain:		日志、好友列表页用到的两栏框架
+	Explain:		網誌、好友列表頁用到的兩欄框架
 	Last Modify:	Pony
 */
 	.ct_vw {}
@@ -1858,7 +1858,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 /*
 	Name:			mod_buddy_group
 	Level:			Function
-	Explain:		好友分组
+	Explain:		好友分組
 	Last Modify:	Pony
 */
 	.buddy_group { margin-top: -5px; }
@@ -1873,7 +1873,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 .ntc_body .summary { margin-left: 2em; padding-left: 10px; border-left: 1px solid {COMMONBORDER}; }
 	.ntc_body .summary span { color: {LIGHTTEXT}; }
 
-/* .pmform -> 短消息表单非弹窗 by Pony */
+/* .pmform -> 短訊表單非彈窗 by Pony */
 	.pmform {}
 		.pmform .px { width: 408px; }
 		.pmform .tedt { width: 416px; }
@@ -1881,7 +1881,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 /*
 	Name:			mod_user_selector
 	Level:			Function
-	Explain:		用户名提示选择效果
+	Explain:		會員名稱提示選擇效果
 	Last Modify:	Pony 11061311
 */
 	.un_selector { height: auto; cursor: text; overflow: hidden; }
@@ -1893,7 +1893,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 				.un_selector .x:before { content: "\d7"; display: inline-block; width: 15px; }
 				.un_selector .x:hover { background: {HIGHLIGHTLINK}; color: #F7F6ED; }
 		a.appendmb, a.appendmb span { height: 25px; line-height: 25px !important; }
-	/* 发短消息时根据输入显示出的用户名列表样式 */
+	/* 發短訊時根據輸入顯示出的會員名稱列表樣式 */
 	.pmfrndl { position: absolute; margin-top: 3px; padding: 4px; width: 120px; border: solid {DROPMENUBORDER}; border-width: 0 1px 1px; background: #FFF; }
 		.pmfrndl li { display: inline; }
 			.pmfrndl a { display: block; padding: 4px 2px; color: {HIGHLIGHTLINK}; }
@@ -1920,7 +1920,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 		.mgcl .mg_img { margin: 0 auto 5px; }
 			.pg_medal .mgcl img { margin-top: 20px; width: auto; height: auto; }
 
-/* 勋章记录重定义 by Pony */
+/* 勳章記錄重新定義 by Pony */
 	.el li { padding-left: 40px; }
 	.el .t { margin: -2px 0 0 -30px; }
 		.el .t img { width: 24px; height: 24px; }
@@ -1928,11 +1928,11 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 
 
 
-/* ------------------------------------------------------------------------ 门户相关样式 */
+/* ------------------------------------------------------------------------ 門戶相關樣式 */
 
 
 
-/* ------------------------------------------------------------------------ 搜索相关样式 */
+/* ------------------------------------------------------------------------ 搜尋相關樣式 */
 /** search **/
 a { color: #369; }
 body { background: none !important; }
@@ -1967,23 +1967,23 @@ body { background: none !important; }
 
 
 
-/* ------------------------------------------------------------------------ 排行榜相关样式 */
+/* ------------------------------------------------------------------------ 排行榜相關樣式 */
 /** misc::ranklist **/
 .rankicn { width: 20px; }
 .ranks { display: block; width: 16px; height: 16px; line-height: 16px; text-align: center; color: #FFF; background: #A0C8EA; border-radius: 8px; }
 .ranks_1 { background: #ED741C; } .ranks_2 { background: #F3AC27; } .ranks_3 { background: #F8CB5E; }
 
-/* .rnk1 每行一个区块 */
+/* .rnk1 每行一個區塊 */
 .rnk1 {}
 	.rnk1 .mlp .d { width: 120px; height: 120px; }
 	.rnk1 .mlp img { max-width: 100px; max-height: 75px; }
 	.rnk1 .mlp .bigpic { width: 295px; height: 240px; }
 		.rnk1 .bigpic img { max-width: 286px; max-height: 200px; }
 
-/* 图片排名上的序号 */
+/* 圖片排名上的序號 */
 .picrank { position: absolute; margin: -10px 0 0 -10px !important; }
 
-/* 竞价排名 by Pony */
+/* 競價排名 by Pony */
 .bid { margin: 2px -4px -2px 2px; zoom: 1; }
 .biduser { width: 988px; background: url({IMGDIR}/avatar_blank.gif); }
 	.biduser li { float: left; margin: 0 4px 4px 0; }
@@ -1993,7 +1993,7 @@ body { background: none !important; }
 		.bidtop img { width: auto; height: 100px; }
 
 
-/* 重定义 */
+/* 重新定義 */
 .xl2 { background: url({IMGDIR}/vline.png) repeat-y 50% 0; }
 	.xl2 li { margin-right: 20px; width: 482px; }
 		.xl2 li.xl2_r { margin-right: 0; }
@@ -2009,7 +2009,7 @@ body { background: none !important; }
 
 
 
-/* ------------------------------------------------------------------------ 统计相关样式 */
+/* ------------------------------------------------------------------------ 統計相關樣式 */
 /** misc::stat **/
 .dt a { color: {HIGHLIGHTLINK}; }
 .dt th, .dt td { border-right: 1px solid {COMMONBORDER}; }
@@ -2017,7 +2017,7 @@ body { background: none !important; }
 .dt .stat_num { padding-right: 15px; text-align: right; }
 .pbg { float: left; width: 372px; }
 .bm_h { padding-left: 0; background: none; border: none; }
-/* 重定义 tab 标签样式 by Pony 11081614 */
+/* 重新定義 tab 標籤樣式 by Pony 11081614 */
 .ttp .a a { padding-left: 8px; padding-right: 8px; }
 .ttp li.xw1 { font-weight: 400; }
 /** end **/
@@ -2049,7 +2049,7 @@ body { background: none !important; }
 	Name:			mod_collection_tag
 	Level:			Function
 	Sample:			<span class="ctag ctag0">tag</span>
-	Explain:		淘帖标签样式，从 0 到 2，颜色越来越不醒目
+	Explain:		淘帖標籤樣式，從 0 到 2，顏色越來越不醒目
 	Last Modify:	Pony 2012022311
 */
 .ctag { padding: 1px 3px; font-weight: 400; border-radius: 3px; }
@@ -2062,10 +2062,10 @@ body { background: none !important; }
 
 
 /** home::follow **/
-/* 广播头像通用样式 */
+/* 廣播頭像通用樣式 */
 .flw_avt { width: 80px; }
 	.flw_avt img { float: left; margin-left: 15px; width: 48px; }
-/* 广播区域样式 */
+/* 廣播區域樣式 */
 .flw_article { margin: 0 0 10px 70px; padding: 5px 10px 15px; border-bottom: 1px solid #DBDBDB; }
 	.flw_thread .flw_article { margin-left: 0; }
 	.flw_article h2 { font-size: 16px; }
@@ -2103,13 +2103,13 @@ body { background: none !important; }
 	.flw_more a { display: block; padding: 10px; box-shadow: 0 1px 0 rgba(0,0,0,0.05); border: 1px solid #DBDBDB; border-radius: 4px; background: #F4F7F9; text-align: center; }
 		.flw_more a:hover { border-color: #9EB4C2; text-decoration: none; }
 
-/* 收听按钮通用样式 */
+/* 收聽按鈕通用樣式 */
 .flw_btn_fo, .flw_btn_unfo { float: right; width: 68px; height: 19px; line-height: 19px; background: #f4f1c4; text-align: center; overflow: hidden; color: #B3AC5C; border: 1px solid; }
 	.flw_btn_unfo { background: #EEE; }
 	.flw_btn_fo:before { font-family: dzicon; font-size: 16px; margin-right: 4px; content: "\f108"; }
 	.flw_uheader .flw_btn_fo, .flw_uheader .flw_btn_unfo, .flw_hd .flw_btn_fo, .flw_hd .flw_btn_unfo { float: left; }
 
-/* 发广播 */
+/* 發廣播 */
 #fastpostform { width:82%; }
 #flw_header { padding: 10px; }
 #flw_post_subject { width: 628px; height: 30px; line-height: 30px; border: 1px solid #9EB4C2; border-radius: 4px; background: #FFF; }
@@ -2130,21 +2130,21 @@ body { background: none !important; }
 
 .sd { border-radius: 5px; background: #F4F7F9; }
 
-/* 侧边和主区域头像及统计信息 */
+/* 側邊和主區域頭像及統計資訊 */
 #flw_avt { padding: 20px; }
 	#flw_avt img { margin: 0 auto 10px; border: 6px solid #FFF; }
 		.sd #flw_avt img { display: block; }
 
 	.flw_user_info { margin: 10px 0; padding: 10px; box-shadow: 0 1px 0 #FFF, 0 -1px 0 #D7DBDF; border-radius: 5px; background: #E9EEF2; }
 		.flw_linktohome { padding: 2px 0 2px 20px; background: url({IMGDIR}/homelink.gif) no-repeat 0 2px; }
-	/* 主区域头像 */
+	/* 主區域頭像 */
 	.flw_uheader { padding-right: 0; padding-left: 0; }
 
 		.flw_stat_mn { margin-left: 20px; width: 490px; }
 .pg_follow .sd .bm { border-width: 1px 0 0; border-color: #E8EAEB; background: transparent; }
 	.pg_follow .sd .bm_h { padding-left: 20px; border-width: 1px 0 0; border-color: #FFF; background: transparent; }
 
-/* 用户单页顶部 */
+/* 會員單頁頂端 */
 #flw_header.flw_uheader { padding-top: 20px; border-bottom: 1px solid rgba(0,0,0,0.15); background: #F4F7F9 none !important; }
 	.flw_uheader .tb { margin-bottom: -1px; }
 	.flw_uheader h1 { font-size: 16px; }
@@ -2161,7 +2161,7 @@ body { background: none !important; }
 	#specialflag_2_menu { width: 80px; }
 	.flw_uheader .flw_linktohome { padding: 0 0 0 20px; background-position: 0 3px; }
 
-/* 回复区域 */
+/* 回覆區域 */
 .flw_replybox { margin: -11px 0 20px 70px; padding: 15px 20px; box-shadow: 0 1px 0 rgba(0,0,0,0.05); border: 1px solid #DBDBDB; background: #E9EEF1; }
 	.flw_replybox li { padding: 10px 80px 10px 0; border-top: 1px solid #DBE2E6; }
 		.flw_replybox li .d { margin-right: 10px; }
@@ -2172,25 +2172,25 @@ body { background: none !important; }
 	.flw_replybox .pnc { width: 77px; height: 33px; border: none; background: transparent url({IMGDIR}/pn_reply.png) no-repeat 0 0; }
 		.flw_replybox .pnc span { line-height: 99px; }
 		.flw_replybox td table .pnc { background-image: url({IMGDIR}/pn_rt.png); }
-	/* 回复并转播选项 */
+	/* 回覆並轉播選項 */
 	.flw_rert { display: inline-block; padding-right: 5px; width: 95px; text-align: right; }
 	.flw_replybox .cnr { position: relative; float: right; overflow: hidden; display: inline; margin: -22px 16px 0 0; width: 11px; height: 7px; background: transparent url({IMGDIR}/flw_cnr_t.png) no-repeat 0 0; }
 
-/* 侧边切换 */
+/* 側邊切換 */
 #flw_side_tab { margin: 10px 0; }
 	#flw_side_tab li { line-height: 32px; }
 	#flw_side_tab a { display: block; height: 32px; padding-left: 20px; background: url({IMGDIR}/flw_side_tab.png) repeat-x 0 0; }
 		#flw_side_tab li.a a { background-position: 0 -32px; }
 		#flw_side_tab a img { float: left; margin: 8px 10px 0 0; }
 
-/* 侧边用户列表 */
+/* 側邊會員列表 */
 .flw_side_promote {  }
 	.flw_side_promote .xlda dl { margin-bottom: 8px; }
 	.flw_side_promote .xlda .m { margin: 0 0 8px -55px; }
 	.flw_side_promote .xlda dt { padding-top: 0; }
 	.flw_side_promote .flw_btn_fo { float: left; }
 
-/* 类似听众页面的用户列表 */
+/* 類似聽眾網頁的會員列表 */
 .flw_ulist {}
 	.flw_ulist li { padding: 10px 0 10px 100px; border-bottom: 1px solid #DBDBDB; }
 	.flw_ulist .flw_avt { float: left; margin: 0 0 0 -80px; }
@@ -2205,7 +2205,7 @@ body { background: none !important; }
 /*
 	Name:			mod_follow_flashupload
 	Level:			Global
-	Explain:		重定义 follow 页面的 Flash 上传时的处理界面，结构参见 /static/js/fileprogress.js
+	Explain:		重新定義 follow 網頁的 Flash 上傳時的處理介面，結構參見 /static/js/fileprogress.js
 	Last Modify:	Pony 2012022813
 */
 .progressWrapper { overflow: hidden; float: left; width: auto; }
