@@ -253,7 +253,7 @@ function getcookie(name, nounescape) {
 
 function Ajax(recvType, waitId) {
 	var aj = new Object();
-	aj.loading = '请稍候...';
+	aj.loading = '請稍候...';
 	aj.recvType = recvType ? recvType : 'XML';
 	aj.waitId = waitId ? $(waitId) : null;
 	aj.resultHandle = null;
@@ -582,7 +582,7 @@ function showPreview(val, id) {
 
 function showloading(display, waiting) {
 	var display = display ? display : 'block';
-	var waiting = waiting ? waiting : '请稍候...';
+	var waiting = waiting ? waiting : '請稍候...';
 	$('ajaxwaitid').innerHTML = waiting;
 	$('ajaxwaitid').style.display = display;
 }
@@ -1133,7 +1133,7 @@ function showDialog(msg, mode, t, func, cover, funccancel, leftmsg, confirmtxt, 
 	var menuid = 'fwin_dialog';
 	var menuObj = $(menuid);
 	var showconfirm = 1;
-	confirmtxtdefault = '确定';
+	confirmtxtdefault = '確定';
 	closetime = isUndefined(closetime) ? '' : closetime;
 	closefunc = function () {
 		if(typeof func == 'function') func();
@@ -1146,7 +1146,7 @@ function showDialog(msg, mode, t, func, cover, funccancel, leftmsg, confirmtxt, 
 	}
 	locationtime = isUndefined(locationtime) ? '' : locationtime;
 	if(locationtime) {
-		leftmsg = locationtime + ' 秒后页面跳转';
+		leftmsg = locationtime + ' 秒後網頁跳轉';
 		showDialogST = setTimeout(closefunc, locationtime * 1000);
 		showconfirm = 0;
 	}
@@ -1164,8 +1164,8 @@ function showDialog(msg, mode, t, func, cover, funccancel, leftmsg, confirmtxt, 
 		hidedom = '<style type="text/css">object{visibility:hidden;}</style>';
 	}
 	var s = hidedom + '<table cellpadding="0" cellspacing="0" class="fwin"><tr><td class="t_l"></td><td class="t_c"></td><td class="t_r"></td></tr><tr><td class="m_l">&nbsp;&nbsp;</td><td class="m_c"><h3 class="flb"><em>';
-	s += t ? t : '提示信息';
-	s += '</em><span><a href="javascript:;" id="fwin_dialog_close" class="flbc" onclick="hideMenu(\'' + menuid + '\', \'dialog\')" title="关闭">关闭</a></span></h3>';
+	s += t ? t : '提示訊息';
+	s += '</em><span><a href="javascript:;" id="fwin_dialog_close" class="flbc" onclick="hideMenu(\'' + menuid + '\', \'dialog\')" title="關閉">關閉</a></span></h3>';
 	if(mode == 'info') {
 		s += msg ? msg : '';
 	} else {
@@ -1225,7 +1225,7 @@ function showWindow(k, url, mode, cache, menuv) {
 			ajaxpost(url, 'fwin_content_' + k, '', '', '', function() {initMenu();show();});
 		}
 		if(parseInt(BROWSER.ie) != 6) {
-			loadingst = setTimeout(function() {showDialog('', 'info', '<div class="loadicon"></div> 请稍候...')}, 500);
+			loadingst = setTimeout(function() {showDialog('', 'info', '<div class="loadicon"></div> 請稍候...')}, 500);
 		}
 	};
 	var initMenu = function() {
@@ -1283,7 +1283,7 @@ function showError(msg) {
 	var p = /<script[^\>]*?>([^\x00]*?)<\/script>/ig;
 	msg = msg.replace(p, '');
 	if(msg !== '') {
-		showDialog(msg, 'alert', '错误信息', null, true, null, '', '', '', 3);
+		showDialog(msg, 'alert', '錯誤訊息', null, true, null, '', '', '', 3);
 	}
 }
 
@@ -1668,10 +1668,10 @@ function setCopy(text, msg) {
 				showPrompt(null, null, '<span>' + msg + '</span>', 1500);
 			}
 		} else {
-			showDialog('<div class="c"><div style="width: 200px; text-align: center;">复制失败，请选择“允许访问”</div></div>', 'alert');
+			showDialog('<div class="c"><div style="width: 200px; text-align: center;">複製失敗，請選擇「允許瀏覽」</div></div>', 'alert');
 		}
 	} else {
-		var msg = '<div class="c"><div style="width: 200px; text-align: center; text-decoration:underline;">点此复制到剪贴板</div>' +
+		var msg = '<div class="c"><div style="width: 200px; text-align: center; text-decoration:underline;">點選此處複製到剪貼簿</div>' +
 		AC_FL_RunContent('id', 'clipboardswf', 'name', 'clipboardswf', 'devicefont', 'false', 'width', '200', 'height', '40', 'src', STATICURL + 'image/common/clipboard.swf', 'menu', 'false',  'allowScriptAccess', 'sameDomain', 'swLiveConnect', 'true', 'wmode', 'transparent', 'style' , 'margin-top:-20px') + '</div>';
 		showDialog(msg, 'info');
 		CLIPBOARDSWFDATA = text;
@@ -1704,20 +1704,20 @@ function initSearchmenu(searchform, cloudSearchUrl) {
 	var tclass = searchtxt.className;
 	searchtxt.className = tclass + ' xg1';
 	if (!!("placeholder" in document.createElement("input"))) {
-		if(searchtxt.value == '请输入搜索内容') {
+		if(searchtxt.value == '請輸入搜尋內容') {
 			searchtxt.value = '';
 		}
-		searchtxt.placeholder = '请输入搜索内容';
+		searchtxt.placeholder = '請輸入搜尋內容';
 	} else {
 		searchtxt.onfocus = function () {
-			if(searchtxt.value == '请输入搜索内容') {
+			if(searchtxt.value == '請輸入搜尋內容') {
 				searchtxt.value = '';
 				searchtxt.className = tclass;
 			}
 		};
 		searchtxt.onblur = function () {
 			if(searchtxt.value == '' ) {
-				searchtxt.value = '请输入搜索内容';
+				searchtxt.value = '請輸入搜尋內容';
 				searchtxt.className = tclass + ' xg1';
 			}
 		};
@@ -1759,7 +1759,7 @@ function initSearchmenu(searchform, cloudSearchUrl) {
 }
 
 function searchFocus(obj) {
-	if(obj.value == '请输入搜索内容') {
+	if(obj.value == '請輸入搜尋內容') {
 		obj.value = '';
 	}
 	if($('cloudsearchquery') != null) {
@@ -1952,7 +1952,7 @@ function addFavorite(url, title) {
 		try {
 			window.sidebar.addPanel(title, url, '');
         	} catch (e) {
-			showDialog("请按 Ctrl+D 键添加到收藏夹", 'notice');
+			showDialog("請按 Ctrl+D 鍵新增到我的最愛", 'notice');
 		}
 	}
 }
@@ -1962,7 +1962,7 @@ function setHomepage(sURL) {
 		document.body.style.behavior = 'url(#default#homepage)';
 		document.body.setHomePage(sURL);
 	} else {
-		showDialog("非 IE 浏览器请手动将本站设为首页", 'notice');
+		showDialog("非 IE 瀏覽器請手動將本站設為首頁", 'notice');
 		doane();
 	}
 }
@@ -2018,10 +2018,10 @@ function toggleBlind(dom) {
 	if(dom) {
 		if(loadUserdata('is_blindman')) {
 			saveUserdata('is_blindman', '');
-			dom.title = '开启辅助访问';
+			dom.title = '開啟輔助瀏覽';
 		} else {
 			saveUserdata('is_blindman', '1');
-			dom.title = '关闭辅助访问';
+			dom.title = '關閉輔助瀏覽';
 		}
 	}
 }
@@ -2030,9 +2030,9 @@ function checkBlind() {
 	var dom = $('switchblind');
 	if(dom) {
 		if(loadUserdata('is_blindman')) {
-			dom.title = '关闭辅助访问';
+			dom.title = '關閉輔助瀏覽';
 		} else {
-			dom.title = '开启辅助访问';
+			dom.title = '開啟輔助瀏覽';
 		}
 	}
 }

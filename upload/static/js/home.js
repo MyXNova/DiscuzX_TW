@@ -51,7 +51,7 @@ function blogAddOption(sid, aid) {
 		obj.value="new:" + newOption;
 		return true;
 	} else {
-		alert('分类名不能为空！');
+		alert('分類名稱不能為空！');
 		return false;
 	}
 }
@@ -93,7 +93,7 @@ function resizeImg(id,size) {
 					zoomDiv.style.position = 'relative';
 					zoomDiv.style.cursor = 'pointer';
 
-					this.title = '点击图片，在新窗口显示原始尺寸';
+					this.title = '點選圖片，在新視窗顯示原始大小';
 
 					var zoom = document.createElement('img');
 					zoom.src = 'image/zoom.gif';
@@ -131,14 +131,14 @@ function ischeck(id, prefix) {
 	for(var i = 0; i < form.elements.length; i++) {
 		var e = form.elements[i];
 		if(e.name.match(prefix) && e.checked) {
-			if(confirm("您确定要执行本操作吗？")) {
+			if(confirm("您確定要執行本操作嗎？")) {
 				return true;
 			} else {
 				return false;
 			}
 		}
 	}
-	alert('请选择要操作的对象');
+	alert('請選擇要操作的對象');
 	return false;
 }
 
@@ -183,7 +183,7 @@ function insertWebImg(obj) {
 		insertImage(obj.value);
 		obj.value = 'http://';
 	} else {
-		alert('图片地址不正确');
+		alert('圖片網址不正確！');
 	}
 }
 
@@ -220,7 +220,7 @@ function checkImage(url) {
 }
 
 function showFlash(host, flashvar, obj, shareid) {
-	// 引用前期引入的 detectPlayer 对资源播放状态进行判断
+	// 引用前期引入的 detectPlayer 對資源播放狀態進行判斷
 	var re = new RegExp('.[A-Za-z0-9]+$', 'ig');
 	var ext = flashvar.match(re).pop().substr(1);
 	if (obj) {
@@ -623,7 +623,7 @@ function poke_send(id, result) {
 }
 function myfriend_post(uid) {
 	if($('friend_'+uid)) {
-		$('friend_'+uid).innerHTML = '<p>你们现在是好友了，接下来，您还可以：<a href="home.php?mod=space&do=wall&uid='+uid+'" class="xi2" target="_blank">给TA留言</a> ，或者 <a href="home.php?mod=spacecp&ac=poke&op=send&uid='+uid+'&handlekey=propokehk_'+uid+'" id="a_poke_'+uid+'" class="xi2" onclick="showWindow(this.id, this.href, \'get\', 0, {\'ctrlid\':this.id,\'pos\':\'13\'});">打个招呼</a></p>';
+		$('friend_'+uid).innerHTML = '<p>你們現在是好友了，接下來，您還可以：<a href="home.php?mod=space&do=wall&uid='+uid+'" class="xi2" target="_blank">給 TA 留言</a> ，或者 <a href="home.php?mod=spacecp&ac=poke&op=send&uid='+uid+'&handlekey=propokehk_'+uid+'" id="a_poke_'+uid+'" class="xi2" onclick="showWindow(this.id, this.href, \'get\', 0, {\'ctrlid\':this.id,\'pos\':\'13\'});">打個招呼</a></p>';
 	}
 	showCreditPrompt();
 }
@@ -668,7 +668,7 @@ function docomment_colse(doid, key) {
 	$(showid).style.display = 'none';
 	$(showid).style.className = '';
 
-	$(opid).innerHTML = '回复';
+	$(opid).innerHTML = '回覆';
 	$(opid).onclick = function() {
 		docomment_get(doid, key);
 	}
@@ -697,7 +697,7 @@ function docomment_form_close(doid, id, key) {
 	if(!liObj.length) {
 		$(key+'_'+doid).style.display = 'none';
 		if($(opid)) {
-			$(opid).innerHTML = '回复';
+			$(opid).innerHTML = '回覆';
 			$(opid).onclick = function () {
 				docomment_get(doid, key);
 			}
@@ -741,7 +741,7 @@ function feedcomment_close(feedid) {
 	$(showid).style.display = 'none';
 	$(showid).style.className = '';
 
-	$(opid).innerHTML = '评论';
+	$(opid).innerHTML = '評論';
 	$(opid).onclick = function() {
 		feedcomment_get(feedid);
 	}
@@ -772,7 +772,7 @@ function feed_more_close(feedid) {
 
 	$(showid).style.display = 'none';
 
-	$(opid).innerHTML = '&raquo; 更多动态';
+	$(opid).innerHTML = '&raquo; 更多動態';
 	$(opid).onclick = function() {
 		feed_more_show(feedid);
 	}
@@ -1030,7 +1030,7 @@ function spaceMusicPlayer(url, height) {
 	if (JSLOADED[STATICURL + 'js/player/aplayer.min.js']) {
 		var x = new Ajax('JSON');
 		x.getJSON(url, function(s) {
-			// 后端直接返回, 由前端负责将原始数据调整为所需格式
+			// 後端直接返回, 由前端負責將原始資料調整為所需格式
 			var audio = new Array();
 			s.mp3list.forEach(function (s) {
 				var obj = new Object();
@@ -1040,11 +1040,11 @@ function spaceMusicPlayer(url, height) {
 				obj.cover = s.cdbj;
 				audio.push(obj);
 			});
-			// 设置样式, 保证播放器展示空间
+			// 設定樣式, 保證播放機展示空間
 			$('music_content').style.height = height + 'px';
 			$('music_content').style.padding = '0px';
 			$('music_content').style.margin = '0px';
-			// 初始化APlayer
+			// 初始化 APlayer
 			window['music_content'] = new APlayer({
 				container: $('music_content'),
 				autoplay: s.config.autorun == 'true',

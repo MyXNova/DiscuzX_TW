@@ -50,16 +50,16 @@ var page = {
 			selector += '<a id="select_a">';
 			selector += '<select id="dumppage">';
 			for(var i=1; i<=lastpage; i++) {
-				selector += '<option value="'+i+'" '+ (i == curpage ? 'selected' : '') +'>第'+i+'页</option>';
+				selector += '<option value="'+i+'" '+ (i == curpage ? 'selected' : '') +'>第 '+i+' 頁</option>';
 			}
 			selector += '</select>';
-			selector += '<span>第'+curpage+'页</span>';
+			selector += '<span>第 '+curpage+' 頁</span>';
 		}
 
 		var pgobj = qSel('div.pg');
 		pgobj.classList.remove('pg');
 		pgobj.classList.add('page');
-		pgobj.innerHTML = '<a href="'+ prevpagehref +'">上一页</a>'+ selector +'<a href="'+ nextpagehref +'">下一页</a>';
+		pgobj.innerHTML = '<a href="'+ prevpagehref +'">上一頁</a>'+ selector +'<a href="'+ nextpagehref +'">下一頁</a>';
 		qSel('#dumppage').addEventListener('change', function() {
 			var href = (prevpage || nextpage);
 			var newhref = href.replace(/page=\d+/, 'page=' + this.value);
@@ -156,7 +156,7 @@ var img = {
 		if(is_err_t) {
 			var parentnode = obj.parent();
 			parentnode.find('.loading').remove();
-			parentnode.append('<div class="error_text">点击重新加载</div>');
+			parentnode.append('<div class="error_text">點選重新讀取</div>');
 			parentnode.find('.error_text').one('click', function() {
 				obj.attr('load', 0).find('.error_text').remove();
 				parentnode.append('<div class="loading" style="background:url('+ IMGDIR +'/imageloading.gif) no-repeat center center;width:'+parentnode.width()+'px;height:'+parentnode.height()+'px"></div>');
@@ -197,9 +197,9 @@ var popup = {
 		if(typeof pop == 'string') {
 			$('#ntcmsg').remove();
 			if(type == 'alert') {
-				pop = '<div class="tip"><dt>'+ pop +'</dt><dd><input class="button2" type="button" value="确定" onclick="popup.close();"></dd></div>'
+				pop = '<div class="tip"><dt>'+ pop +'</dt><dd><input class="button2" type="button" value="確定" onclick="popup.close();"></dd></div>'
 			} else if(type == 'confirm') {
-				pop = '<div class="tip"><dt>'+ pop +'</dt><dd><a class="button" href="'+ url +'">确定</a> <button onclick="popup.close();" class="button">取消</a></dd></div>'
+				pop = '<div class="tip"><dt>'+ pop +'</dt><dd><a class="button" href="'+ url +'">確定</a> <button onclick="popup.close();" class="button">取消</a></dd></div>'
 			}
 			$('body').append('<div id="ntcmsg" style="display:none;">'+ pop +'</div>');
 			pop = $('#ntcmsg');
@@ -268,7 +268,7 @@ var formdialog = {
 				evalscript(s.lastChild.firstChild.nodeValue);
 			})
 			.error(function() {
-				popup.open('表单提交异常，无法完成您的请求', 'alert');
+				popup.open('表單提交異常，無法完成您的請求', 'alert');
 			});
 			return false;
 		});
@@ -745,7 +745,7 @@ function hostconvert(url) {
 
 function Ajax(recvType, waitId) {
 	var aj = new Object();
-	aj.loading = '请稍候...';
+	aj.loading = '請稍候...';
 	aj.recvType = recvType ? recvType : 'XML';
 	aj.waitId = waitId ? $(waitId) : null;
 	aj.resultHandle = null;
@@ -880,8 +880,8 @@ function portal_flowlazyload() {
 	this.showNextPage = function() {
 		var scrollTop = Math.max(document.documentElement.scrollTop, document.body.scrollTop);
 		var offsetTop = this.getOffset(document.getElementsByClassName('page')[0]);
-		// 没有在进行的 Ajax 翻页或者 Ajax 翻页少于 10 次才翻页, 为了避免重复请求以及无限下拉导致的 DOM 问题
-		// Todo: 大数据量站点测试下拉刷新合理范围, 适度放宽限制
+		// 沒有在進行的 Ajax 翻頁或者 Ajax 翻頁少於 10 次才翻頁，為了避免重複請求以及無限下拉導致的 DOM 問題
+		// Todo: 大資料量網站測試下拉重新整理合理範圍，適度放寬限制
 		if (!processing && times <= 9 && offsetTop > document.documentElement.clientHeight && (offsetTop - scrollTop < document.documentElement.clientHeight)) {
 			processing = true;
 			times++;
@@ -942,9 +942,9 @@ function setCopy(text, msg) {
 				popup.open(msg, 'alert');
 			}
 		} else {
-			popup.open('复制失败', 'alerts');
+			popup.open('複製失敗', 'alerts');
 		}
 	} else {
-		popup.open('复制失败', 'alerts');
+		popup.open('複製失敗', 'alerts');
 	}
 }

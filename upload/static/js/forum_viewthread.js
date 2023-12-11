@@ -74,10 +74,10 @@ function attachimglstshow(pid, islazy, fid, showexif) {
 					continue;
 				}
 				if(fid) {
-					imagelist += '<div id="pattimg_' + aimgcount[pid][i] + '_menu" class="tip tip_4" style="display: none;"><div class="tip_horn"></div><div class="tip_c"><a href="forum.php?mod=ajax&action=setthreadcover&aid=' + aimgcount[pid][i] + '&fid=' + fid + '" class="xi2" onclick="showWindow(\'setcover' + aimgcount[pid][i] + '\', this.href)">设为封面</a></div></div>';
+					imagelist += '<div id="pattimg_' + aimgcount[pid][i] + '_menu" class="tip tip_4" style="display: none;"><div class="tip_horn"></div><div class="tip_c"><a href="forum.php?mod=ajax&action=setthreadcover&aid=' + aimgcount[pid][i] + '&fid=' + fid + '" class="xi2" onclick="showWindow(\'setcover' + aimgcount[pid][i] + '\', this.href)">設為封面</a></div></div>';
 				}
 				imagelist += '<div class="pattimg">' +
-					'<a id="pattimg_' + aimgcount[pid][i] + '" class="pattimg_zoom" href="javascript:;"' + s + ' onclick="zoom($(\'aimg_' + aimgcount[pid][i] + '\'), attachimggetsrc(\'aimg_' + aimgcount[pid][i] + '\'), 0, 0, ' + (parseInt(showexif) ? 1 : 0) + ')" title="点击放大">点击放大</a>' +
+					'<a id="pattimg_' + aimgcount[pid][i] + '" class="pattimg_zoom" href="javascript:;"' + s + ' onclick="zoom($(\'aimg_' + aimgcount[pid][i] + '\'), attachimggetsrc(\'aimg_' + aimgcount[pid][i] + '\'), 0, 0, ' + (parseInt(showexif) ? 1 : 0) + ')" title="點選放大">點選放大</a>' +
 					'<img ' + (islazy ? 'file' : 'src') + '="forum.php?mod=image&aid=' + aimgcount[pid][i] + '&size=100x100&key=' + imagelistkey + '&atid=' + tid + '" width="100" height="100" /></div>';
 			}
 			if($('imagelistthumb_' + pid)) {
@@ -173,7 +173,7 @@ function parsetag(pid) {
 }
 
 function setanswer(pid, from){
-	if(confirm('您确认要把该回复选为“最佳答案”吗？')){
+	if(confirm('您確認要把該回覆選為「最佳答案」嗎？')){
 		if(BROWSER.ie) {
 			doane(event);
 		}
@@ -245,7 +245,7 @@ function succeedhandle_fastpost(locationhref, message, param) {
 		$('fastpostreturn').className = '';
 	} else {
 		if(!message) {
-			message = '本版回帖需要审核，您的帖子将在通过审核后显示';
+			message = '本版回覆文章需要審核，您的文章將在通過審核後顯示';
 		}
 		$('post_new').style.display = $('fastpostmessage').value = $('fastpostreturn').className = '';
 		$('fastpostreturn').innerHTML = message;
@@ -379,7 +379,7 @@ function toggleRatelogCollapse(tarId, ctrlObj) {
 	if($(tarId).className == 'rate') {
 		$(tarId).className = 'rate rate_collapse';
 		setcookie('ratecollapse', 1, 2592000);
-		ctrlObj.innerHTML = '展开';
+		ctrlObj.innerHTML = '展開';
 	} else {
 		$(tarId).className = 'rate';
 		setcookie('ratecollapse', 0, -2592000);
@@ -389,7 +389,7 @@ function toggleRatelogCollapse(tarId, ctrlObj) {
 
 function copyThreadUrl(obj, bbname) {
 	bbname = bbname || SITEURL;
-	setCopy($('thread_subject').innerHTML.replace(/&amp;/g, '&') + '\n' + obj.href + '\n' + '(出处: '+bbname+')' + '\n', '帖子地址已经复制到剪贴板');
+	setCopy($('thread_subject').innerHTML.replace(/&amp;/g, '&') + '\n' + obj.href + '\n' + '(出處：'+bbname+')' + '\n', '文章網址已經複製到剪貼簿');
 	return false;
 }
 
@@ -399,11 +399,11 @@ function replyNotice() {
 	var status = replynotice.getAttribute("status");
 	if(status == 1) {
 		replynotice.href = newurl + 'receive';
-		replynotice.innerHTML = '接收回复通知';
+		replynotice.innerHTML = '接收回覆通知';
 		replynotice.setAttribute("status", 0);
 	} else {
 		replynotice.href = newurl + 'ignore';
-		replynotice.innerHTML = '取消回复通知';
+		replynotice.innerHTML = '取消回覆通知';
 		replynotice.setAttribute("status", 1);
 	}
 }
@@ -516,9 +516,9 @@ function show_threadpage(pid, current, maxpage, ispreview) {
 		s += '<a href="javascript:;" onclick="' + clickvalue(maxpage)+ '">... ' + maxpage + '</a>';
 	}
 	if(current < maxpage) {
-		s += '<a href="javascript:;" onclick="' + clickvalue(current + 1) + '" class="nxt">下一页</a>';
+		s += '<a href="javascript:;" onclick="' + clickvalue(current + 1) + '" class="nxt">下一頁</a>';
 	}
-	s += '<a href="javascript:;" onclick="' + clickvalue('all') + '">查看所有</a>';
+	s += '<a href="javascript:;" onclick="' + clickvalue('all') + '">檢視全部</a>';
 	s += '</div></div>';
 	$('threadpage').innerHTML = s;
 }
@@ -526,7 +526,7 @@ function show_threadpage(pid, current, maxpage, ispreview) {
 var show_threadindex_data = '';
 function show_threadindex(pid, ispreview) {
 	if(!show_threadindex_data) {
-		var s = '<div class="tindex"><h3>目录</h3><ul>';
+		var s = '<div class="tindex"><h3>目錄</h3><ul>';
 		for(i in $('threadindex').childNodes) {
 			o = $('threadindex').childNodes[i];
 			if(o.tagName == 'A') {
@@ -735,7 +735,7 @@ function changecontentdivid(tid) {
 }
 
 function showmobilebbs(obj) {
-	var content = '<h3 class="flb" style="cursor:move;"><em>下载掌上论坛</em><span><a href="javascript:;" class="flbc" onclick="hideWindow(\'mobilebbs\')" title="{lang close}">{lang close}</a></span></h3><div class="c"><h4>Andriod版本，扫描二维码可以直接下载到手机</h4><p class="mtm mbm vm"><span class="code_bg"><img src="'+ STATICURL +'image/common/zslt_andriod.png" alt="" /></span><img src="'+ STATICURL +'image/common/andriod.png" alt="适用于装有安卓系统的三星/HTC/小米等手机" /></p><h4>iPhone版本，扫描二维码可以直接下载到手机</h4><p class="mtm mbm vm"><span class="code_bg"><img src="'+ STATICURL +'image/common/zslt_ios.png" alt="" /></span><img src="'+ STATICURL +'image/common/ios.png" alt="适用于苹果手机" /></p></div>';
+	var content = '<h3 class="flb" style="cursor:move;"><em>下載掌上論壇</em><span><a href="javascript:;" class="flbc" onclick="hideWindow(\'mobilebbs\')" title="{lang close}">{lang close}</a></span></h3><div class="c"><h4>Andriod 版本，掃瞄 QR Code 碼可以直接下載到手機</h4><p class="mtm mbm vm"><span class="code_bg"><img src="'+ STATICURL +'image/common/zslt_andriod.png" alt="" /></span><img src="'+ STATICURL +'image/common/andriod.png" alt="適用於裝有 Android 系統的 HTC/三星/小米等手機" /></p><h4>iPhone 版本，掃瞄 QR Code 碼可以直接下載到手機</h4><p class="mtm mbm vm"><span class="code_bg"><img src="'+ STATICURL +'image/common/zslt_ios.png" alt="" /></span><img src="'+ STATICURL +'image/common/ios.png" alt="適用於 Apple iOS 手機" /></p></div>';
 	showWindow('mobilebbs', content, 'html');
 }
 
@@ -746,7 +746,7 @@ function succeedhandle_vfastpost(url, message, param) {
 }
 
 function vmessage() {
-	var vf_tips = '#在这里快速回复#';
+	var vf_tips = '#在這裡快速回覆#';
 	$('vmessage').value = vf_tips;
 	$('vmessage').style.color = '#CDCDCD';
 	$('vmessage').onclick = function() {
