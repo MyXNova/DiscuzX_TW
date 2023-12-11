@@ -19,7 +19,7 @@ class filesock_stream extends filesock_base {
 		$header = '';
 		$headerlist = array();
 		$headerlist['Accept'] = '*/*';
-		$headerlist['Accept-Language'] = 'zh-CN';
+		$headerlist['Accept-Language'] = 'zh-TW';
 		$headerlist['User-Agent'] = $this->useragent;
 		$headerlist['Host'] = $this->host.':'.$this->port;
 		$headerlist['Connection'] = 'Close';

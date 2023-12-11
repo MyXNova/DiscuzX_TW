@@ -88,7 +88,7 @@ if(!$requestmode && $_G['setting']['attachrefcheck'] && $_SERVER['HTTP_REFERER']
 
 periodscheck('attachbanperiods');
 
-// 獲取 thread 分表
+// 取得 thread 分表
 loadcache('threadtableids');
 $threadtableids = !empty($_G['cache']['threadtableids']) ? $_G['cache']['threadtableids'] : array();
 if(!in_array(0, $threadtableids)) {
@@ -124,7 +124,7 @@ if(!$attachexists) {
 }
 
 if(!$requestmode) {
-	// 獲取附件所在版塊資訊
+	// 取得附件所在版區資訊
 	$forum = C::t('forum_forumfield')->fetch_info_for_attach($thread['fid'], $_G['uid']);
 	$_GET['fid'] = $forum['fid'];
 
@@ -216,7 +216,7 @@ if(!$requestmode) {
 
 // 多執行緒下載支持
 // 解析 range 的範圍，readmod = 1 or 4 的時候，支援 range
-// range 傳入有可能沒有 end，這時候要在獲取了檔案大小後，根據檔案大小設定 range_end
+// range 傳入有可能沒有 end，這時候要在取得了檔案大小後，根據檔案大小設定 range_end
 $range_start = 0;
 $range_end = 0;
 $has_range_header = false;
@@ -254,7 +254,7 @@ if($attach['remote'] && !$_G['setting']['ftp']['hideurl'] && $isimage) {
 	dheader('location:'.$_G['setting']['ftp']['attachurl'].'forum/'.$attach['attachment']);
 }
 
-// 獲取支援 HTML5 媒體播放的 mimetype，Safari 要有 mimetype 和 range 支援才能正確播放
+// 取得支援 HTML5 媒體播放的 mimetype，Safari 要有 mimetype 和 range 支援才能正確播放
 $mimetype = ext_to_mimetype($attach['filename']);
 $filesize = !$attach['remote'] ? filesize($filename) : $attach['filesize'];
 // 如果 range_end 沒有傳入，更新 range_end
