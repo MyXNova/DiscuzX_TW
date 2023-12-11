@@ -2,7 +2,7 @@
 
 *{ word-wrap:break-word; outline:none; }
 body{ background:#FFF; text-align:center; }
-body, td, input, textarea, select, button{ color:#555; font:12px "Lucida Grande", Verdana, Lucida, Helvetica, Arial, "Microsoft JhengHei", 'mingliu', sans-serif; }
+body, td, input, textarea, select, button{ color:#555; font:12px "Microsoft JhengHei", Verdana, Lucida, Helvetica, Arial, 'PMingLiU', sans-serif; }
 body, ul, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset { margin:0; padding:0; }
 ul{ list-style:none; }
 h1, h2, h3, h4, h5, h6{ font-size:12px; }
