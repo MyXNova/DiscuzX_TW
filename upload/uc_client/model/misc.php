@@ -73,8 +73,8 @@ class miscmodel {
 			$ch = curl_init();
 			$ip && curl_setopt($ch, CURLOPT_HTTPHEADER, array("Host: ".$host));
 			curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
-			// 在提供 IP 地址的同时, 当请求主机名并非一个合法 IP 地址, 且 PHP 版本 >= 5.5.0 时, 使用 CURLOPT_RESOLVE 设置固定的 IP 地址与域名关系
-			// 在不支持的 PHP 版本下, 继续采用原有不支持 SNI 的流程
+			// 在提供 IP 位址的同時，當請求主機名稱並非一個合法 IP 位址，且 PHP 版本 >= 5.5.0 時，使用 CURLOPT_RESOLVE 設定固定的 IP 位址與網域名稱關係
+			// 在不支援的 PHP 版本下，繼續採用原有不支援 SNI 的流程
 			if(!empty($ip) && filter_var($ip, FILTER_VALIDATE_IP) && !filter_var($host, FILTER_VALIDATE_IP) && version_compare(PHP_VERSION, '5.5.0', 'ge')) {
 				curl_setopt($ch, CURLOPT_RESOLVE, array("$host:$port:$ip"));
 				curl_setopt($ch, CURLOPT_URL, $scheme.'://'.$host.':'.$port.$path);
@@ -111,7 +111,7 @@ class miscmodel {
 		if($post) {
 			$out = "POST $path HTTP/1.0\r\n";
 			$header = "Accept: */*\r\n";
-			$header .= "Accept-Language: zh-cn\r\n";
+			$header .= "Accept-Language: zh-tw\r\n";
 			if($allowcurl) {
 				$encodetype = 'URLENCODE';
 			}
@@ -127,7 +127,7 @@ class miscmodel {
 		} else {
 			$out = "GET $path HTTP/1.0\r\n";
 			$header = "Accept: */*\r\n";
-			$header .= "Accept-Language: zh-cn\r\n";
+			$header .= "Accept-Language: zh-tw\r\n";
 			$header .= "User-Agent: {$_SERVER['HTTP_USER_AGENT']}\r\n";
 			$header .= "Host: $host:$port\r\n";
 			$header .= "Connection: Close\r\n";
