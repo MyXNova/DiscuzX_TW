@@ -150,7 +150,7 @@ $lang = array
 	'menu_smsgw' => '簡訊服務',
 	'menu_misc_help' => '網站常見問題',
 	'menu_ec' => '電子商務',
-	'menu_card' => '充值卡密',
+	'menu_card' => '儲值卡密',
 
 	'menu_styles' => '模板管理',
 	'menu_styles_templates' => '模板套系管理',

@@ -780,12 +780,12 @@ INSERT INTO `pre_common_stylevar` (`styleid`, `variable`, `substitute`) VALUES (
 INSERT INTO `pre_common_stylevar` (`styleid`, `variable`, `substitute`) VALUES (1, 'midtext', '#666');
 INSERT INTO `pre_common_stylevar` (`styleid`, `variable`, `substitute`) VALUES (1, 'tabletext', '#444');
 INSERT INTO `pre_common_stylevar` (`styleid`, `variable`, `substitute`) VALUES (1, 'smfontsize', '0.83em');
-INSERT INTO `pre_common_stylevar` (`styleid`, `variable`, `substitute`) VALUES (1, 'threadtitlefont', 'Tahoma,Helvetica,\'Microsoft Yahei\',sans-serif');
+INSERT INTO `pre_common_stylevar` (`styleid`, `variable`, `substitute`) VALUES (1, 'threadtitlefont', 'Tahoma,Helvetica,\'Microsoft JhengHei\',sans-serif');
 INSERT INTO `pre_common_stylevar` (`styleid`, `variable`, `substitute`) VALUES (1, 'threadtitlefontsize', '14px');
 INSERT INTO `pre_common_stylevar` (`styleid`, `variable`, `substitute`) VALUES (1, 'smfont', 'Tahoma,Helvetica,sans-serif');
 INSERT INTO `pre_common_stylevar` (`styleid`, `variable`, `substitute`) VALUES (1, 'titlebgcolor', '#E5EDF2');
 INSERT INTO `pre_common_stylevar` (`styleid`, `variable`, `substitute`) VALUES (1, 'fontsize', '12px/1.5');
-INSERT INTO `pre_common_stylevar` (`styleid`, `variable`, `substitute`) VALUES (1, 'font', 'Tahoma,Helvetica,\'Microsoft Yahei\',sans-serif');
+INSERT INTO `pre_common_stylevar` (`styleid`, `variable`, `substitute`) VALUES (1, 'font', 'Tahoma,Helvetica,\'Microsoft JhengHei\',sans-serif');
 INSERT INTO `pre_common_stylevar` (`styleid`, `variable`, `substitute`) VALUES (1, 'styleimgdir', '');
 INSERT INTO `pre_common_stylevar` (`styleid`, `variable`, `substitute`) VALUES (1, 'imgdir', '');
 INSERT INTO `pre_common_stylevar` (`styleid`, `variable`, `substitute`) VALUES (1, 'boardimg', 'logo.svg');
