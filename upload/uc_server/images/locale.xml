@@ -1,7 +1,60 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <strings>
-	
-	<language type="zh_CN" using="true">
+
+	<language type="zh_TW" using="true">
+		<item key="inefficacy_save" value="\u8ACB\u5148\u4E0A\u50B3\u5716\u7247\u6216\u7528\u651D\u5F71\u6A5F\u62CD\u7167\21" />
+		<item key="camera_muted" value="\u7121\u6CD5\u9023\u7DDA\u5230\u6D3B\u52D5\u651D\u5F71\u6A5F\21" />
+		<item key="camera_not_exist" value="\u651D\u5F71\u6A5F\u88DD\u7F6E\u4E0D\u53EF\u7528\21" />
+		<item key="face_save_success" value="\u982D\u50CF\u5132\u5B58\u6210\u529F\21" />
+		<item key="face_save_error" value="\u982D\u50CF\u5132\u5B58\u904E\u7A0B\u4E2D\u767C\u751F\u7DB2\u8DEF\u932F\u8AA4\uFF0C\u8ACB\u91CD\u8A66\21" />
+		<item key="face_saving" value="\u6B63\u5728\u5132\u5B58\u982D\u50CF\uFF0C\u8ACB\u7A0D\u5019..." />
+		<item key="face_save_ioerror" value="\u982D\u50CF\u5132\u5B58\u904E\u7A0B\u4E2D\u767C\u751F%20I/O%20\u932F\u8AA4\21" />
+		<item key="upload_volume_1M" value="\u8ACB\u91CD\u65B0\u9078\u64C7\u5927\u5C0F\u5C0F\u65BC%201MB%20\u7684\u5716\u7247\21" />
+		<item key="upload_type_label" value="\u5716\u7247\u6A94" />
+		<item key="upload_type_error" value="\u6A94\u6848\u683C\u5F0F\u932F\u8AA4\u3002\u8ACB\u9078\u64C7%20jpg\u3001gif\u3001png%20\u683C\u5F0F\u7684\u5716\u7247\u6A94" />
+		<item key="upload_uploading" value="\u5716\u7247\u4E0A\u50B3\u4E2D\u3002\u8ACB\u7A0D\u5019..." />
+		<item key="upload_ioerror" value="\u6A94\u6848\u4E0A\u50B3\u904E\u7A0B\u4E2D\u51FA\u73FE%20I/O%20\u932F\u8AA4\21" />
+		<item key="upload_httperror" value="\u6A94\u6848\u4E0A\u8F09\u904E\u7A0B\u4E2D\u51FA\u73FE%20HTTP%20\u932F\u8AA4\21" />
+		<item key="upload_securityerror" value="\u6A94\u6848\u4E0A\u50B3\u904E\u7A0B\u4E2D\u51FA\u73FE\u5B89\u5168\u932F\u8AA4\21" />
+		<item key="upload_progress" value="\u6A94\u6848\u5DF2\u4E0A\u50B3\u5B8C\u6210" />
+		<item key="please_select_region" value="\u8ACB\u9078\u64C7\u9069\u5408\u5340\u57DF" />
+		<item key="browse_file_cancel" value="\u53D6\u6D88\u9078\u53D6\u6A94\u6848\21" />
+		<item key="callback_uploaded_ioerror" value="\u8ABF\u7528\u5DF2\u4E0A\u50B3\u5716\u7247\u904E\u7A0B\u4E2D\u767C\u751F\u932F\u8AA4\21" />
+		<item key="uploaded_invalid_type" value="\u4E0A\u50B3\u7684\u6A94\u6848\u4E0D\u662F\u5716\u7247\u6A94\u6848\21" />
+		<item key="preview_note" value="\u982D\u50CF\u7DE8\u8F2F\u6210\u529F\uFF01\u4EE5\u4E0B\u662F\u4E09\u7A2E\u5927\u5C0F\u7684\u9810\u89BD\u5716\uFF0C\u8ACB\u6309%5C3Cfont%5C20color%5C3D%5C22%5C23ff0000%5C22%5C3E\u78BA\u5B9A\u6309\u9215%5C3C/font%5C3E\u9001\u51FA\21" />
+		<item key="gif_submitting" value="\u52D5\u756B\u5132\u5B58\u4E2D\uFF0C\u8ACB\u8010\u5FC3\u7B49\u5019..." />
+		<item key="gif_reopen" value="\u958B\u555F\u52D5\u756B\u6A94\u6848\u904E\u7A0B\u4E2D\u767C\u751F\u932F\u8AA4\uFF0C\u8ACB\u91CD\u8A66..." />
+		<item key="gif_frame_overflow" value="\u5716\u7247%20FPS%20\u6578\u904E\u591A\uFF0C\u8ACB\u91CD\u65B0\u9078\u64C7\u4E00\u5F35\u7C21\u55AE\u4E00\u4E9B\u7684\u5716\u7247..." />
+		<item key="button_browse" value="\u9078\u64C7\u5716\u7247" />
+		<item key="button_camera_screen" value="\u62CD\u651D\u7167\u7247" />
+		<item key="button_reset" value="\u91CD\u8A2D" />
+		<item key="button_return" value="\u8ACB\u8FD4\u56DE\u91CD\u65B0\u9078\u64C7" />
+		<item key="button_save" value="\u982D\u50CF\u9810\u89BD" />
+		<item key="button_submit" value="\u78BA\20\u5B9A" />
+		<item key="tab_upload" value="\u4E0A\u50B3\u5716\u7247" />
+		<item key="tab_camera" value="\u4F7F\u7528\u651D\u5F71\u6A5F" />
+		<item key="note_right_text" value="\u9078\u64C7\u9069\u5408\u7684\u5340\u57DF" />
+		<item key="note_right_move" value="\u79FB\u52D5" />
+		<item key="note_right_zoom" value="\u7E2E\u653E" />
+		<item key="note_right_face" value="\u982D\u50CF\u9810\u89BD" />
+		<item key="note_main" value="\u8ACB\u5F9E\u96FB\u8166\u4E2D\u9078\u64C7\u4E00\u5F35\u5716\u7247\u4F5C\u70BA\u982D\u50CF" />
+		
+		<item key="note_success" value="\u4E0A\u50B3\u6210\u529F%21" />
+		<item key="note_3size" value="\u4EE5\u4E0A\u662F\u60A8\u982D\u50CF\u7684\u4E09\u7A2E\u5927\u5C0F" />
+		<item key="button_finish" value="\u5B8C\u3000\u3000\u6210" />
+		<item key="upload_downing" value="\u5716\u7247\u8B80\u53D6\u4E2D\uFF0C\u8ACB\u7A0D\u5019..." />
+		<item key="camera_no_device" value="\u7121\u6CD5\u627E\u5230\u651D\u5F71\u6A5F\u88DD\u7F6E" />
+		<item key="js_connect_error" value="Javascript%20\u901A\u8A0A\u932F\u8AA4%2C%20\u8ACB\u624B\u52D5\u91CD\u65B0\u6574\u7406\u9801\u9762\u4EE5\u66F4\u65B0\u982D\u50CF" />
+		<item key="player_ver_error">
+			<value>
+				<![CDATA[
+					<font size='14' color='#FF0000'>\u60A8\u6240\u4F7F\u7528\u7684%20Flash%20Player%20\u7248\u672C\u592A\u820A, \u8ACB\u5373\u6642<font color='#0000FF'><u>\u66f4\u65b0</u></font></font>
+				]]>
+			</value>
+		</item>
+	</language>
+
+	<language type="zh_CN" using="false">
 		<item key="inefficacy_save" value="\u8BF7\u5148\u4E0A\u4F20\u56FE\u7247\u6216\u7528\u6444\u50CF\u5934\u62CD\u7167\21" />
 		<item key="camera_muted" value="\u65E0\u6CD5\u8FDE\u63A5\u5230\u6D3B\u52A8\u6444\u50CF\u5934\21" />
 		<item key="camera_not_exist" value="\u6444\u50CF\u5934\u8BBE\u5907\u4E0D\u53EF\u7528\21" />

@@ -12,7 +12,7 @@ error_reporting(0);
 
 _get_script_url();
 define('UC_API', (is_https() ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/')));
-// 非独立模式下若想为头像服务设置独立域名（如CDN等服务），可以在此处进行配置UC_AVTURL（结尾不可有/）
+// 非獨立模式下若想為頭像服務設定獨立網域名稱（如 CDN 等服務），可以在此處進行設定 UC_AVTURL（結尾不可有 /）
 define('UC_AVTURL', '');
 
 $uid = isset($_GET['uid']) ? $_GET['uid'] : 0;
@@ -21,7 +21,7 @@ $random = isset($_GET['random']) ? $_GET['random'] : '';
 $type = isset($_GET['type']) ? $_GET['type'] : '';
 $check = isset($_GET['check_file_exists']) ? $_GET['check_file_exists'] : '';
 
-// ts=1，表示不用301回复，同时整个URL后面加上图像文件的最后修改时间
+// ts=1，表示不用 301 回覆，同時整個 URL 後面加上圖片檔案的最後修改時間
 $ts = isset($_GET['ts']) ? $_GET['ts'] : '';
 
 $avatar = get_avatar($uid, $size, $type);
@@ -43,14 +43,14 @@ if(file_exists($avatar_file)) {
 }
 
 if(empty($random)) {
-	if (empty($ts)) { // 如果不加随机数，也不加最后修改时间
+	if (empty($ts)) { // 如果不加亂數，也不加最後修改時間
 		header("HTTP/1.1 301 Moved Permanently");
 		header("Last-Modified:".date('r'));
 		header("Expires: ".date('r', time() + 86400));	
-	} elseif($avatar_url != 'noavatar.svg') { // 如果不加随机数，加最后修改时间
+	} elseif($avatar_url != 'noavatar.svg') { // 如果不加亂數，加最後修改時間
 		$avatar_url .= '?ts='.filemtime($avatar_file);
 	}
-} else { // 如果加随机数
+} else { // 如果加亂數
 	$avatar_url .= '?random='.rand(1000, 9999);
 }
 
@@ -88,25 +88,25 @@ function _get_script_url() {
 }
 
 function is_https() {
-	// PHP 标准服务器变量
+	// PHP 標準伺服器變數
 	if(isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) != 'off') {
 		return true;
 	}
-	// X-Forwarded-Proto 事实标准头部, 用于反代透传 HTTPS 状态
+	// X-Forwarded-Proto 事實標準頭部，用於反代透傳 HTTPS 狀態
 	if(isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) == 'https') {
 		return true;
 	}
-	// 阿里云全站加速私有 HTTPS 状态头部
-	// Git 意见反馈 https://gitee.com/Discuz/DiscuzX/issues/I3W5GP
+	// 阿里雲全站加速私有 HTTPS 狀態頭部
+	// Git 意見回饋 https://gitee.com/Discuz/DiscuzX/issues/I3W5GP
 	if(isset($_SERVER['HTTP_X_CLIENT_SCHEME']) && strtolower($_SERVER['HTTP_X_CLIENT_SCHEME']) == 'https') {
 		return true;
 	}
-	// 西部数码建站助手私有 HTTPS 状态头部
-	// 官网意见反馈 https://discuz.dismall.com/thread-3849819-1-1.html
+	// 西部數碼建站助手私有 HTTPS 狀態頭部
+	// 官網意見回饋 https://discuz.dismall.com/thread-3849819-1-1.html
 	if(isset($_SERVER['HTTP_FROM_HTTPS']) && strtolower($_SERVER['HTTP_FROM_HTTPS']) != 'off') {
 		return true;
 	}
-	// 服务器端口号兜底判断
+	// 伺服器埠號兜底判斷
 	if(isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443) {
 		return true;
 	}

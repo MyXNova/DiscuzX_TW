@@ -650,11 +650,11 @@ function config_edit() {
 
 function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 
-	// 动态密钥长度, 通过动态密钥可以让相同的 string 和 key 生成不同的密文, 提高安全性
+	// 動態金鑰長度，透過動態金鑰可以讓相同的 string 和 key 產生不同的密文，提高安全性
 	$ckey_length = 4;
 
 	$key = md5($key ? $key : UC_KEY);
-	// a参与加解密, b参与数据验证, c进行密文随机变换
+	// a 參與加解密，b 參與資料驗證，c 進行密文隨機變換
 	$keya = md5(substr($key, 0, 16));
 	$keyb = md5(substr($key, 16, 16));
 	$keyc = $ckey_length ? ($operation == 'DECODE' ? substr($string, 0, $ckey_length): substr(md5(microtime()), -$ckey_length)) : '';
@@ -663,22 +663,22 @@ function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 	$cryptkey = $keya.md5($keya.$keyc);
 	$key_length = strlen($cryptkey);
 
-	// 前 10 位用于保存时间戳验证数据有效性, 10 - 26位保存 $keyb , 解密时通过其验证数据完整性
-	// 如果是解码的话会从第 $ckey_length 位开始, 因为密文前 $ckey_length 位保存动态密匙以保证解密正确
+	// 前 10 位元用於儲存時間戳記驗證資料有效性，10 ～ 26 位儲存 $keyb，解密時透過其驗證資料完整性
+	// 如果是解碼的話會從第 $ckey_length 位開始，因為密文前 $ckey_length 位元儲存動態密匙以保證解密正確
 	$string = $operation == 'DECODE' ? base64_decode(substr($string, $ckey_length)) : sprintf('%010d', $expiry ? $expiry + time() : 0).substr(md5($string.$keyb), 0, 16).$string;
 	$string_length = strlen($string);
 
 	$result = '';
 	$box = range(0, 255);
 
-	// 产生密钥簿
+	// 產生金鑰簿
 	$rndkey = array();
 	for($i = 0; $i <= 255; $i++) {
 		$rndkey[$i] = ord($cryptkey[$i % $key_length]);
 	}
 
-	// 打乱密钥簿, 增加随机性
-	// 类似 AES 算法中的 SubBytes 步骤
+	// 打亂金鑰簿，增加隨機性
+	// 類似 AES 演算法中的 SubBytes 步驟
 	for($j = $i = 0; $i < 256; $i++) {
 		$j = ($j + $box[$i] + $rndkey[$i]) % 256;
 		$tmp = $box[$i];
@@ -686,7 +686,7 @@ function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 		$box[$j] = $tmp;
 	}
 
-	// 从密钥簿得出密钥进行异或，再转成字符
+	// 從金鑰簿得出金鑰進行異或，再轉成字元
 	for($a = $j = $i = 0; $i < $string_length; $i++) {
 		$a = ($a + 1) % 256;
 		$j = ($j + $box[$a]) % 256;
@@ -697,16 +697,16 @@ function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 	}
 
 	if($operation == 'DECODE') {
-		// 这里按照算法对数据进行验证, 保证数据有效性和完整性
-		// $result 01 - 10 位是时间, 如果小于当前时间或为 0 则通过
-		// $result 10 - 26 位是加密时的 $keyb , 需要和入参的 $keyb 做比对
+		// 這裡按照演算法對資料進行驗證，保證資料有效性和完整性
+		// $result 01 - 10 位是時間，如果小於當前時間或為 0 則通過
+		// $result 10 - 26 位是加密時的 $keyb，需要和入參的 $keyb 做比對
 		if(((int)substr($result, 0, 10) == 0 || (int)substr($result, 0, 10) - time() > 0) && substr($result, 10, 16) === substr(md5(substr($result, 26).$keyb), 0, 16)) {
 			return substr($result, 26);
 		} else {
 			return '';
 		}
 	} else {
-		// 把动态密钥保存在密文里, 并用 base64 编码保证传输时不被破坏
+		// 把動態金鑰儲存在密文裡，並用 base64 編碼保證傳輸時不被破壞
 		return $keyc.str_replace('=', '', base64_encode($result));
 	}
 
@@ -829,8 +829,8 @@ function dfopen($url, $limit = 0, $post = '', $cookie = '', $bysocket = FALSE, $
 		$ch = curl_init();
 		$ip && curl_setopt($ch, CURLOPT_HTTPHEADER, array("Host: ".$host));
 		curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
-		// 在提供 IP 地址的同时, 当请求主机名并非一个合法 IP 地址, 且 PHP 版本 >= 5.5.0 时, 使用 CURLOPT_RESOLVE 设置固定的 IP 地址与域名关系
-		// 在不支持的 PHP 版本下, 继续采用原有不支持 SNI 的流程
+		// 在提供 IP 位址的同時, 當請求主機名稱並非一個合法 IP 位址，且 PHP 版本 >= 5.5.0 時，使用 CURLOPT_RESOLVE 設定固定的 IP 位址與網域名稱關係
+		// 在不支援的 PHP 版本下，繼續採用原有不支援 SNI 的流程
 		if(!empty($ip) && filter_var($ip, FILTER_VALIDATE_IP) && !filter_var($host, FILTER_VALIDATE_IP) && version_compare(PHP_VERSION, '5.5.0', 'ge')) {
 			curl_setopt($ch, CURLOPT_RESOLVE, array("$host:$port:$ip"));
 			curl_setopt($ch, CURLOPT_URL, $scheme.'://'.$host.':'.$port.$path);
@@ -867,7 +867,7 @@ function dfopen($url, $limit = 0, $post = '', $cookie = '', $bysocket = FALSE, $
 	if($post) {
 		$out = "POST $path HTTP/1.0\r\n";
 		$header = "Accept: */*\r\n";
-		$header .= "Accept-Language: zh-cn\r\n";
+		$header .= "Accept-Language: zh-tw\r\n";
 		if($allowcurl) {
 			$encodetype = 'URLENCODE';
 		}
@@ -883,7 +883,7 @@ function dfopen($url, $limit = 0, $post = '', $cookie = '', $bysocket = FALSE, $
 	} else {
 		$out = "GET $path HTTP/1.0\r\n";
 		$header = "Accept: */*\r\n";
-		$header .= "Accept-Language: zh-cn\r\n";
+		$header .= "Accept-Language: zh-tw\r\n";
 		$header .= "User-Agent: {$_SERVER['HTTP_USER_AGENT']}\r\n";
 		$header .= "Host: $host:$port\r\n";
 		$header .= "Connection: Close\r\n";

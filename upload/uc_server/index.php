@@ -141,25 +141,25 @@ function dhtmlspecialchars($string, $flags = null) {
 }
 
 function is_https() {
-	// PHP 标准服务器变量
+	// PHP 標準伺服器變數
 	if(isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) != 'off') {
 		return true;
 	}
-	// X-Forwarded-Proto 事实标准头部, 用于反代透传 HTTPS 状态
+	// X-Forwarded-Proto 事實標準頭部，用於反代透傳 HTTPS 狀態
 	if(isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) == 'https') {
 		return true;
 	}
-	// 阿里云全站加速私有 HTTPS 状态头部
-	// Git 意见反馈 https://gitee.com/Discuz/DiscuzX/issues/I3W5GP
+	// 阿里雲全站加速私有 HTTPS 狀態頭部
+	// Git 意見回饋 https://gitee.com/Discuz/DiscuzX/issues/I3W5GP
 	if(isset($_SERVER['HTTP_X_CLIENT_SCHEME']) && strtolower($_SERVER['HTTP_X_CLIENT_SCHEME']) == 'https') {
 		return true;
 	}
-	// 西部数码建站助手私有 HTTPS 状态头部
-	// 官网意见反馈 https://discuz.dismall.com/thread-3849819-1-1.html
+	// 西部數碼建站助手私有 HTTPS 狀態頭部
+	// 官網意見回饋 https://discuz.dismall.com/thread-3849819-1-1.html
 	if(isset($_SERVER['HTTP_FROM_HTTPS']) && strtolower($_SERVER['HTTP_FROM_HTTPS']) != 'off') {
 		return true;
 	}
-	// 服务器端口号兜底判断
+	// 伺服器埠號兜底判斷
 	if(isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443) {
 		return true;
 	}

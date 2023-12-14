@@ -55,11 +55,11 @@ class control extends adminbase {
 			$timeoffset = in_array($timeoffset, array('-12', '-11', '-10', '-9', '-8', '-7', '-6', '-5', '-4', '-3.5', '-3', '-2', '-1', '0', '1', '2', '3', '3.5', '4', '4.5', '5', '5.5', '5.75', '6', '6.5', '7', '8', '9', '9.5', '10', '11', '12')) ? $timeoffset : 8;
 
 			if(empty($passwordalgo) && !empty($passwordoptions)) {
-				// 当密码选项配置时, 密码算法不能为空
+				// 當密碼選項設定時，密碼演算法不能為空
 				$passwordoptions = '';
 			} else if(!empty($passwordalgo)) {
-				// 有可能符合要求算法时做测试, 如果返回 false 或密码无法校验通过说明该配置不合理导致 PHP 无法处理, 则需要清除
-				// 密码散列算法会在部分出错情况下返回 NULL 并报 Warning, 在此特殊处理
+				// 有可能符合要求演算法時做測試，如果返回 false 或密碼無法校驗通過說明該設定不合理導致 PHP 無法處理，則需要清除
+				// 密碼散列演算法會在部分出錯情況下返回 NULL 並報 Warning，在此特殊處理
 				$options = empty($passwordoptions) ? array() : json_decode($passwordoptions, true);
 				$tresult = password_hash($passwordalgo, constant($passwordalgo), $options);
 				if($tresult === false || $tresult === null || !password_verify($passwordalgo, $tresult)) {

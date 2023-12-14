@@ -155,35 +155,35 @@ class base {
 
 	function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 
-		// 动态密钥长度, 通过动态密钥可以让相同的 string 和 key 生成不同的密文, 提高安全性
+		// 動態金鑰長度，透過動態金鑰可以讓相同的 string 和 key 產生不同的密文，提高安全性
 		$ckey_length = 4;
 
 		$key = md5($key ? $key : UC_KEY);
-		// a参与加解密, b参与数据验证, c进行密文随机变换
+		// a 參與加解密，b 參與資料驗證，c 進行密文隨機變換
 		$keya = md5(substr($key, 0, 16));
 		$keyb = md5(substr($key, 16, 16));
 		$keyc = $ckey_length ? ($operation == 'DECODE' ? substr($string, 0, $ckey_length): substr(md5(microtime()), -$ckey_length)) : '';
 
-		// 参与运算的密钥组
+		// 參與運算的金鑰組
 		$cryptkey = $keya.md5($keya.$keyc);
 		$key_length = strlen($cryptkey);
 
-		// 前 10 位用于保存时间戳验证数据有效性, 10 - 26位保存 $keyb , 解密时通过其验证数据完整性
-		// 如果是解码的话会从第 $ckey_length 位开始, 因为密文前 $ckey_length 位保存动态密匙以保证解密正确
+		// 前 10 位元用於儲存時間戳記驗證資料有效性，10 ～ 26 位儲存 $keyb，解密時透過其驗證資料完整性
+		// 如果是解碼的話會從第 $ckey_length 位開始，因為密文前 $ckey_length 位元儲存動態密匙以保證解密正確
 		$string = $operation == 'DECODE' ? base64_decode(substr($string, $ckey_length)) : sprintf('%010d', $expiry ? $expiry + time() : 0).substr(md5($string.$keyb), 0, 16).$string;
 		$string_length = strlen($string);
 
 		$result = '';
 		$box = range(0, 255);
 
-		// 产生密钥簿
+		// 產生金鑰簿
 		$rndkey = array();
 		for($i = 0; $i <= 255; $i++) {
 			$rndkey[$i] = ord($cryptkey[$i % $key_length]);
 		}
 
-		// 打乱密钥簿, 增加随机性
-		// 类似 AES 算法中的 SubBytes 步骤
+		// 打亂金鑰簿，增加隨機性
+		// 類似 AES 演算法中的 SubBytes 步驟
 		for($j = $i = 0; $i < 256; $i++) {
 			$j = ($j + $box[$i] + $rndkey[$i]) % 256;
 			$tmp = $box[$i];
@@ -191,7 +191,7 @@ class base {
 			$box[$j] = $tmp;
 		}
 
-		// 从密钥簿得出密钥进行异或，再转成字符 
+		// 從金鑰簿得出金鑰進行異或，再轉成字元
 		for($a = $j = $i = 0; $i < $string_length; $i++) {
 			$a = ($a + 1) % 256;
 			$j = ($j + $box[$a]) % 256;
@@ -202,16 +202,16 @@ class base {
 		}
 
 		if($operation == 'DECODE') {
-			// 这里按照算法对数据进行验证, 保证数据有效性和完整性
-			// $result 01 - 10 位是时间, 如果小于当前时间或为 0 则通过
-			// $result 10 - 26 位是加密时的 $keyb , 需要和入参的 $keyb 做比对
+			// 這裡按照演算法對資料進行驗證，保證資料有效性和完整性
+			// $result 01 - 10 位是時間，如果小於當前時間或為 0 則通過
+			// $result 10 - 26 位是加密時的 $keyb，需要和入參的 $keyb 做比對
 			if(((int)substr($result, 0, 10) == 0 || (int)substr($result, 0, 10) - time() > 0) && substr($result, 10, 16) === substr(md5(substr($result, 26).$keyb), 0, 16)) {
 				return substr($result, 26);
 			} else {
 				return '';
 			}
 		} else {
-			// 把动态密钥保存在密文里, 并用 base64 编码保证传输时不被破坏
+			// 把動態金鑰儲存在密文裡, 並用 base64 編碼保證傳輸時不被破壞
 			return $keyc.str_replace('=', '', base64_encode($result));
 		}
 
@@ -517,17 +517,17 @@ class base {
 	}
 
 	function detectescape($basepath, $relativepath) {
-		// 感谢 oldhu 贡献此代码
-		// 如果base不存在，有问题
+		// 感謝 oldhu 貢獻此代碼
+		// 如果 base 不存在，有問題
 		if(!file_exists($basepath)) {
 			return FALSE;
 		}
 
-		// 如果文件或目录不存在，有可能是创建前的检查，使用其上一级路径
+		// 如果檔案或資料夾不存在，有可能是新增前的檢查，使用其上一級路徑
 		if(!file_exists($basepath . $relativepath)) {
 			$relativepath = dirname($relativepath);
-			// 上一级还不存在，按最坏情况处理，阻止请求
-			// 不区分返回值的目的也是为了避免给攻击者有价值的信息
+			// 上一級還不存在，按最壞情況處理，阻止請求
+			// 不區分返回值的目的也是為了避免給攻擊者有價值的資訊
 			if(!file_exists($basepath . $relativepath)) {
 				return FALSE;
 			}
@@ -536,9 +536,9 @@ class base {
 		$real_base = realpath($basepath);
 		$real_target = realpath($basepath . $relativepath);
 
-		// $real_base与$real_target相等，表示就是在访问base目录，允许
+		// $real_base 與 $real_target 相等，表示就是在瀏覽 base 目錄，允許
 		// 或者
-		// $real_target的开头就是$real_base，表示在访问base之下的文件/目录，允许
+		// $real_target 的開頭就是 $real_base，表示在瀏覽 base 之下的檔案 / 資料夾，允許
 		if(strcmp($real_target, $real_base) !== 0 && strpos($real_target, $real_base . DIRECTORY_SEPARATOR) !== 0) {
 			return FALSE;
 		}

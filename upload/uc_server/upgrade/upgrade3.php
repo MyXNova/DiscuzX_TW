@@ -204,7 +204,7 @@ EOT;
 
 if(file_exists($lock_file)) {
 	showheader();
-	showerror('升级被锁定，应该是已经升级过了，如果已经恢复数据请手动删除<br />'.str_replace(UC_ROOT, '', $lock_file).'<br />之后再来刷新页面');
+	showerror('升級被鎖定，說明您已經進行過升級操作，如需繼續升級請刪除<br />'.str_replace(UC_ROOT, '', $lock_file).'<br />之後再來重新整理頁面');
 	showfooter();
 }
 
@@ -214,10 +214,10 @@ if(!$action) {
 
 ?>
 
-	<p>本程序用于升级 UCenter 1.5.2 到 UCenter 1.6.0</p>
-	<p>运行本升级程序之前，请确认已经上传 UCenter 1.6.0 的全部文件和目录</p>
-	<p>强烈建议您升级之前备份数据库资料</p>
-	<p><a href="<?php echo $PHP_SELF;?>?action=db">如果您已确认完成上面的步骤,请点这里升级</a></p>
+	<p>本程式用於升級 UCenter 1.5.2 到 UCenter 1.6.0</p>
+	<p>執行本升級程式之前，請確認已經上傳 UCenter 1.6.0 的全部檔案和目錄</p>
+	<p>強烈建議您升級之前備份資料庫資料</p>
+	<p><a href="<?php echo $PHP_SELF;?>?action=db">如果您已確認完成上面的步驟，請點選這裡升級</a></p>
 
 <?php
 	showfooter();
@@ -246,7 +246,7 @@ if(!$action) {
 
 	showheader();
 
-	echo "<h4>处理短消息数据</h4>";
+	echo "<h4>處理短訊資料</h4>";
 
 	$db = new ucserver_db();
 	$db->connect(UC_DBHOST, UC_DBUSER, UC_DBPW, UC_DBNAME, UC_DBCHARSET);
@@ -303,16 +303,16 @@ if(!$action) {
 	
 		if($next > 0) {
 			$end = $next;
-			echo "短消息数据已处理 $start / $total ...";
+			echo "短訊資料已處理 $start / $total ...";
 			$url_forward = "upgrade3.php?action=pm&start=$end&total=$total&forward=".urlencode($forward);
-			echo "<br /><br /><br /><a href=\"$url_forward\">浏览器会自动跳转页面，无需人工干预。除非当您的浏览器长时间没有自动跳转时，请点击这里</a>";
+			echo "<br /><br /><br /><a href=\"$url_forward\">瀏覽器會自動跳轉頁面，無需人員干預。除非當您的瀏覽器長時間沒有自動跳轉時，請點選這裡</a>";
 			echo "<script>setTimeout(\"redirect('$url_forward');\", 1250);</script>";
 		} else {
 			header("Location: upgrade3.php?action=pmstats&forward=".urlencode($forward));
 		}
 	} else {
 		@touch($lock_file);
-		echo "升级完成。";
+		echo "升級完成。";
 	}
 
 	showfooter();
@@ -321,7 +321,7 @@ if(!$action) {
 
 	showheader();
 
-	echo "<h4>处理短消息其它数据</h4>";
+	echo "<h4>處理短訊其它資料</h4>";
 
 	$db = new ucserver_db();
 	$db->connect(UC_DBHOST, UC_DBUSER, UC_DBPW, UC_DBNAME, UC_DBCHARSET);
@@ -371,13 +371,13 @@ if(!$action) {
 	
 	if($next > 0) {
 		$end = $next;
-		echo "短消息其它数据已处理 $start / $total ...";
+		echo "短訊其它資料已處理 $start / $total ...";
 		$url_forward = "upgrade3.php?action=pmstats&start=$end&total=$total&forward=".urlencode($forward);
-		echo "<br /><br /><br /><a href=\"$url_forward\">浏览器会自动跳转页面，无需人工干预。除非当您的浏览器长时间没有自动跳转时，请点击这里</a>";
+		echo "<br /><br /><br /><a href=\"$url_forward\">瀏覽器會自動跳轉頁面，無需人員干預。除非當您的瀏覽器長時間沒有自動跳轉時，請點選這裡</a>";
 		echo "<script>setTimeout(\"redirect('$url_forward');\", 1250);</script>";
 	} else {
 		@touch($lock_file);
-		echo "升级完成。";
+		echo "升級完成。";
 	}
 
 	showfooter();
@@ -543,7 +543,7 @@ function showheader() {
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=$charset" />
-<title>UCenter 升级程序( $version_old &gt;&gt; $version_new)</title>
+<title>UCenter 升級程式( $version_old &gt;&gt; $version_new)</title>
 <meta name="MSSmartTagsPreventParsing" content="TRUE">
 <meta http-equiv="MSThemeCompatible" content="Yes">
 <style>
@@ -573,7 +573,7 @@ input		{color: #085878; font-family: Tahoma, verdana, arial; font-size: 12px; ba
 <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center">
 <tr>
 <td class="install" height="30" valign="bottom"><font color="#FF0000">&gt;&gt;</font>
-UCenter  升级程序( $version_old &gt;&gt; $version_new)</td>
+UCenter  升級程式( $version_old &gt;&gt; $version_new)</td>
 </tr>
 <tr>
 <td>
@@ -582,8 +582,8 @@ UCenter  升级程序( $version_old &gt;&gt; $version_new)</td>
 </tr>
 <tr>
 <td align="center">
-<b>本升级程序只能从 $version_old 升级到 $version_new ，运行之前，请确认已经上传所有文件，并做好数据备份<br />
-升级当中有任何问题请访问技术支持站点 <a href="https://www.discuz.vip/" target="_blank">https://www.discuz.vip</a></b>
+<b>本升級程式只能從 $version_old 升級到 $version_new ，執行之前，請確認已經上傳所有檔案，並做好資料備份<br />
+升級當中有任何問題請瀏覽技術支援網站 <a href="https://www.discuz.vip/" target="_blank">https://www.discuz.vip</a></b>
 </td>
 </tr>
 <tr>
@@ -625,7 +625,7 @@ function redirect($url) {
 	setTimeout('redirect();', 1000);
 </script>
 <br /><br />
-&gt;&gt;<a href="$url">浏览器会自动跳转页面，无需人工干预。除非当您的浏览器长时间没有自动跳转时，请点击这里</a>
+&gt;&gt;<a href="$url">瀏覽器會自動跳轉頁面，無需人員干預。除非當您的瀏覽器長時間沒有自動跳轉時，請點選這裡</a>
 <br /><br />
 EOT;
 	showfooter();
