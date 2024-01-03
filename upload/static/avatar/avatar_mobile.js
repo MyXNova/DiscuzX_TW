@@ -222,10 +222,10 @@ function refreshAvatarCanvasForDisplay() {
 
     ctx.fillStyle = "black";
     ctx.font = "bold 16px Arial";
-    ctx.fillText('上传成功!', dwidth - 160,315);
+    ctx.fillText('上傳成功！', dwidth - 160,315);
     ctx.fillStyle = "grey";
     ctx.font = "bold 12px Arial";
-    ctx.fillText('以上是您头像的三种尺寸', dwidth - 200, 340);
+    ctx.fillText('以上是您頭像的三種尺寸', dwidth - 200, 340);
 }
 
 function rectAvatarDone(res) {
@@ -237,21 +237,21 @@ function rectAvatarDone(res) {
 		jQuery('#avataradjuster2').hide();
         jQuery('#avatarfileselector').hide();
     } else if (res == 'failure') {
-        alert('上传失败');
+        alert('上傳失敗');
     }
 }
 var clipArea = new PhotoClip("#widgetparent", {
-    size: [200, 200], // 截取框的宽和高组成的数组。默认值为[260,260]
-    outputSize: [200, 200], // 输出图像的宽和高组成的数组。默认值为[0,0]，表示输出图像原始大小
-    outputType: "jpg", // 指定输出图片的类型，可选 "jpg" 和 "png" 两种种类型，默认为 "jpg"
-    file: "#avatarfile", // 上传图片的<input type="file">控件的选择器或者DOM对象
-    //view: "#avatarimage", // 显示截取后图像的容器的选择器或者DOM对象
-    ok: "#avconfirm", // 确认截图按钮的选择器或者DOM对象
-	loadStart: function(file) {// 开始加载的回调函数。this指向 fileReader 对象，并将正在加载的 file 对象作为参数传入
+    size: [200, 200], // 截取框的寬和高組成的陣列。預設值為 [260,260]
+    outputSize: [200, 200], // 輸出圖像的寬和高組成的陣列。預設值為 [0,0]，表示輸出圖像原始大小
+    outputType: "jpg", // 指定輸出圖片的類型，可選 "jpg" 和 "png" 兩種類型，預設為 "jpg"
+    file: "#avatarfile", // 上傳圖片的 <input type="file"> 控制項的選擇器或者 DOM 物件
+    //view: "#avatarimage", // 顯示截取後圖像的容器的選擇器或者 DOM 物件
+    ok: "#avconfirm", // 確認截圖按鈕的選擇器或者 DOM 物件
+	loadStart: function(file) {// 開始載入的回呼函數。this 指向 fileReader 對象，並將正在載入的 file 對象作為參數傳入
 	},
-	loadComplete: function() {// 加载完成的回调函数。this指向图片对象，并将图片地址作为参数传入
+	loadComplete: function() {// 載入完成的回呼函數。this 指向圖片物件，並將圖片位址作為參數傳入
 	},
-	loadError: function(msg) {// 加载失败的回调函数。this指向 fileReader 对象，并将错误事件的 msg 对象作为参数传入
+	loadError: function(msg) {// 載入失敗的回呼函數。this 指向 fileReader 物件，並將錯誤事件的 msg 物件作為參數傳入
 	},
 	done: function(dataURL) {
 		imagesAjax(dataURL);
@@ -259,7 +259,7 @@ var clipArea = new PhotoClip("#widgetparent", {
 	fail: function(msg) {
 		//popup.open(msg, 'alert');
 	},
-    //clipFinish: function(dataURL) {}, // 裁剪完成的回调函数。this指向图片对象，会将裁剪出的图像数据DataURL作为参数传入
+    //clipFinish: function(dataURL) {}, // 裁剪完成的回呼函數。this 指向圖片物件，會將裁剪出的圖像資料 DataURL 作為參數傳入
 });
 
 function imagesAjax(src) {
