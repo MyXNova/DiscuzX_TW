@@ -1023,6 +1023,7 @@ $lang = array (
   'diy_template_extension_invalid' => '模板檔案副檔名不正確',
   'diy_template_noexist' => '模板檔案不存在',
   'topic_title_cannot_be_empty' => '抱歉，專題名稱不能為空',
+  'topic_has_on_template' => '沒有找到專題模板',
   'topic_name_duplicated' => '抱歉，專題靜態化名稱不能重複',
   'topic_created_failed' => '抱歉，建立專題失敗',
   'comment_comment_noexist' => '抱歉，要評論的文章不存在',
