@@ -31,11 +31,11 @@ $lang = array
 	'message_ishidden_hiddenreplies' => '此文章僅作者可見',
 	'post_reply_quote' => '{author} 發表於 {time}',
 	'post_edit' => "[i=s] 本文章最後由 {editor} 於 {edittime} 編輯 [/i]\n\n",
-	'post_edit_regexp' => '/^\[i=s\] 本文章最後由 .*? 於 .*? 編輯 \[\/i\]\n\n/s',
+	'post_edit_regexp' => '/^\[i=s\] 本文章最後由 .*? 於 .*? 編輯 \[\/i\][\r\n][\r\n]/s',
 	'post_edithtml' => '[i=s] 本文章最後由 {editor} 於 {edittime} 編輯 [/i]<br /><br />',
 	'post_edithtml_regexp' => '/^\[i=s\] 本文章最後由 .*? 於 .*? 編輯 \[\/i\]&lt;br \/&gt;&lt;br \/&gt;/s',
 	'post_editnobbcode' => "[ 本文章最後由 {editor} 於 {edittime} 編輯 ]\n\n",
-	'post_editnobbcode_regexp' => '/^\[ 本文章最後由 .*? 於 .*? 編輯 \]\n\n/s',
+	'post_editnobbcode_regexp' => '/^\[ 本文章最後由 .*? 於 .*? 編輯 \][\r\n][\r\n]/s',
 	'post_reply' => '回覆',
 	'post_thread' => '的文章',
 
