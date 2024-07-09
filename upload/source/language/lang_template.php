@@ -26,7 +26,7 @@ $lang = array (
   'confirms' => '確定',
   'copycode' => '全部複製到剪貼簿',
   'copycode_invite_succeed' => '邀請碼已經複製到剪貼簿',
-  'copyright' => '&copy; 2001-'.date('Y').' <a href="https://code.dismall.com/" target="_blank">Discuz! Team</a>.',
+  'copyright' => '&copy; 2001-'.date('Y').' <a href="https://code.dismall.com/" target="_blank" rel="noreferrer">Discuz! Team</a>.',
   'copyright_s' => '2001-'.date('Y').' Discuz! Team.',
   'invitecode_buycode' => '取得邀請碼',
   'invitecode_email' => '我們還將邀請碼寄送到了您填寫的信箱 <span class="xi1">{$order[\'email\']}</span> 以備查閱',

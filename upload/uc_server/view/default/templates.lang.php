@@ -20,7 +20,7 @@ $languages = array(
 	'to' => '到',
 	'menu' => '選單',
 
-	'copyright' => '&copy; 2001-'.date('Y').' <a href="https://code.dismall.com/" target="_blank">Discuz! Team</a>.',
+	'copyright' => '&copy; 2001-'.date('Y').' <a href="https://code.dismall.com/" target="_blank" rel="noreferrer">Discuz! Team</a>.',
 
 	'founder'=>'UCenter 創始人',
 	'login_username'=>'會員名稱',

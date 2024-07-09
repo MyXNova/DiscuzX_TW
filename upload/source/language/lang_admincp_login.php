@@ -37,13 +37,13 @@ $lang = array
 
 	'login_tips' => 'Discuz! 是一款以社群為基礎的專業建站平臺，幫助網站實現一站式服務。',
 	'login_nosecques' => '您還沒有使用安全登入，請在個人中心設定您的安全提問後，再瀏覽管理中心。您可以 <a href="forum.php?mod=memcp&action=profile&typeid=1" target="_blank">點選這裡</a> 進入安全提問的設定。',
-	'copyright' => '&copy; 2001-'.date('Y').' <a href="https://code.dismall.com/" target="_blank">Discuz! Team</a>.',
+	'copyright' => '&copy; 2001-'.date('Y').' <a href="https://code.dismall.com/" target="_blank" rel="noreferrer">Discuz! Team</a>.',
 
 	'login_cp_guest' => '<h1>您尚未登入網站</h1><a href="member.php?mod=logging&action=login" class="btn">登入</a><p>站長需要強制登入時，修改 config/config_global.php 可關閉此功能。</p>',
 	'login_cplock' => '您的管理面板已經鎖定！<br>請在<b> {ltime} </b>秒以後重新瀏覽管理中心',
 	'login_user_lock' => '由於您的登入密碼錯誤次數過多，本次登入請求已經被拒絕。請 15 分鐘後重新嘗試。',
 	'login_cp_noaccess' => '<b>管理中心(或此項操作)尚未對您開放</b><br><br>您的此次操作已經記錄，請勿非法嘗試',
-	'login_ip_noaccess' => '<a href="https://www.dismall.com/thread-17514-1-1.html" target="_blank">IP 變動可能導致登入失敗，檢視解決辦法</a>',
+	'login_ip_noaccess' => '<a href="https://www.dismall.com/thread-17514-1-1.html" target="_blank" rel="noreferrer">IP 變動可能導致登入失敗，檢視解決辦法</a>',
 	'noaccess' => '後台管理權限(或此項操作)尚未對您開放，請聯繫網站管理員',
 
 

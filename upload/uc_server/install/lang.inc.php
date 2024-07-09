@@ -146,7 +146,7 @@ $lang = array(
 
 	'install_in_processed' => '正在安裝...',
 	'install_succeed' => '安裝用戶中心成功，點選進入下一步',
-	'copyright' => '&copy; 2001-'.date('Y').' <a href="https://code.dismall.com/" target="_blank">Discuz! Team</a>.',
+	'copyright' => '&copy; 2001-'.date('Y').' <a href="https://code.dismall.com/" target="_blank" rel="noreferrer">Discuz! Team</a>.',
 	'license' => '<div class="license"><h1>中文版授權條款 適用於中文用戶</h1>
 
 <p>版權所有 (c) 2001-'.date('Y').'，騰訊雲計算（北京）有限責任公司（原北京康盛新創科技有限責任公司）保留所有權利。</p>
