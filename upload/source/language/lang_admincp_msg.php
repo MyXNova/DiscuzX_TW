@@ -647,6 +647,7 @@ $lang = array (
   'usertag_add_error' => '增加失敗，會員或標籤錯誤，請重新填寫',
 
   'members_verify_add_user_succeed' => '認證會員增加完成',
+  'members_verify_add_user_failure' => '認證會員增加失敗',
   'members_verify_update_title_error' => '認證啟用時認證名稱不能為空修改',
   'members_verify_title_invalid' => '您沒有為啟用的認證設定認證名稱',
 
