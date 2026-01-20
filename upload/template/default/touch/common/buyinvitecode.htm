@@ -62,10 +62,21 @@
 </form>
 <script type="text/javascript">
 	(function() {
-		$('#amount').on('input',function() {
-			var amount = $('#amount').val().replace(/^0/, '');
-			amount = parseInt(amount);
-			$('#desamount').html(!isNaN(amount) ? amount * $_G['setting']['inviteconfig']['invitecodeprice'] : 0);
+		// 取得輸入框元素
+		const amountInput = document.getElementById('amount');
+		// 取得顯示金額的元素
+		const desAmountElement = document.getElementById('desamount');
+		// 取得邀請碼單價
+		const inviteCodePrice = $_G['setting']['inviteconfig']['invitecodeprice'];
+
+		// 為輸入框新增 input 事件監聽器
+		amountInput.addEventListener('input', function() {
+			// 去除輸入值開頭的 0
+			let amount = this.value.replace(/^0/, '');
+			// 將輸入值轉換為整數
+			amount = parseInt(amount, 10);
+			// 計算並更新顯示的金額
+			desAmountElement.innerHTML = !isNaN(amount) ? (amount * inviteCodePrice).toFixed(2) : '0.00';
 		});
 	})();
 </script>

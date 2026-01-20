@@ -66,6 +66,7 @@ Discuz! X 提供 3.5 的每日建構，在有提交的第二天早上，可以�
 - Git 版的 Release 版本號不再更新，但[正式版](https://gitee.com/Discuz/DiscuzX/attach_files)會更新
 - X3.2、X3.3、X3.4 已停更，無重大漏洞的情況下，將不再更新 X3.4 版本。請隨時關注更新清單，您可進行手動修補，讓自己的網站時刻保持最安全的狀態！
 - X3.5 已經於 2023 年 5 月 21 日切換為預設分支
+- X5.0 分支[點選這裡進入](https://gitee.com/Discuz/DiscuzX/tree/MitFrame/)
 
 ### 截圖
 ![系統資訊](./readme/screenshot.png "系統資訊截圖")

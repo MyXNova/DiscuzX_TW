@@ -951,3 +951,114 @@ function setCopy(text, msg) {
 function copycode(obj) {
 	setCopy(obj.textContent, '程式碼已複製到剪貼簿');
 }
+
+function setanswer(tid, pid, from, formhash){
+	popup.open('您確認要把該回覆選為「最佳答案」嗎？','confirm','forum.php?mod=misc&action=bestanswer&tid=' + tid + '&pid=' + pid + '&from=' + from + '&bestanswersubmit=yes&formhash='+formhash)
+}
+
+function submitpostpw(pid, tid) {
+	var obj = document.getElementById('postpw_' + pid);
+	setcookie('postpw_' + pid, hex_md5(obj.value));
+	if(!tid) {
+		location.href = location.href;
+	} else {
+		location.href = 'forum.php?mod=viewthread&tid='+tid;
+	}
+}
+
+/**
+ * 初始化導航 Swiper 組件
+ * @param {string} [containerSelector='#dhnavs_li'] - 容器選擇器
+ * @param {string} [activeClass='mon'] - 活動元素類名
+ * @param {Object} [customOptions={}] - 自訂 Swiper 組態選項
+ * @returns {Swiper|null} - 返回 Swiper 實例或 null（當容器不存在時）
+ */
+function initdhnav(containerSelector = '#dhnavs_li', activeClass = 'mon', customOptions = {}) {
+    // 取得容器元素
+    const container = document.querySelector(containerSelector);
+    if (!container) {
+        console.warn('Swiper 容器不存在：', containerSelector);
+        return null;
+    }
+
+    // 查找活動元素並計算初始位置
+    const activeElement = container.querySelector('.' + activeClass);
+    let initialSlide = 0;
+
+    if (activeElement) {
+        const rect = activeElement.getBoundingClientRect();
+        const elementLeft = rect.left;
+        const elementWidth = activeElement.offsetWidth;
+        const windowWidth = window.innerWidth;
+
+        // 計算元素索引
+        const siblings = Array.from(container.getElementsByClassName(activeClass));
+        const elementIndex = siblings.indexOf(activeElement);
+
+        // 確定初始滑動位置
+        initialSlide = (elementLeft + elementWidth >= windowWidth) ? elementIndex : 0;
+    }
+
+    // 合併預設組態和自訂組態
+    const swiperOptions = {
+        freeMode: true,
+        slidesPerView: 'auto',
+        initialSlide: initialSlide,
+        onTouchMove: () => { Discuz_Touch_on = 0; },
+        onTouchEnd: () => { Discuz_Touch_on = 1; },
+        ...customOptions // 自訂組態可以覆蓋預設值
+    };
+
+    // 初始化並返回 Swiper 實例
+    return new Swiper(containerSelector, swiperOptions);
+}
+
+/**
+ * 家園模組下設定密碼的共用函數
+ */
+function home_passwordShow(value) {
+    // 取得元素引用
+    const spanPassword = document.getElementById('span_password');
+    const tbSelectgroup = document.getElementById('tb_selectgroup');
+    if(value == 4) {
+        spanPassword.style.display= '';
+        tbSelectgroup.style.display = 'none';
+    } else if(value == 2) {
+        spanPassword.style.display = 'none';
+        tbSelectgroup.style.display = '';
+    } else {
+        spanPassword.style.display = 'none';
+        tbSelectgroup.style.display = 'none';
+    }
+}
+
+function home_getgroup(gid) {
+    if (gid) {
+        // 構建請求 URL
+        const url = `home.php?mod=spacecp&ac=privacy&inajax=1&op=getgroup&gid=${encodeURIComponent(gid)}`;
+
+        // 使用原生 fetch 傳送 GET 請求
+        fetch(url)
+            .then(response => {
+                // 檢查回應是否成功
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text(); // 解析回應為文字
+            })
+            .then(s => {
+                // 取得目標元素並檢查是否存在
+                const targetNames = document.getElementById('target_names');
+                if (targetNames) {
+                    // 處理回應並更新 innerHTML
+                    targetNames.innerHTML += s + ',';
+                } else {
+                    console.warn('未找到 ID 為 target_names 的元素');
+                }
+            })
+            .catch(error => {
+                // 捕獲並處理請求錯誤
+                console.error('請求失敗：', error);
+            });
+    }
+}
