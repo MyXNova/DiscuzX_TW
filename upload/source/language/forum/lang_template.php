@@ -501,6 +501,7 @@ $lang = array (
   'crime_record' => '違規記錄',
   'crime_sightml' => '清除簽名',
   'crime_warnpost' => '警告文章',
+  'members_ban_none' => '正常狀態',
   'expiry' => '期限',
   'ip_location' => '地理位置',
   'mod_member_ban' => '禁止會員',
